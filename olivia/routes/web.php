@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('tes', function () {
+    return view('tes');
+});
+
+Route::get('coba', 'CobaController@coba');
+
+Auth::routes();
+
+// Auth::routes(['verify' => true]);
+  
+Route::get('/home', 'HomeController@index')->name('home');
