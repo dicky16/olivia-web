@@ -7,5 +7,7 @@
 </head>
 <body>
     <p>home</p>
+    <a href="{{ asset('index.php') }}">iki</a>
+    {{ asset('index.php') }}
 </body>
 </html>

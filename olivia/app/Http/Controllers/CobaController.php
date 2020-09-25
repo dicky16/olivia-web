@@ -8,6 +8,10 @@ class CobaController extends Controller
 {
     public function coba()
     {
-        return view('coba');
+        $file = asset('tes.txt');
+        $filePath = asset('tes');
+        // $file->move($filePath, 'gambarName');
+        return public_path('');
+        // return view('coba');
     }
 }
