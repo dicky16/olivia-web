@@ -25,6 +25,6 @@ Route::get('coba', 'CobaController@coba');
 
 Auth::routes();
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
   
 Route::get('/home', 'HomeController@index')->name('home');
