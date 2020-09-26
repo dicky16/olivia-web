@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 //route admin
 Route::prefix('admin')->group(function () {
-	Route::get('/', 'Admin\AdminPageController@dashboard');
-	Route::get('berita', 'Admin\AdminPageController@berita');
+	Route::get('/', 'Admin\AdminPageController@dashboard')->name('dashboard');
+	Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
 });
 
 Route::get('/', function () {
