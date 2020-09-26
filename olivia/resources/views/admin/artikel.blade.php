@@ -54,13 +54,13 @@
                 <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-artikel">
                     @csrf
 
+                    <label for="namatenaga">Tanggal</label>
+                    <input type="date" class="form-control" id="" name="nama">
+
                     <label for="namatenaga">Judul</label>
                     <input type="text" class="form-control" id="" name="nama">
 
                   <label for="namatenaga">Penulis</label>
-                    <input type="text" class="form-control" id="" name="nama">
-
-                    <label for="namatenaga">Lampiran Berita</label>
                     <input type="text" class="form-control" id="" name="nama">
 
                     <label for="alamat" class="mt-2">Deskripsi</label>
@@ -70,6 +70,9 @@
                         <label for="file">Gambar</label>
                         <!-- <input input id="gambar" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01"> -->
                     </div>
+
+                    <label for="namatenaga">Lampiran Berita</label>
+                    <input type="text" class="form-control" id="" name="nama">
 
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

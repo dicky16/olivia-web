@@ -10,7 +10,7 @@
         <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Sejarah</button>
         <br><br>
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Sejarah</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Data Table Sejarah</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <!-- <div id="table-artikel"></div> -->
@@ -57,7 +57,8 @@
                     <label for="namatenaga">Judul</label>
                     <input type="text" class="form-control" id="" name="nama">
 
-                  
+                    <label for="namatenaga">Tanggal Publish</label>
+                    <input type="date" class="form-control" id="" name="nama">
 
                     <label for="alamat" class="mt-2">Deskripsi</label>
                     <textarea type="tex" class="form-control" id="deskripsi-artikel" name=""> </textarea>

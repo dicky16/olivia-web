@@ -54,6 +54,9 @@
                 <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-artikel">
                     @csrf
 
+                    <label for="namatenaga">Tanggal Publish</label>
+                    <input type="date" class="form-control" id="" name="nama">
+
                     <label for="namatenaga">Judul</label>
                     <input type="text" class="form-control" id="" name="nama">
 
