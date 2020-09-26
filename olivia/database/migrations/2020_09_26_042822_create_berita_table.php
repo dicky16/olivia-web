@@ -20,7 +20,6 @@ class CreateBeritaTable extends Migration
             $table->text('foto');
             $table->string('keterangan');
             $table->text('lampiran');
-            $table->date('tanggal');
             $table->bigInteger('id_penulis')->unsigned();
             $table->foreign('id_penulis')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

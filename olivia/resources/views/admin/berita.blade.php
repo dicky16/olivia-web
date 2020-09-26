@@ -13,25 +13,7 @@
             <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Berita</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="table-artikel"></div> -->
-                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Judul</th>
-                                <th>Deskripsi</th>
-                                <th>Gambar</th>
-                                <th>Aksi</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Judul</td>
-                                <td>Ini deskripsi</td>
-                                <td>gambar cuy</td>
-                                <td>Aksi</td>
-                            </tr>
-                        </thead>
-                    </table>
+                    <div id="table-berita"></div>
                 </div>
             </div>
         </div>
@@ -67,11 +49,20 @@
                     <input type="text" class="form-control" id="" name="nama">
 
                     <label for="alamat" class="mt-2">Deskripsi</label>
-                    <textarea type="tex" class="form-control" id="deskripsi-artikel" name=""> </textarea>
+                    <textarea type="text" class="form-control" id="deskripsi-artikel" name=""> </textarea>
+
+                    <label for="alamat" class="mt-2">Keterangan</label>
+                    <input type="text" class="form-control" id="deskripsi-artikel" name="">
 
                     <div class="form-group mt-3">
                         <label for="file">Gambar</label>
-                        <!-- <input input id="gambar" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01"> -->
+                        <input id="gambar" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="file">Lampiran</label>
+                        <!-- <input id="gambar" type="file" name="gambar" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01"> -->
+                        <input type="file">
                     </div>
 
                     <div class="modal-footer">

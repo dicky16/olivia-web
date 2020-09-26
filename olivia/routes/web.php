@@ -20,7 +20,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
         Route::get('artikel', 'Admin\AdminPageController@artikel')->name('artikel');
 		Route::get('sejarah', 'Admin\AdminPageController@sejarah')->name('sejarah');
+=======
+        //berita
+        Route::prefix('berita')->group(function () {
+            Route::get('data', 'Admin\BeritaController@getBeritaDataTable');
+            Route::get('datatable', 'Admin\BeritaController@loadDataTable');
+            // Route::post('/', 'Admin\AdminArtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
     });
+    
 });
 
 Route::get('/', function () {
