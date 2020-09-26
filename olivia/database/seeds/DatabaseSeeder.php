@@ -18,5 +18,12 @@ class DatabaseSeeder extends Seeder
         \App\Role::create([
             'role'  => 'user',
         ]);
+
+        \App\User::create([
+            'name'  => 'admin',
+            'email'  => 'admin@gmail.com',
+            'password'  => '$2y$12$Ghl8UMGwIUZIQfWXWlwGZOyLvBvDPZ8fXtbX.lqR5CJOXkvsgR4Mi',
+            'id_role' => 1
+        ]);
     }
 }
