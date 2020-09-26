@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataPesertaTable extends Migration
+class CreateDataKetuaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateDataPesertaTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_peserta', function (Blueprint $table) {
+        Schema::create('data_tim', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nim');
-            $table->text('ktm');
+            $table->string('nama_team');
+            $table->string('institusi');
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateDataPesertaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_peserta');
+        Schema::dropIfExists('data_tim');
     }
 }

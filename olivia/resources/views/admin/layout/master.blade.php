@@ -264,7 +264,8 @@ The above copyright notice and this permission notice shall be included in all c
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="{{ asset('admin/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="{{ asset('admin/js/plugins/jquery.dataTables.min.js') }}"></script>
+  <!-- <script src="{{ asset('admin/js/plugins/jquery.dataTables.min.js') }}"></script> -->
+  <script src="cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="{{ asset('admin/js/plugins/bootstrap-tagsinput.js') }}"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
