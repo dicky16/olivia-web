@@ -15,4 +15,13 @@ class AdminPageController
     {
     	return view('admin.berita');
     }
+
+    public function artikel()
+    {
+    	return view('admin.artikel');
+    }
+    public function sejarah()
+    {
+    	return view('admin.sejarah');
+    }
 }

@@ -18,6 +18,9 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
     Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\AdminPageController@dashboard')->name('dashboard');
         Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
+        Route::get('artikel', 'Admin\AdminPageController@artikel')->name('artikel');
+		Route::get('sejarah', 'Admin\AdminPageController@sejarah')->name('sejarah');
+=======
         //berita
         Route::prefix('berita')->group(function () {
             Route::get('data', 'Admin\BeritaController@getBeritaDataTable');

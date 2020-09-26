@@ -53,13 +53,37 @@ The above copyright notice and this permission notice shall be included in all c
               <p>Dashboard</p>
             </a>
           </li>
-    
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>Profil Company</p>
-            </a>
+          
+         <li class="nav-item" id="home">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseHome" aria-expanded="true" aria-controls="collapseUtilities">
+                  <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <div id="collapseHome" class="collapse" aria-labelledby="headingHome" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="dropdown-item" href="#">Berita</a>
+                        <a class="dropdown-item" href="#">Artikel</a>
+                        <a class="dropdown-item" href="#">Infografis</a>
+                       
+                    </div>
+                </div>
           </li>
+         
+          <li class="nav-item" id="profile">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <div id="collapseProfile" class="collapse" aria-labelledby="headingHome" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="dropdown-item" href="#">Sejarah</a>
+                        <a class="dropdown-item" href="#">Tugas dan Fungsi</a>
+                        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+                        <a class="dropdown-item" href="#">Lokasi</a>
+                    </div>
+                </div>
+          </li> 
+
           <li class="nav-item @if(Route::is('berita')) active @endif">
             <a class="nav-link" href="{{ url('admin/berita') }}">
              <i class="far fa-newspaper"></i>

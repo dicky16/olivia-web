@@ -2,18 +2,36 @@
 @section('content')
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Berita</h1>
+        <h1 class="mt-4">Sejarah</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Tables</li>
         </ol>
-        <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Berita</button>
+        <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Sejarah</button>
         <br><br>
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Berita</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Data Table Sejarah</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <div id="table-berita"></div>
+                    <!-- <div id="table-artikel"></div> -->
+                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Judul</th>
+                                <th>Deskripsi</th>
+                                <th>Gambar</th>
+                                <th>Aksi</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Judul</td>
+                                <td>Ini deskripsi</td>
+                                <td>gambar cuy</td>
+                                <td>Aksi</td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
@@ -25,7 +43,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Artikel</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Sejarah</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -36,33 +54,18 @@
                 <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-artikel">
                     @csrf
 
-                    <label for="namatenaga">Tanggal Publish</label>
-                    <input type="date" class="form-control" id="" name="nama">
-
                     <label for="namatenaga">Judul</label>
                     <input type="text" class="form-control" id="" name="nama">
 
-                    <label for="namatenaga">Penulis</label>
-                    <input type="text" class="form-control" id="" name="nama">
-
-                    <label for="namatenaga">Lampiran Berita</label>
-                    <input type="text" class="form-control" id="" name="nama">
+                    <label for="namatenaga">Tanggal Publish</label>
+                    <input type="date" class="form-control" id="" name="nama">
 
                     <label for="alamat" class="mt-2">Deskripsi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-artikel" name=""> </textarea>
-
-                    <label for="alamat" class="mt-2">Keterangan</label>
-                    <input type="text" class="form-control" id="deskripsi-artikel" name="">
+                    <textarea type="tex" class="form-control" id="deskripsi-artikel" name=""> </textarea>
 
                     <div class="form-group mt-3">
                         <label for="file">Gambar</label>
-                        <input id="gambar" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
-                    </div>
-
-                    <div class="form-group mt-3">
-                        <label for="file">Lampiran</label>
-                        <!-- <input id="gambar" type="file" name="gambar" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01"> -->
-                        <input type="file">
+                        <!-- <input input id="gambar" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01"> -->
                     </div>
 
                     <div class="modal-footer">
