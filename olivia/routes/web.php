@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //route admin
-Route::prefix('admin')->group(function () {
-	Route::get('/', 'Admin\AdminPageController@dashboard')->name('dashboard');
-	Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
+Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
+    Route::prefix('admin')->group(function () {
+        Route::get('/', 'Admin\AdminPageController@dashboard')->name('dashboard');
+        Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
+    });
 });
 
 Route::get('/', function () {
