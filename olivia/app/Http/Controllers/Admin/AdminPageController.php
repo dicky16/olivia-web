@@ -13,7 +13,7 @@ class AdminPageController
 
     public function berita()
     {
-    	return view('admin.berita');
+    	return view('admin.home.beritaAdmin');
     }
 
     public function artikel()
