@@ -2,15 +2,15 @@
 @section('content')
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Berita</h1>
+        <h1 class="mt-4">Artikel</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Tables</li>
         </ol>
-        <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Berita</button>
+        <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Artikel</button>
         <br><br>
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Berita</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>Data Table Artikel</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <!-- <div id="table-artikel"></div> -->
@@ -57,7 +57,7 @@
                     <label for="namatenaga">Judul</label>
                     <input type="text" class="form-control" id="" name="nama">
 
-                    <label for="namatenaga">Penulis</label>
+                  <label for="namatenaga">Penulis</label>
                     <input type="text" class="form-control" id="" name="nama">
 
                     <label for="namatenaga">Lampiran Berita</label>

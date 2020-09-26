@@ -2,15 +2,15 @@
 @section('content')
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Berita</h1>
+        <h1 class="mt-4">Sejarah</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="{{ url('admin') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Tables</li>
         </ol>
-        <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Berita</button>
+        <button type="button" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#beritaModal" id="tambah">+Tambah Sejarah</button>
         <br><br>
         <div class="card mb-4">
-            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Berita</div>
+            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Sejarah</div>
             <div class="card-body">
                 <div class="table-responsive">
                     <!-- <div id="table-artikel"></div> -->
@@ -43,7 +43,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Artikel</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Sejarah</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -57,11 +57,7 @@
                     <label for="namatenaga">Judul</label>
                     <input type="text" class="form-control" id="" name="nama">
 
-                    <label for="namatenaga">Penulis</label>
-                    <input type="text" class="form-control" id="" name="nama">
-
-                    <label for="namatenaga">Lampiran Berita</label>
-                    <input type="text" class="form-control" id="" name="nama">
+                  
 
                     <label for="alamat" class="mt-2">Deskripsi</label>
                     <textarea type="tex" class="form-control" id="deskripsi-artikel" name=""> </textarea>
