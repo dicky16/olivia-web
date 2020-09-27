@@ -2,7 +2,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Artikel</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pertanyaan User</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
     </div>
 
@@ -10,17 +10,29 @@
     <!-- Content Row -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Artikel</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Table Pertanyaan User</h6>
         </div>
 
         <div class="d-sm-flex align-items-center m-3">
             <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
-                Add Artikel</a>
+                Add Pertanyaan User</a>
             </div>
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <div id="datatable-artikel"></div>
+                    <!-- <div id="datatable-berita"></div> -->
+                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Pengguna </th> 
+                                <th>Email Pengguna</th>
+                                <th>Pertanyaan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+
                 </div>
             </div>
         </div>
@@ -32,7 +44,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Artikel</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Pertanyaan User</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -43,18 +55,14 @@
                 <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
                     @csrf
 
-                    <label for="judulBerita">Judul Artikel</label>
+                    <label for="judulBerita">Nama Pengguna</label>
+                    <input type="text" class="form-control" id="" name="judul">
+                    <label for="judulBerita">Email Pengguna</label>
+                    <input type="text" class="form-control" id="" name="judul">
+                    <label for="judulBerita">Pertanyaan</label>
                     <input type="text" class="form-control" id="" name="judul">
 
-
-                    <label for="deskripsi" class="mt-2">Deskripsi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-berita" name=""> </textarea>
-
-                    <div class="form-group mt-3">
-                        <label for="file" class="mt-2">Gambar</label>
-                        <input input id="file-upload" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
-                    </div>
-
+                   
 
                 </form>
 
@@ -70,7 +78,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('js-ajax')
-<script type="text/javascript" src="{{ asset('admin/js/artikel.js')}}"></script>
 @endsection

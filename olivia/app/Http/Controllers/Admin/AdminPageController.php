@@ -25,4 +25,17 @@ class AdminPageController
     {
     	return view('admin.sejarah');
     }
+
+     public function foto()
+    {
+        return view('admin.home.fotoAdmin');
+    }
+     public function video()
+    {
+        return view('admin.home.videoAdmin');
+    }
+     public function pertanyaan()
+    {
+        return view('admin.home.pertanyaanAdmin');
+    }
 }

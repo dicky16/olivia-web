@@ -1,91 +1,61 @@
 @extends('admin.layout.master')
 @section('content')
 <!-- Earnings (Monthly) Card Example -->
-		 <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">Berita</div>
+		 <section class="dashboard-counts no-padding-bottom">
+            <!-- <div class="container"> -->
+              <div class="row bg-white has-shadow">
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet"><i class="far fa-user"></i></div>
+                    <div class="title"><span>Total<br>Pengguna</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                      </div>
                     </div>
-                    <div class="col-auto">
-                    <i class="far fa-newspaper fa-3x text-Black"></i>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
+                    <div class="number"><strong>25</strong></div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">Social Media</div>
-                     
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="far fa-newspaper"></i></div>
+                    <div class="title"><span>Total<br>Berita</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 70%; height: 4px;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                      </div>
                     </div>
-                    <div class="col-auto">
-						<i class="fab fa-instagram fa-3x text-danger"></i>
-                    </div>
+                    <div class="number"><strong>70</strong></div>
                   </div>
                 </div>
-                 <div class="card-footer">
-                  <div class="stats">
-					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-green"><i class="fas fa-photo-video"></i></div>
+                    <div class="title"><span>Total<br>Foto & Video</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 10%; height: 4px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+                      </div>
+                    </div>
+                    <div class="number"><strong>40</strong></div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">FAQ</div>
-                     
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="fas fa-medal"></i></div>
+                    <div class="title"><span>Total<br>Cabang Lomba</span>
+                      <div class="progress">
+                        <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                      </div>
                     </div>
-                    <div class="col-auto">
-                		  <i class="fas fa-question fa-3x text-primary"></i>
-                    </div>
-                  </div>
-                </div>
-                 <div class="card-footer">
-                  <div class="stats">
-					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
+                    <div class="number"><strong>50</strong></div>
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
+          </section>
+     
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">LOMBA</div>
-                   
-                    </div>
-                    <div class="col-auto">
-              			<i class="fas fa-medal fa-3x text-warning"></i>
-                    </div>
-                  </div>
-                </div>
-                  <div class="card-footer">
-                  <div class="stats">
-					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-        </div> 
 
 @endsection
