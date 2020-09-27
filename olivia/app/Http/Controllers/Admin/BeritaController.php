@@ -119,7 +119,10 @@ class BeritaController
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('bertia')->where('id', $id)->get();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**

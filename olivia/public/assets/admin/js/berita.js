@@ -58,16 +58,47 @@ $(document).ready(function() {
             processData: false,
             success: function(data) {
                 if(data.status == "ok") {
-                    alert('ok')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses',
+                        text: 'Berhasil Menambahkan Berita',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                    loadDataBerita();
+                    $('#BeritaModal').trigger('reset');
                 } else if(data.status == "validation_error") {
                     if(data.status == "validation.max.file") {
-                        alert('error')
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: 'Berhasil Editi an Kegiatan Akademik',
+                            timer: 1200,
+                            showConfirmButton: false
+                        });
                     } else if(data.status == "validation.mimes") {
                         alert('erro')
                     } else {
                         alert('erro')
                     }
                 }
+            }
+        });
+    });
+    //tampil edit
+    $('body').on('click', '.btn-edit-berita', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        $.ajax({
+            type: 'POST',
+            url: '/admin/edit/' + id,
+            data: formData,
+            success: function(data) {
+                $('#editBeritaModal').modal('show');
+                $('input[name=judul-edit]').val(data.data[0].judul);
+                $('input[name=judul-keterangan]').val(data.data[0].judul);
+                tinymce.get('deskripsi-berit-edit').setContent(data.data[0].judul);
+                $('view-gambar-edit').attr('href', data.status[0].foto);
             }
         });
     });
