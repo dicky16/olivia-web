@@ -1,72 +1,91 @@
 @extends('admin.layout.master')
 @section('content')
-<div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+<!-- Earnings (Monthly) Card Example -->
+		 <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">Berita</div>
+                    </div>
+                    <div class="col-auto">
+                    <i class="far fa-newspaper fa-3x text-Black"></i>
+                    </div>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
-                  </h3>
+
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                  <button type="button" class="btn btn-outline-warning" >Tambah</button>
+					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">Social Media</div>
+                     
+                    </div>
+                    <div class="col-auto">
+						<i class="fab fa-instagram fa-3x text-danger"></i>
+                    </div>
+                  </div>
+                </div>
+                 <div class="card-footer">
+                  <div class="stats">
+					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">FAQ</div>
+                     
+                    </div>
+                    <div class="col-auto">
+                		  <i class="fas fa-question fa-3x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+                 <div class="card-footer">
+                  <div class="stats">
+					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-md font-weight-bold text-Black text-uppercase mb-1">LOMBA</div>
                    
+                    </div>
+                    <div class="col-auto">
+              			<i class="fas fa-medal fa-3x text-warning"></i>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">store</i>
-                  </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
-                </div>
-                <div class="card-footer">
+                  <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
+					<button type="button" class="btn btn-primary btn-sm">Tambah</button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
-                  </div>
-                  <p class="card-category">Fixed Issues</p>
-                  <h3 class="card-title">75</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                  <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
-                  </div>
-                  <p class="card-category">Followers</p>
-                  <h3 class="card-title">+245</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+        </div> 
+
 @endsection
