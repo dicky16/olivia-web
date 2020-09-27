@@ -20,6 +20,7 @@ class AdminPageController
     {
     	return view('admin.artikel');
     }
+    
     public function sejarah()
     {
     	return view('admin.sejarah');

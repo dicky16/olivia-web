@@ -78,11 +78,10 @@
                 <div id="collapseHome" class="collapse" aria-labelledby="headingHome" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Home</h6>
-                        <a class="collapse-item" href="{{ url('headline') }}">Headline</a>
-                        <a class="collapse-item" href="{{ url('berita') }}">Berita</a>
+                        <a class="collapse-item" href="{{ url('berita') }}">Lomba</a>
                         <a class="collapse-item" href="{{ url('pengumuman') }}">Pengumuman</a>
-                        <a class="collapse-item" href="{{ url('agenda') }}">Agenda</a>
-                        <a class="collapse-item" href="{{ url('kerjasama') }}">Kerja Sama</a>
+                        <a class="collapse-item" href="{{ url('akreditasi') }}">Foto</a>
+                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Video</a>
                     </div>
                 </div>
             </li>
@@ -99,49 +98,37 @@
                         <a class="collapse-item" href="{{ url('sejarah') }}">Sejarah</a>
                         <a class="collapse-item" href="{{ url('visimisi') }}">Visi dan Misi</a>
                         <a class="collapse-item" href="{{ url('struktur') }}">Struktur Organisasi</a>
-                        <a class="collapse-item" href="{{ url('prestasi') }}">Prestasi</a>
-                        <a class="collapse-item" href="{{ url('dosen') }}">Dosen</a>
-                        <a class="collapse-item" href="{{ url('tenaga') }}">Tenaga Kerja</a>
+                        <a class="collapse-item" href="{{ url('visimisi') }}">Tugas dan Fungsi</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Akademik Menu -->
+            <!-- Nav Item - Galeri -->
             <li class="nav-item" id="akademik">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAkademik" aria-expanded="true" aria-controls="collapseAkademik">
                     <i class="fas fa-fw fa-graduation-cap"></i>
-                    <span>Akademik</span>
+                    <span>Galeri</span>
                 </a>
                 <div id="collapseAkademik" class="collapse" aria-labelledby="headingAkademik" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Akademik</h6>
-                        <a class="collapse-item" href="{{ url('akreditasi') }}">Akreditasi</a>
-                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Mahasiswa</a>
-                        <a class="collapse-item" href="{{ url('kalender') }}">Kalender Akademik</a>
-                        <a class="collapse-item" href="{{ url('jadwal') }}">Jadwal Kuliah</a>
-                        <a class="collapse-item" href="{{ url('dokumen') }}">Dokumen</a>
-                        <a class="collapse-item" href="{{ url('ojt') }}">OJT</a>
-                        <a class="collapse-item" href="{{ url('tugasakhir') }}">Tugas Akhir</a>
-                        <a class="collapse-item" href="{{ url('kegiatan') }}">Kegiatan Akademik</a>
-                        <a class="collapse-item" href="{{ url('form') }}">Form</a>
+                        <h6 class="collapse-header">Galeri</h6>
+                        <a class="collapse-item" href="{{ url('akreditasi') }}">Foto</a>
+                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Video</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Kemahasiswaan Menu -->
+            <!-- Nav Item - FAQ -->
             <li class="nav-item" id="kemahasiswaan">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKemahasiswaan" aria-expanded="true" aria-controls="collapseKemahasiswaan">
                     <i class="fas fa-fw fa-user-graduate"></i>
-                    <span>Kemahasiswaan</span>
+                    <span>Footer</span>
                 </a>
                 <div id="collapseKemahasiswaan" class="collapse" aria-labelledby="headingKemahasiswaan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Kemahasiswaan</h6>
-                        <a class="collapse-item" href="{{ url('organisasi') }}">Organisasi</a>
-                        <a class="collapse-item" href="{{ url('lomba-seminar') }}">Info Lomba / Seminar</a>
-                        <a class="collapse-item" href="{{ url('kegiatanProdi') }}">Kegiatan Prodi</a>
-                        <a class="collapse-item" href="{{ url('lowongan') }}">Lowongan</a>
-                        <a class="collapse-item" href="{{ url('alumni') }}">Data Alumni</a>
+                        <h6 class="collapse-header">Footer</h6>
+                        <a class="collapse-item" href="{{ url('organisasi') }}">FAQ</a>
+                        <a class="collapse-item" href="{{ url('organisasi') }}">Pertanyaan User</a>
                     </div>
                 </div>
             </li>
