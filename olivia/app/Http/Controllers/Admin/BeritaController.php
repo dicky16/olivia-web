@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DataTables, Auth, File;
+use DataTables, Auth, File, Validator;
 
 class BeritaController
 {
@@ -61,7 +61,43 @@ class BeritaController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'judul' => 'required',
+            'keterangan' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $judul = $request->judul;
+            $keterangan = $request->keterangan;
+            $deskripsi = $request->deskripsi;
+            $gambar = $request->file('gambar');
+            $namaOriFile = $gambar->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "image/berita";
+            $gambar->move($filePath, $fileName, "public");
+
+            $berita = DB::table('berita')->insert([
+                'judul' => $judul,
+                'keterangan' => $keterangan,
+                'deskripsi' => $deskripsi,
+                'foto' => $filePath.'/'.$fileName,
+                'id_penulis' => auth()->user()->id
+            ]);
+            if($berita) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
+        
     }
 
     /**

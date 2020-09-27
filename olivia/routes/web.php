@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         //berita
         Route::prefix('berita')->group(function () {
             Route::get('data', 'Admin\BeritaController@getBeritaDataTable');
+            Route::post('/', 'Admin\BeritaController@store');
             Route::get('datatable', 'Admin\BeritaController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
@@ -31,10 +32,21 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         });
         //lomba
         Route::prefix('lomba')->group(function () {
+            Route::get('/', 'Admin\LombaController@index');
             Route::get('data', 'Admin\LombaController@getBeritaDataTable');
             Route::get('data', 'Admin\LombaController@getBeritaDataTable');
             Route::get('datatable', 'Admin\BeritaController@loadDataTable');
-            
+            // Route::post('/', 'Admin\AdminArtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
+        //artikel
+        Route::prefix('artikel')->group(function () {
+            Route::get('/', 'Admin\ArtikelController@index');
+            Route::get('data', 'Admin\LombaController@getBeritaDataTable');
+            Route::get('data', 'Admin\LombaController@getBeritaDataTable');
+            Route::get('datatable', 'Admin\BeritaController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');

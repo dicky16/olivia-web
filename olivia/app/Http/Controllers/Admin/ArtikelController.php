@@ -13,7 +13,7 @@ class ArtikelController
      */
     public function index()
     {
-        //
+        return view('admin.home.artikelAdmin');
     }
 
     /**

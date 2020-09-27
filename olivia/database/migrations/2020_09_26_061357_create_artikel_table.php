@@ -19,7 +19,7 @@ class CreateArtikelTable extends Migration
             $table->string('judul');
             $table->bigInteger('id_penulis')->unsigned();
             $table->foreign('id_penulis')->references('id')->on('users')->onDelete('cascade');
-            $table->string('deskripsi');
+            $table->mediumText('deskripsi');
             $table->text('foto');
             $table->text('lampiran');
             $table->timestamps();
