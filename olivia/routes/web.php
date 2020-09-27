@@ -29,6 +29,16 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
+        //lomba
+        Route::prefix('lomba')->group(function () {
+            Route::get('data', 'Admin\LombaController@getBeritaDataTable');
+            Route::get('data', 'Admin\LombaController@getBeritaDataTable');
+            Route::get('datatable', 'Admin\BeritaController@loadDataTable');
+            // Route::post('/', 'Admin\AdminArtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
     });
     
 });
