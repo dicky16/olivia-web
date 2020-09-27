@@ -20,22 +20,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="datatable-berita"></div> -->
-                    <table class="table table-bordered" id="datatable-berita" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Judul</th>
-                                <th>Deskripsi</th>
-                                <th>Gambar</th>
-                                <th>Keterangan</th>
-                                <th>Lampiran</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                    <div id="table-berita"></div>
                 </div>
             </div>
         </div>
@@ -55,7 +40,7 @@
             <div class="modal-body">
 
 
-                <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
+                <form id="form-tambah-berita">
                     @csrf
 
                     <label for="judulBerita">Judul Berita</label>
@@ -63,26 +48,34 @@
 
 
                     <label for="deskripsi" class="mt-2">Deskripsi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-berita" name=""> </textarea>
+                    <textarea type="text" class="form-control" id="deskripsi-berita" name="deskripsi"> </textarea>
+
+                    <label for="deskripsi" class="mt-2">Keterangan</label>
+                    <input type="text" class="form-control" name="keterangan">
 
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">Gambar</label>
-                        <input input id="file-upload" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
+                        <input id="gambar" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
                     </div>
 
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
+                        <!-- <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button> -->
+                        <input type="submit" class="btn btn-primary" data-penulis="{{ auth()->user()->id }}" value="Submit">
+                        <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Memproses...
+                        </button>
+                    </div>
 
                 </form>
 
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button>
-                <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Memproses...
-                </button>
-            </div>
+            
         </div>
     </div>
 </div>
+@endsection
+@section('js-ajax')
+<script src="{{ asset('admin/js/berita.js') }}"></script>
 @endsection

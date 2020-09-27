@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>SB Admin 2 - Dashboard</title>
 
@@ -17,6 +18,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -401,6 +403,11 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+  <script src="{{ asset('tinymcs.js') }}"></script>
+  <!-- untuk js ajax -->
+  @yield('js-ajax')
 
 </body>
 
