@@ -6,7 +6,6 @@
             <th>Deskripsi</th>
             <th>Gambar</th>
             <th>Keterangan</th>
-            <th>Lampiran</th>
             <th>Tanggal</th>
             <th>Aksi</th>
         </tr>

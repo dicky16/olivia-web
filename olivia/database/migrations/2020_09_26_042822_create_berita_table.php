@@ -16,10 +16,9 @@ class CreateBeritaTable extends Migration
         Schema::create('berita', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('deskripsi');
+            $table->mediumText('deskripsi');
             $table->text('foto');
             $table->string('keterangan');
-            $table->text('lampiran');
             $table->bigInteger('id_penulis')->unsigned();
             $table->foreign('id_penulis')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

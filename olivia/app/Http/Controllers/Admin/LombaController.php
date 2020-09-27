@@ -13,7 +13,7 @@ class LombaController
      */
     public function index()
     {
-        return view('admin.home.lomba');
+        return view('admin.home.lombaAdmin');
     }
 
     /**
