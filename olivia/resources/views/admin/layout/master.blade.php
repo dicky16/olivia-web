@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 </head>
 
@@ -80,8 +82,8 @@
                         <h6 class="collapse-header">Home</h6>
                         <a class="collapse-item" href="{{ url('berita') }}">Lomba</a>
                         <a class="collapse-item" href="{{ url('pengumuman') }}">Pengumuman</a>
-                        <a class="collapse-item" href="{{ url('akreditasi') }}">Foto</a>
-                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Video</a>
+                        <a class="collapse-item" href="{{ url('akreditasi') }}">Artikel</a>
+                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Berita</a>
                     </div>
                 </div>
             </li>
