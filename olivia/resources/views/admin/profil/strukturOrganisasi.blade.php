@@ -2,7 +2,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Sejarah</h1>
+        <h1 class="h3 mb-0 text-gray-800">STRUKTUR ORGANISASI</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
     </div>
 
@@ -10,17 +10,30 @@
     <!-- Content Row -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Sejarah</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Table Struktur Organisasi</h6>
         </div>
 
         <div class="d-sm-flex align-items-center m-3">
             <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
-                Add Sejarah</a>
+                Add Struktur Organisasi</a>
             </div>
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <div id="table-artikel"></div>
+                    <!-- <div id="datatable-berita"></div> -->
+                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Lengkap</th> 
+                                <th>Jabatan</th>
+                                <th>Gambar</th>
+                                <th> Deskripsi</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+
                 </div>
             </div>
         </div>
@@ -32,7 +45,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Sejarah</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah FAQ</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -43,18 +56,16 @@
                 <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
                     @csrf
 
-                    <label for="judulBerita">Judul Sejarah</label>
+                    <label for="judulBerita">Nama Lengkap</label>
                     <input type="text" class="form-control" id="" name="judul">
-
-
-                    <label for="deskripsi" class="mt-2">Deskripsi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-berita" name=""> </textarea>
-
+                    <label for="deskripsi" class="mt-2">Jabatan</label>
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">Gambar</label>
                         <input input id="file-upload" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
                     </div>
 
+                    <textarea type="text" class="form-control" id="deskripsi-berita" name=""></textarea>
+                   
 
                 </form>
 
@@ -70,7 +81,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('js-ajax')
-<script src="{{ asset('admin/js/artikel.js') }}"></script>
 @endsection
