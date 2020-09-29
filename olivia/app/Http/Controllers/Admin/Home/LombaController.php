@@ -83,8 +83,8 @@ class LombaController
             $nameThumbnail = time().'_'.$namaThumbnail;
             $nameLampiran = time().'_'.$namaLampiran;
 
-            $filePathThumbnail = "image/lomba/thumbnail";
-            $filePathLampiran = "image/lomba/lampiran";
+            $filePathThumbnail = "assets/image/lomba/thumbnail";
+            $filePathLampiran = "assets/image/lomba/lampiran";
 
             $thumbnail->move($filePathThumbnail, $nameThumbnail, "public");
             $lampiran->move($filePathLampiran, $nameLampiran, "public");
@@ -170,8 +170,8 @@ class LombaController
                 $nameThumbnail = time().'_'.$namaThumbnail;
                 $nameLampiran = time().'_'.$namaLampiran;
     
-                $filePathThumbnail = "image/lomba/thumbnail";
-                $filePathLampiran = "image/lomba/lampiran";
+                $filePathThumbnail = "assets/image/lomba/thumbnail";
+                $filePathLampiran = "assets/image/lomba/lampiran";
     
                 $thumbnail->move($filePathThumbnail, $nameThumbnail, "public");
                 $lampiran->move($filePathLampiran, $nameLampiran, "public");
