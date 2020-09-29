@@ -22,29 +22,29 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
 		Route::get('sejarah', 'Admin\AdminPageController@sejarah')->name('sejarah');
         //berita
         Route::prefix('berita')->group(function () {
-            Route::get('data', 'Admin\BeritaController@getBeritaDataTable');
-            Route::post('/', 'Admin\BeritaController@store');
-            Route::get('datatable', 'Admin\BeritaController@loadDataTable');
-            Route::get('edit/{id}', 'Admin\BeritaController@edit');
-            Route::post('update/{id}', 'Admin\BeritaController@update');
-            Route::get('delete/{id}', 'Admin\BeritaController@destroy');
+            Route::get('data', 'Admin\Home\BeritaController@getBeritaDataTable');
+            Route::post('/', 'Admin\Home\BeritaController@store');
+            Route::get('datatable', 'Admin\Home\BeritaController@loadDataTable');
+            Route::get('edit/{id}', 'Admin\Home\BeritaController@edit');
+            Route::post('update/{id}', 'Admin\Home\BeritaController@update');
+            Route::get('delete/{id}', 'Admin\Home\BeritaController@destroy');
         });
         //lomba
         Route::prefix('lomba')->group(function () {
-            Route::get('/', 'Admin\LombaController@index');
-            Route::get('data', 'Admin\LombaController@getLombaDataTable');
-            Route::get('datatable', 'Admin\LombaController@loadDataTable');
-            Route::post('/', 'Admin\LombaController@store');
-            Route::get('edit/{id}', 'Admin\LombaController@edit');
-            Route::post('update/{id}', 'Admin\LombaController@update');
-            Route::get('delete/{id}', 'Admin\LombaController@destroy');
+            Route::get('/', 'Admin\Home\LombaController@index');
+            Route::get('data', 'Admin\Home\LombaController@getLombaDataTable');
+            Route::get('datatable', 'Admin\Home\LombaController@loadDataTable');
+            Route::post('/', 'Admin\Home\LombaController@store');
+            Route::get('edit/{id}', 'Admin\Home\LombaController@edit');
+            Route::post('update/{id}', 'Admin\Home\LombaController@update');
+            Route::get('delete/{id}', 'Admin\Home\LombaController@destroy');
         });
         //artikel
         Route::prefix('artikel')->group(function () {
-            Route::get('/', 'Admin\ArtikelController@index');
-            Route::get('data', 'Admin\ArtikelController@getArtikelDataTable');
-            Route::get('datatable', 'Admin\BeritaController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
+            Route::get('/', 'Admin\Home\ArtikelController@index');
+            Route::get('data', 'Admin\Home\ArtikelController@getArtikelDataTable');
+            Route::get('datatable', 'Admin\Home\BeritaController@loadDataTable');
+            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');

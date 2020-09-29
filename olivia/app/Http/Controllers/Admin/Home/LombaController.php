@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Home;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -164,12 +164,6 @@ class LombaController
             
             $validator = Validator::make($request->all(), $rules);
             if($validator->passes()) {
-                // $judul = $request->judul;
-                // $deskripsi = $request->deskripsi;
-                // $tglMulai = $request->tgl_mulai;
-                // $tglSelesai = $request->tgl_selesai;
-                // $thumbnail = $request->file('thumbnail');
-                // $lampiran = $request->file('file');
                 $namaThumbnail = $thumbnail->getClientOriginalName();
                 $namaLampiran = $lampiran->getClientOriginalName();
     
@@ -216,25 +210,15 @@ class LombaController
             
             $validator = Validator::make($request->all(), $rules);
             if($validator->passes()) {
-                // $judul = $request->judul;
-                // $deskripsi = $request->deskripsi;
-                // $tglMulai = $request->tgl_mulai;
-                // $tglSelesai = $request->tgl_selesai;
-                // $thumbnail = $request->file('thumbnail');
-                // $lampiran = $request->file('file');
                 $namaThumbnail = $thumbnail->getClientOriginalName();
-                // $namaLampiran = $lampiran->getClientOriginalName();
     
                 $nameThumbnail = time().'_'.$namaThumbnail;
-                // $nameLampiran = time().'_'.$namaLampiran;
     
                 $filePathThumbnail = "image/lomba/thumbnail";
-                // $filePathLampiran = "image/lomba/lampiran";
                 $thumbnailHapus = DB::table('lomba')->where('id', $id)->value('thumbnail');
                 File::delete($thumbnailHapus);
 
                 $thumbnail->move($filePathThumbnail, $nameThumbnail, "public");
-                // $lampiran->move($filePathLampiran, $nameLampiran, "public");
                 $jadwal = $tglMulai .'|'.$tglSelesai;
     
                 $lomba = DB::table('lomba')->where('id', $id)->update([
@@ -242,7 +226,6 @@ class LombaController
                     'deskripsi' => $deskripsi,
                     'jadwal' => $jadwal,
                     'thumbnail' => $filePathThumbnail.'/'.$nameThumbnail,
-                    // 'lampiran' => $filePathLampiran.'/'.$nameLampiran,
                     'updated_at' =>  \Carbon\Carbon::now()
                 ]);
                 if($lomba) {
@@ -266,24 +249,14 @@ class LombaController
             
             $validator = Validator::make($request->all(), $rules);
             if($validator->passes()) {
-                // $judul = $request->judul;
-                // $deskripsi = $request->deskripsi;
-                // $tglMulai = $request->tgl_mulai;
-                // $tglSelesai = $request->tgl_selesai;
-                // $thumbnail = $request->file('thumbnail');
-                // $lampiran = $request->file('file');
-                // $namaThumbnail = $thumbnail->getClientOriginalName();
                 $namaLampiran = $lampiran->getClientOriginalName();
     
-                // $nameThumbnail = time().'_'.$namaThumbnail;
                 $nameLampiran = time().'_'.$namaLampiran;
     
-                // $filePathThumbnail = "image/lomba/thumbnail";
                 $filePathLampiran = "image/lomba/lampiran";
                 $lampiranHapus = DB::table('lomba')->where('id', $id)->value('lampiran');
                 File::delete($lampiranHapus);
                 
-                // $thumbnail->move($filePathThumbnail, $nameThumbnail, "public");
                 $lampiran->move($filePathLampiran, $nameLampiran, "public");
                 $jadwal = $tglMulai .'|'.$tglSelesai;
     
@@ -291,7 +264,6 @@ class LombaController
                     'nama_lomba' => $judul,
                     'deskripsi' => $deskripsi,
                     'jadwal' => $jadwal,
-                    // 'thumbnail' => $filePathThumbnail.'/'.$nameThumbnail,
                     'lampiran' => $filePathLampiran.'/'.$nameLampiran,
                     'updated_at' =>  \Carbon\Carbon::now()
                 ]);
@@ -315,25 +287,6 @@ class LombaController
             
             $validator = Validator::make($request->all(), $rules);
             if($validator->passes()) {
-                // $judul = $request->judul;
-                // $deskripsi = $request->deskripsi;
-                // $tglMulai = $request->tgl_mulai;
-                // $tglSelesai = $request->tgl_selesai;
-                // $thumbnail = $request->file('thumbnail');
-                // $lampiran = $request->file('file');
-                // $namaThumbnail = $thumbnail->getClientOriginalName();
-                // $namaLampiran = $lampiran->getClientOriginalName();
-    
-                // $nameThumbnail = time().'_'.$namaThumbnail;
-                // $nameLampiran = time().'_'.$namaLampiran;
-    
-                // $filePathThumbnail = "image/lomba/thumbnail";
-                // $filePathLampiran = "image/lomba/lampiran";
-                // $thumbnailHapus = DB::table('lomba')->where('id', $id)->value('thumbnail');
-                // File::delete($thumbnailHapus);
-                
-                // $thumbnail->move($filePathThumbnail, $nameThumbnail, "public");
-                // $lampiran->move($filePathLampiran, $nameLampiran, "public");
                 $jadwal = $tglMulai .'|'.$tglSelesai;
     
                 $lomba = DB::table('lomba')->where('id', $id)->update([
