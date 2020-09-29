@@ -77,8 +77,8 @@ class BeritaController
             $gambar = $request->file('gambar');
             $namaOriFile = $gambar->getClientOriginalName();
             $fileName = time().'_'.$namaOriFile;
-            $filePath = "image/berita";
-            $gambar->move($filePath, $fileName, "public");
+            $filePath = "assets/image/berita";
+            $gambar->move($filePath, $fileName, "");
 
             $berita = DB::table('berita')->insert([
                 'judul' => $judul,
@@ -154,8 +154,8 @@ class BeritaController
             
             $namaOriFile = $gambar->getClientOriginalName();
             $fileName = time().'_'.$namaOriFile;
-            $filePath = "image/berita";
-            $gambar->move($filePath, $fileName, "public");
+            $filePath = "assets/image/berita";
+            $gambar->move($filePath, $fileName, "");
             //hapus file
             $gambarPathHapus = DB::table('berita')->where('id', $id)->value('foto');
             File::delete($gambarPathHapus);
