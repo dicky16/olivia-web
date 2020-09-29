@@ -23,19 +23,19 @@ class AdminPageController
     
     public function sejarah()
     {
-    	return view('admin.sejarah');
+    	return view('admin.profil.sejarahAdmin');
     }
 
      public function foto()
     {
-        return view('admin.home.fotoAdmin');
+        return view('admin.galeri.fotoAdmin');
     }
      public function video()
     {
-        return view('admin.home.videoAdmin');
+        return view('admin.galeri.videoAdmin');
     }
      public function pertanyaan()
     {
-        return view('admin.home.pertanyaanAdmin');
+        return view('admin.footer.pertanyaanAdmin');
     }
 }

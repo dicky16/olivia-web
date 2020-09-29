@@ -21,10 +21,11 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}">
+  <!-- <link rel="stylesheet" href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}"> -->
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="{{ asset('admin/css/fontastic.css')}}">
-    <link rel="stylesheet" href="{{ asset('admin/css/style.default.css')}}" id="theme-stylesheet">
+    <!-- <link rel="stylesheet" href="{{ asset('admin/css/fontastic.css')}}"> -->
+    <!-- <link rel="stylesheet" href="{{ asset('admin/css/style.default.css')}}" id="theme-stylesheet"> -->
+    <link href="{{ asset('admin/css/dashboard-custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -86,10 +87,10 @@
                 <div id="collapseHome" class="collapse" aria-labelledby="headingHome" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Home</h6>
-                        <a class="collapse-item" href="{{ url('berita') }}">Lomba</a>
-                        <a class="collapse-item" href="{{ url('pengumuman') }}">Pengumuman</a>
-                        <a class="collapse-item" href="{{ url('akreditasi') }}">Artikel</a>
-                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Berita</a>
+                        <a class="collapse-item" href="{{ url('admin/lomba') }}">Lomba</a>
+                        <a class="collapse-item" href="{{ url('admin/pengumuman') }}">Pengumuman</a>
+                        <a class="collapse-item" href="{{ url('admin/artikel') }}">Artikel</a>
+                        <a class="collapse-item" href="{{ url('admin/berita') }}">Berita</a>
                     </div>
                 </div>
             </li>
@@ -103,10 +104,10 @@
                 <div id="collapseProfile" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Profile</h6>
-                        <a class="collapse-item" href="{{ url('sejarah') }}">Sejarah</a>
-                        <a class="collapse-item" href="{{ url('visimisi') }}">Visi dan Misi</a>
-                        <a class="collapse-item" href="{{ url('struktur') }}">Struktur Organisasi</a>
-                        <a class="collapse-item" href="{{ url('visimisi') }}">Tugas dan Fungsi</a>
+                        <a class="collapse-item" href="{{ url('admin/sejarah') }}">Sejarah</a>
+                        <a class="collapse-item" href="{{ url('admin/visimisi') }}">Visi dan Misi</a>
+                        <a class="collapse-item" href="{{ url('admin/struktur') }}">Struktur Organisasi</a>
+                        <a class="collapse-item" href="{{ url('admin/tugasfungsi') }}">Tugas dan Fungsi</a>
                     </div>
                 </div>
             </li>
@@ -120,8 +121,8 @@
                 <div id="collapseAkademik" class="collapse" aria-labelledby="headingAkademik" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Galeri</h6>
-                        <a class="collapse-item" href="{{ url('akreditasi') }}">Foto</a>
-                        <a class="collapse-item" href="{{ url('mahasiswa') }}">Video</a>
+                        <a class="collapse-item" href="{{ url('admin/foto') }}">Foto</a>
+                        <a class="collapse-item" href="{{ url('admin/video') }}">Video</a>
                     </div>
                 </div>
             </li>
@@ -135,8 +136,8 @@
                 <div id="collapseKemahasiswaan" class="collapse" aria-labelledby="headingKemahasiswaan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Footer</h6>
-                        <a class="collapse-item" href="{{ url('organisasi') }}">FAQ</a>
-                        <a class="collapse-item" href="{{ url('organisasi') }}">Pertanyaan User</a>
+                        <a class="collapse-item" href="{{ url('admin/faq') }}">FAQ</a>
+                        <a class="collapse-item" href="{{ url('admin/pertanyaann') }}">Pertanyaan User</a>
                     </div>
                 </div>
             </li>
@@ -402,14 +403,15 @@
   <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
 
   <!-- Page level plugins -->
-  <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
+  <!-- <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script> -->
 
   <!-- Page level custom scripts -->
-  <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
-  <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
+  <!-- <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
+  <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script> -->
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
   <script src="{{ asset('tinymcs.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- untuk js ajax -->
   @yield('js-ajax')
 

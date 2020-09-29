@@ -5,11 +5,11 @@ $(document).ready(function() {
         }
     });
     loadDataArtikel();
-//load data artikel
+    //load data artikel
     function loadDataArtikel() {
-        $('#datatable-artikel').load('/admin/artikel/datatable', function() {
+        $('#table-artikel').load('/admin/artikel/datatable', function() {
             var host = window.location.origin;
-            $('#table-artikel').DataTable({
+            $('#datatable-artikel').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -18,21 +18,21 @@ $(document).ready(function() {
                 },
                 columns: [
                     {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
-                    {data: 'judul',name: 'judul'},
-                    {data: 'deskripsi',name: 'deskripsi'},
-                    {
-                        data: 'foto',
-                        name: 'foto',
-                        "render": function(data, type, row) {
-                            return '<img src=" ' + host + '/'+ data + ' " style="height:100px;width:100px;"/>';
-                        },
-                        searchable: false
-                    },
-                    {data: 'tanggal',name: 'tanggal'},
-                    {data: 'aksi',name: 'aksi',searchable: false,orderable: false}
+                    // {data: 'judul',name: 'judul'},
+                    // {data: 'deskripsi',name: 'deskripsi'},
+                    // {
+                    //     data: 'foto',
+                    //     name: 'foto',
+                    //     "render": function(data, type, row) {
+                    //         return '<img src=" ' + host + '/'+ data + ' " style="height:100px;width:100px;"/>';
+                    //     },
+                    //     searchable: false
+                    // },
+                    // {data: 'tanggal',name: 'tanggal'},
+                    // {data: 'aksi',name: 'aksi',searchable: false,orderable: false}
                 ]
             });
         });
-    }
+    };
 
 });
