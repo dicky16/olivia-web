@@ -3,9 +3,16 @@
 namespace App\Http\Controllers\Admin\Home;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use DataTables, Auth, File, Validator;
 
 class PengumumanController
-{
+{   
+
+    public function __construct()
+    {
+        setTimeZone();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +33,29 @@ class PengumumanController
         //
     }
 
+    public function getPengumumanDataTable()
+    {
+      $data = DB::table('pengumuman')->orderby('id', 'desc')->get();
+      return Datatables::of($data)
+      ->addIndexColumn()
+      ->addColumn('aksi', function($row){
+          $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-pengumuman" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+          <i class="fas fa-pen-square"></i>
+          </a>';
+          $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->judul.'" class="btn-delete-pengumuman" style="font-size: 18pt; text-decoration: none; color:red;">
+          <i class="fas fa-trash"></i>
+          </a>';
+          return $btn;
+        })
+      ->rawColumns(['aksi'])
+      ->make(true);
+    }
+
+    public function loadDataTable()
+    {
+        return view('datatable.pengumumanDataTable');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +64,41 @@ class PengumumanController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'lampiran' => 'required|max:10000|mimes:jpg,jpeg,svg,png,gif,doc,docx,xlsx,xls,pdf'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+            $lampiran = $request->file('lampiran');
+            $namaOriFile = $lampiran->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "assets/file/pengumuman";
+            $lampiran->move($filePath, $fileName, "");
+
+            $pengumuman = DB::table('pengumuman')->insert([
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'lampiran' => $filePath.'/'.$fileName,
+                'id_user' => auth()->user()->id,
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($pengumuman) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -56,7 +120,10 @@ class PengumumanController
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('pengumuman')->where('id', $id)->get();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -68,7 +135,75 @@ class PengumumanController
      */
     public function update(Request $request, $id)
     {
-        //
+        $lampiran = $request->file('lampiran');
+        if($lampiran != null) {
+        $rules = array (
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'lampiran' => 'required|max:10000|mimes:jpg,jpeg,svg,png,gif,doc,docx,xlsx,xls,pdf'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+            $lampiran = $request->file('lampiran');
+            $namaOriFile = $lampiran->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "assets/file/pengumuman";
+            $lampiran->move($filePath, $fileName, "");
+
+            $lampiranHapus = DB::table('pengumuman')->where('id', $id)->value('lampiran');
+            File::delete($lampiranHapus);
+
+            $pengumuman = DB::table('pengumuman')->where('id', $id)->update([
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'lampiran' => $filePath.'/'.$fileName,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($pengumuman) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
+
+        } else {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+            $rules = array (
+                'judul' => 'required',
+                'deskripsi' => 'required',
+            );
+            
+            $validator = Validator::make($request->all(), $rules);
+              if($validator->passes()) {
+                $pengumuman = DB::table('pengumuman')->where('id', $id)->update([
+                    'judul' => $judul,
+                    'deskripsi' => $deskripsi,
+                    'updated_at' =>  \Carbon\Carbon::now()
+                ]);
+
+                if($pengumuman) {
+                    return response()->json([
+                        'status' => 'ok'
+                    ]);
+                }
+            }
+
+            return response()->json([
+                'status' => 'validation_error',
+                'message' => $validator->errors()->first()
+              ]);
+        }
+
     }
 
     /**
@@ -79,6 +214,11 @@ class PengumumanController
      */
     public function destroy($id)
     {
-        //
+        $gambarPathHapus = DB::table('pengumuman')->where('id', $id)->value('lampiran');
+        File::delete($gambarPathHapus);
+        DB::table('pengumuman')->where('id', $id)->delete();
+        return response()->json([
+            'status' => 'deleted',
+        ]);
     }
 }
