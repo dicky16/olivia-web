@@ -90,6 +90,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <!---
             <li class="nav-item" id="mininavbar">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMiniNavbar" aria-expanded="true" aria-controls="collapseMiniNavbar">
                     <i class="fas fa-fw fa-location-arrow"></i>
@@ -98,11 +99,11 @@
                 <div id="collapseMiniNavbar" class="collapse" aria-labelledby="headingMiniNavbar" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Mini Navbar</h6>
-                        <a class="collapse-item" href="{{ url('sosmed') }}">Social Media</a>
+                        <a class="collapse-item" href="{{ url('admin/sosialmedia') }}">Social Media</a>
                         <a class="collapse-item" href="{{ url('quick-menu') }}">Quick Menu</a>
                     </div>
                 </div>
-            </li>
+            </li> --->
 
             <!-- Nav Item - Home Menu -->
             <li class="nav-item" id="home">
@@ -162,6 +163,7 @@
                 <div id="collapseKemahasiswaan" class="collapse" aria-labelledby="headingKemahasiswaan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Footer</h6>
+                        <a class="collapse-item" href="{{ url('admin/sosialmedia') }}">Social Media</a>
                         <a class="collapse-item" href="{{ url('admin/faq') }}">FAQ</a>
                         <a class="collapse-item" href="{{ url('admin/pertanyaann') }}">Pertanyaan User</a>
                     </div>

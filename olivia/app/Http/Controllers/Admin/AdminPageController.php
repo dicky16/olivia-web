@@ -21,11 +21,27 @@ class AdminPageController
     	return view('admin.artikel');
     }
     
+    public function pengumuman()
+    {
+    	return view('admin.home.pengumuman');
+    }
+
     public function sejarah()
     {
     	return view('admin.profil.sejarahAdmin');
     }
-
+    public function visimisi()
+    {
+    	return view('admin.profil.visimisiAdmin');
+    }
+     public function struktur()
+    {
+        return view('admin.profil.strukturOrganisasi');
+    }
+    public function tugasfungsi()
+    {
+        return view('admin.profil.tugasfungsiAdmin');
+    }
      public function foto()
     {
         return view('admin.galeri.fotoAdmin');
@@ -37,5 +53,13 @@ class AdminPageController
      public function pertanyaan()
     {
         return view('admin.footer.pertanyaanAdmin');
+    }
+    public function faq()
+    {
+        return view('admin.footer.faqAdmin');
+    }
+    public function socialmedia()
+    {
+        return view('admin.footer.sosialmedia');
     }
 }

@@ -49,6 +49,52 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
+
+         //Pengumuman
+         Route::prefix('pengumuman')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@pengumuman');
+            Route::get('data', 'Admin\pengumumanController@getpengumumanDataTable');
+            Route::get('data', 'Admin\pengumumanController@getpengumumanDataTable');
+            Route::get('datatable', 'Admin\pengumumanController@loadDataTable');
+            // Route::post('/', 'Admin\AdminArtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
+
+        //STRUKTUR ORGANISASI
+        Route::prefix('struktur')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@struktur');
+            Route::get('data', 'Admin\strukturOrganisasiController@getstrukturOrganisasiDataTable');
+            Route::get('data', 'Admin\strukturOrganisasiController@getstrukturOrganisasiDataTable');
+            Route::get('datatable', 'Admin\strukturOrganisasiController@loadDataTable');
+            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
+         //VISI DAN MISI
+         Route::prefix('visimisi')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@visimisi');
+            Route::get('data', 'Admin\visimisiController@getvisimisiDataTable');
+            Route::get('data', 'Admin\visimisiController@getvisimisiDataTable');
+            Route::get('datatable', 'Admin\visimisiController@loadDataTable');
+            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
+        //TUGAS DAN Fungsi
+        Route::prefix('tugasfungsi')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@tugasfungsi');
+            Route::get('data', 'Admin\tugasfungsiController@gettugasfungsiDataTable');
+            Route::get('data', 'Admin\tugasfungsiController@gettugasfungsiDataTable');
+            Route::get('datatable', 'Admin\tugasfungsiController@loadDataTable');
+            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
         //Foto
         Route::prefix('foto')->group(function () {
             Route::get('/', 'Admin\AdminPageController@foto');
@@ -77,6 +123,28 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
             Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
             Route::get('datatable', 'Admin\pertanyaanController@loadDataTable');
+            // Route::post('/', 'Admin\AdminArtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
+        //FAQ
+        Route::prefix('faq')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@faq');
+            Route::get('data', 'Admin\FaqController@getBeritaDataTable');
+            Route::get('data', 'Admin\FaqController@getBeritaDataTable');
+            Route::get('datatable', 'Admin\FaqController@loadDataTable');
+            // Route::post('/', 'Admin\AdminArtikelController@store');
+            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
+            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+        });
+         //SOCIAL MEDIA
+         Route::prefix('sosialmedia')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@socialmedia');
+            Route::get('data', 'Admin\sosialmediaController@getBeritaDataTable');
+            Route::get('data', 'Admin\sosialmediaController@getBeritaDataTable');
+            Route::get('datatable', 'Admin\sosialmediaController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
