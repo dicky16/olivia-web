@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFaqTable extends Migration
+class CreateStrukturOrganisasiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateFaqTable extends Migration
      */
     public function up()
     {
-        Schema::create('faq', function (Blueprint $table) {
+        Schema::create('struktur_organisasi', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('pertanyaan');
-            $table->mediumText('jawaban');
-            $table->enum('status', ['publish', 'draft']);
+            $table->string('judul');
+            $table->text('deskripsi');
+            $table->text('gambar');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateFaqTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faq');
+        Schema::dropIfExists('struktur_organisasi');
     }
 }

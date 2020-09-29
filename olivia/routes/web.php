@@ -53,13 +53,12 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
          //Pengumuman
          Route::prefix('pengumuman')->group(function () {
             Route::get('/', 'Admin\AdminPageController@pengumuman');
-            Route::get('data', 'Admin\pengumumanController@getpengumumanDataTable');
-            Route::get('data', 'Admin\pengumumanController@getpengumumanDataTable');
-            Route::get('datatable', 'Admin\pengumumanController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::get('data', 'Admin\Home\PengumumanController@getPengumumanDataTable');
+            Route::get('datatable', 'Admin\Home\PengumumanController@loadDataTable');
+            Route::post('/', 'Admin\Home\PengumumanController@store');
+            Route::get('edit/{id}', 'Admin\Home\PengumumanController@edit');
+            Route::post('update/{id}', 'Admin\Home\PengumumanController@update');
+            Route::get('delete/{id}', 'Admin\Home\PengumumanController@destroy');
         });
 
         //STRUKTUR ORGANISASI
@@ -119,7 +118,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         });
          //Pertanyaan User(other Question)
         Route::prefix('pertanyaan')->group(function () {
-            Route::get('/', 'Admin\AdminPageController@Pertanyaan');
+            Route::get('/', 'Admin\AdminPageController@pertanyaan');
             Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
             Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
             Route::get('datatable', 'Admin\pertanyaanController@loadDataTable');
@@ -131,9 +130,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         //FAQ
         Route::prefix('faq')->group(function () {
             Route::get('/', 'Admin\AdminPageController@faq');
-            Route::get('data', 'Admin\FaqController@getBeritaDataTable');
-            Route::get('data', 'Admin\FaqController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\FaqController@loadDataTable');
+            Route::get('data', 'Admin\Footer\FaqController@getFAQDataTable');
+            Route::get('datatable', 'Admin\Footer\FaqController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');

@@ -22,7 +22,6 @@ class BeritaController
     {
       $data = DB::table('berita')
       ->get();
-    //   dd($data);
       return Datatables::of($data)
       ->addIndexColumn()
       ->addColumn('aksi', function($row){
