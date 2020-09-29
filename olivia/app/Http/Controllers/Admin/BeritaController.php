@@ -61,6 +61,7 @@ class BeritaController
      */
     public function store(Request $request)
     {
+        $this->setTimeZone();
         $rules = array (
             'judul' => 'required',
             'keterangan' => 'required',
@@ -84,7 +85,8 @@ class BeritaController
                 'keterangan' => $keterangan,
                 'deskripsi' => $deskripsi,
                 'foto' => $filePath.'/'.$fileName,
-                'id_penulis' => auth()->user()->id
+                'id_penulis' => auth()->user()->id,
+                'created_at' =>  \Carbon\Carbon::now()
             ]);
             if($berita) {
                 return response()->json([
@@ -119,7 +121,7 @@ class BeritaController
      */
     public function edit($id)
     {
-        $data = DB::table('bertia')->where('id', $id)->get();
+        $data = DB::table('berita')->where('id', $id)->get();
         return response()->json([
             'data' => $data
         ]);
@@ -134,7 +136,74 @@ class BeritaController
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->setTimeZone();
+        $rules = array (
+            'judul' => 'required',
+            'keterangan' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+        );
+        $judul = $request->judul;
+        $keterangan = $request->keterangan;
+        $deskripsi = $request->deskripsi;
+        $gambar = $request->file('gambar');
+
+        if($gambar != null) {
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            
+            $namaOriFile = $gambar->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "image/berita";
+            $gambar->move($filePath, $fileName, "public");
+            //hapus file
+            $gambarPathHapus = DB::table('berita')->where('id', $id)->value('foto');
+            File::delete($gambarPathHapus);
+
+            $berita = DB::table('berita')->where('id', $id)->update([
+                'judul' => $judul,
+                'keterangan' => $keterangan,
+                'deskripsi' => $deskripsi,
+                'foto' => $filePath.'/'.$fileName,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+            if($berita) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+        } else {
+            $rules2 = array (
+                'judul' => 'required',
+                'keterangan' => 'required',
+                'deskripsi' => 'required',
+            );
+            $validator = Validator::make($request->all(), $rules2);
+            if($validator->passes()) {
+                $berita = DB::table('berita')->where('id', $id)->update([
+                    'judul' => $judul,
+                    'keterangan' => $keterangan,
+                    'deskripsi' => $deskripsi,
+                    'updated_at' =>  \Carbon\Carbon::now()
+                ]);
+                if($berita) {
+                    return response()->json([
+                        'status' => 'ok'
+                      ]);
+                }
+            }
+            return response()->json([
+                'status' => 'validation_error',
+                'message' => $validator->errors()->first()
+              ]);
+            
+        }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -145,6 +214,16 @@ class BeritaController
      */
     public function destroy($id)
     {
-        //
+        $gambarPathHapus = DB::table('berita')->where('id', $id)->value('foto');
+        File::delete($gambarPathHapus);
+        DB::table('berita')->where('id', $id)->delete();
+        return response()->json([
+            'status' => 'deleted',
+        ]);
+    }
+
+    function setTimeZone()
+    {
+        date_default_timezone_set("Asia/Jakarta");
     }
 }

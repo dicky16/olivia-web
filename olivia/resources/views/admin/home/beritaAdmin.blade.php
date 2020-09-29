@@ -103,12 +103,13 @@
 
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">View Gambar</label>
-                        <a href="" id="view-gambar-edit"></a>
+                        <img src="" alt="" id="view-gambar-edit" style="width: 60%; height: 60%; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">Gambar</label>
                         <input id="gambar-edit" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                        <input type="hidden" name="edit-id">
                     </div>
 
                     <div class="modal-footer">

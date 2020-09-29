@@ -67,40 +67,171 @@ $(document).ready(function() {
                     });
                     loadDataBerita();
                     $('#BeritaModal').trigger('reset');
+                    $('#BeritaModal').modal('hide');
                 } else if(data.status == "validation_error") {
                     if(data.status == "validation.max.file") {
                         Swal.fire({
                             icon: 'error',
                             title: 'Gagal',
-                            text: 'Berhasil Editi an Kegiatan Akademik',
+                            text: 'Gambar tidak boleh lebih 2 MB!',
                             timer: 1200,
                             showConfirmButton: false
                         });
                     } else if(data.status == "validation.mimes") {
-                        alert('erro')
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: 'Gambar harus jpg,jpeg,svg,png,gif',
+                            timer: 1200,
+                            showConfirmButton: false
+                        });
                     } else {
-                        alert('erro')
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: data.message,
+                            timer: 1200,
+                            showConfirmButton: false
+                        });
                     }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terjadi kesalahan!',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
                 }
             }
         });
     });
+
     //tampil edit
     $('body').on('click', '.btn-edit-berita', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
+        var host = window.location.origin;
         $.ajax({
-            type: 'POST',
-            url: '/admin/edit/' + id,
-            data: formData,
+            type: 'GET',
+            url: '/admin/berita/edit/' + id,
             success: function(data) {
                 $('#editBeritaModal').modal('show');
                 $('input[name=judul-edit]').val(data.data[0].judul);
-                $('input[name=judul-keterangan]').val(data.data[0].judul);
-                tinymce.get('deskripsi-berit-edit').setContent(data.data[0].judul);
-                $('view-gambar-edit').attr('href', data.status[0].foto);
+                $('input[name=keterangan-edit]').val(data.data[0].keterangan);
+                tinymce.get('deskripsi-berita-edit').setContent(data.data[0].deskripsi);
+                $('#view-gambar-edit').attr('src', host + '/' + data.data[0].foto);
+                $('input[name=edit-id]').val(id);
             }
         });
     });
+
+    //update berita
+    $('body').on('submit', '#form-edit-berita', function(e) {
+        e.preventDefault();
+        var formData = new FormData();
+        var id =  $('input[name=edit-id]').val();
+        var judul = $('input[name=judul-edit]').val();
+        var keterangan = $('input[name=keterangan-edit]').val();
+        var deskripsi = tinymce.get('deskripsi-berita-edit').getContent();
+        var gambar = $('#gambar-edit')[0].files[0];
+
+        formData.append('judul', judul);
+        formData.append('keterangan', keterangan);
+        formData.append('deskripsi', deskripsi);
+        formData.append('gambar', gambar);
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/berita/update/' + id,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                if(data.status == "ok") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses',
+                        text: 'Berhasil Update Berita',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                    loadDataBerita();
+                    $('#editBeritaModal').trigger('reset');
+                    $('#editBeritaModal').modal('hide');
+                } else if(data.status == "validation_error") {
+                    if(data.status == "validation.max.file") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: 'Gambar tidak boleh lebih 2 MB!',
+                            timer: 1200,
+                            showConfirmButton: false
+                        });
+                    } else if(data.status == "validation.mimes") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: 'Gambar harus jpg,jpeg,svg,png,gif',
+                            timer: 1200,
+                            showConfirmButton: false
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: data.message,
+                            timer: 1200,
+                            showConfirmButton: false
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terjadi kesalahan!',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                }
+            }
+        });
+    });
+
+    //hapus berita
+    $('body').on('click', '.btn-delete-berita', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var judul = $(this).data('nama');
+        Swal.fire({
+            title: 'Anda yakin ingin menghapus ' + judul + '?',
+            text: "Anda tidak dapat membatalkan aksi ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'berita/delete/' + id,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        if(data.status == 'deleted') {
+                            Swal.fire(
+                                'Deleted!',
+                                'Berhasil Menghapus Jadwal',
+                                )
+                                loadDataBerita();
+                            }
+                        }
+                    });
+  
+                }
+            });
+  
+        });
 
 });

@@ -34,7 +34,7 @@ class ArtikelController
         return view('datatale.artikelDataTable');
     }
 
-     public function getBeritaDataTable()
+    public function getArtikelDataTable()
     {
       $data = DB::table('artikel')
       ->get();

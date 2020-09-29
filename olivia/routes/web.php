@@ -25,26 +25,24 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('data', 'Admin\BeritaController@getBeritaDataTable');
             Route::post('/', 'Admin\BeritaController@store');
             Route::get('datatable', 'Admin\BeritaController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::get('edit/{id}', 'Admin\BeritaController@edit');
+            Route::post('update/{id}', 'Admin\BeritaController@update');
+            Route::get('delete/{id}', 'Admin\BeritaController@destroy');
         });
         //lomba
         Route::prefix('lomba')->group(function () {
             Route::get('/', 'Admin\LombaController@index');
-            Route::get('data', 'Admin\LombaController@getBeritaDataTable');
-            Route::get('data', 'Admin\LombaController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\BeritaController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::get('data', 'Admin\LombaController@getLombaDataTable');
+            Route::get('datatable', 'Admin\LombaController@loadDataTable');
+            Route::post('/', 'Admin\LombaController@store');
+            Route::get('edit/{id}', 'Admin\LombaController@edit');
+            Route::post('update/{id}', 'Admin\LombaController@update');
+            Route::get('delete/{id}', 'Admin\LombaController@destroy');
         });
         //artikel
         Route::prefix('artikel')->group(function () {
             Route::get('/', 'Admin\ArtikelController@index');
-            Route::get('data', 'Admin\ArtikelController@getBeritaDataTable');
+            Route::get('data', 'Admin\ArtikelController@getArtikelDataTable');
             Route::get('datatable', 'Admin\BeritaController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
