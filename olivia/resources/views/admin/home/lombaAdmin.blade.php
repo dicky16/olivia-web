@@ -20,22 +20,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="datatable-berita"></div> -->
-                    <table class="table table-bordered" id="datatable-lomba" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Judul</th>
-                                <th>Deskripsi</th>
-                                <th>Gambar</th>
-                                <th>Keterangan</th>
-                                <th>Lampiran</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                    <div id="table-lomba"></div>
                 </div>
             </div>
         </div>
@@ -55,34 +40,126 @@
             <div class="modal-body">
 
 
-                <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
+                <form id="form-tambah-lomba">
                     @csrf
 
                     <label for="judulBerita">Judul Lomba</label>
-                    <input type="text" class="form-control" id="" name="judul">
-
+                    <input type="text" class="form-control" name="judul">
 
                     <label for="deskripsi" class="mt-2">Deskripsi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-berita" name=""> </textarea>
+                    <textarea type="text" class="form-control" id="deskripsi-lomba" name=""> </textarea>
 
+                    <div class="form-group row mt-2" >
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="jamaagenda">Tanggal Mulai</label>
+                            <input type="date" class="form-control" name="tgl-mulai">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="jamaagenda">Tanggal Selesai</label>
+                            <input type="date" class="form-control" name="tgl-selesai">
+                        </div>
+                    </div>
+                    
                     <div class="form-group mt-3">
-                        <label for="file" class="mt-2">Gambar</label>
-                        <input input id="file-upload" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
+                        <label for="file" class="mt-2">Thumbnail</label>
+                        <input id="thumbnail" type="file" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
                     </div>
 
+                    <div class="form-group mt-3">
+                        <label for="file" class="mt-2">Lampiran</label>
+                        <input id="file" type="file" accept="file/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
+                        <!-- <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button> -->
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Memproses...
+                        </button>
+                    </div>
 
                 </form>
 
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button>
-                <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Memproses...
-                </button>
-            </div>
+            
         </div>
     </div>
 </div>
+
+<!-- edit lomba modal -->
+<div class="modal fade" id="editLombaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Lomba</h5>
+                <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <form id="form-edit-lomba">
+                    @csrf
+
+                    <label for="judulBerita">Judul Lomba</label>
+                    <input type="text" class="form-control" name="judul-edit">
+
+                    <label for="deskripsi" class="mt-2">Deskripsi</label>
+                    <textarea type="text" class="form-control" id="deskripsi-lomba-edit" name=""> </textarea>
+
+                    <div class="form-group row mt-2" >
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="jamaagenda">Tanggal Mulai</label>
+                            <input type="date" class="form-control" name="tgl-mulai-edit">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="jamaagenda">Tanggal Selesai</label>
+                            <input type="date" class="form-control" name="tgl-selesai-edit">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mt-3">
+                        <label for="file" class="mt-2">View Thumbnail</label>
+                        <img src="" id="view-thumbnail-edit" style="width: 60%; height: 60%; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="file" class="mt-2">View Lampiran</label>
+                        <br>
+                        <a href="" id="view-lampiran-edit"></a>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="file" class="mt-2">Thumbnail</label>
+                        <input id="thumbnail-edit" type="file" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="file" class="mt-2">Lampiran</label>
+                        <input id="file-edit" type="file" accept="file/*" aria-describedby="inputGroupFileAddon01">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
+                        <!-- <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button> -->
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="hidden" name="edit-id">
+                        <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Memproses...
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+@endsection
+@section('js-ajax')
+<script src="{{ asset('admin/js/lomba.js') }}"></script>
 @endsection

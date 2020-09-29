@@ -16,7 +16,9 @@ class CreateLombaTable extends Migration
         Schema::create('lomba', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lomba');
+            $table->mediumText('deskripsi');
             $table->string('jadwal');
+            $table->text('thumbnail');
             $table->text('lampiran');
             $table->timestamps();
         });
