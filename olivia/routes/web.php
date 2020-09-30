@@ -117,13 +117,12 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
          //Pertanyaan User(other Question)
-        Route::prefix('pertanyaan')->group(function () {
+        Route::prefix('tanya')->group(function () {
             Route::get('/', 'Admin\AdminPageController@pertanyaan');
-            Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
-            Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\pertanyaanController@loadDataTable');
+            Route::get('data', 'Admin\Footer\PertanyaanUserController@getAllPertanyaan');
+            Route::get('datatable', 'Admin\Footer\PertanyaanUserController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            Route::get('show/{id}', 'Admin\Footer\PertanyaanUserController@show');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
@@ -132,10 +131,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@faq');
             Route::get('data', 'Admin\Footer\FaqController@getFAQDataTable');
             Route::get('datatable', 'Admin\Footer\FaqController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::post('/', 'Admin\Footer\FaqController@store');
+            Route::get('edit/{id}', 'Admin\Footer\FaqController@edit');
+            Route::post('update/{id}', 'Admin\Footer\FaqController@update');
+            Route::get('delete/{id}', 'Admin\Footer\FaqController@destroy');
         });
          //SOCIAL MEDIA
          Route::prefix('sosialmedia')->group(function () {

@@ -165,7 +165,7 @@
                         <h6 class="collapse-header">Footer</h6>
                         <a class="collapse-item" href="{{ url('admin/sosialmedia') }}">Social Media</a>
                         <a class="collapse-item" href="{{ url('admin/faq') }}">FAQ</a>
-                        <a class="collapse-item" href="{{ url('admin/pertanyaan') }}">Pertanyaan User</a>
+                        <a class="collapse-item" href="{{ url('admin/tanya') }}">Pertanyaan User</a>
                     </div>
                 </div>
             </li>
