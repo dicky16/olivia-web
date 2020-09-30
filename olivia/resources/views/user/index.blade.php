@@ -79,8 +79,8 @@
     </section >
     <section class="welcome_area clearfix" id="home" style="background-image: url({{ asset('user/img/bg-img/b22.png') }})">
         <div class="hero-slides owl-carousel">
-            <img class="slide-img" src="img/bg-img/poto.png" alt="" style="width: 70%; margin: auto;">
-            <img class="slide-img" src="img/bg-img/poto.png" alt="" style="width: 70%; margin: auto;">          
+            <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">
+            <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">          
             
         </div>
 
@@ -233,7 +233,7 @@
         </div>
     </section>
     
-    <section class="olv-call-to-action-area bg-img bg-overlay section_padding_100" style="background-image: url(img/bg-img/2.jpg);">
+    <section class="olv-call-to-action-area bg-img bg-overlay section_padding_100" style="background-image: url({{ asset('user/img/bg-img/2.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-12">
