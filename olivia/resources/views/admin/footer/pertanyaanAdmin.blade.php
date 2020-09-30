@@ -14,37 +14,32 @@
         </div>
 
         <div class="d-sm-flex align-items-center m-3">
-            <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
+            <!-- <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
                 Add Pertanyaan User</a>
-            </div>
+            </div> -->
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="datatable-berita"></div> -->
-                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Nama Pengguna </th> 
-                                <th>Email Pengguna</th>
-                                <th>Pertanyaan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                <label for="judulBerita">Tampilkan</label>
+                <button type="button" class="btn btn-success" id="btn-semua">Semua</button>
+                &nbsp;
+                <button type="button" class="btn btn-success" id="btn-0">Belum dijawab</button>
+                &nbsp;
+                <button type="button" class="btn btn-success" id="btn-1">Terjawab</button>
+                <br>
+                    <div id="table-pertanyaan"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Add Berita Modal-->
-<div class="modal fade" id="ArtikelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Balas petnyaan Modal-->
+<div class="modal fade" id="BalasPertanyaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Pertanyaan User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Jawab Pertanyaan User</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -55,14 +50,15 @@
                 <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
                     @csrf
 
-                    <label for="judulBerita">Nama Pengguna</label>
-                    <input type="text" class="form-control" id="" name="judul">
-                    <label for="judulBerita">Email Pengguna</label>
-                    <input type="text" class="form-control" id="" name="judul">
+                    <label for="judulBerita">Nama</label>
+                    <input type="text" class="form-control" name="nama">
+                    <label for="judulBerita">Email</label>
+                    <input type="text" class="form-control" name="email">
                     <label for="judulBerita">Pertanyaan</label>
-                    <input type="text" class="form-control" id="" name="judul">
+                    <input type="text" class="form-control" name="pertanyaan">
 
-                   
+                    <label for="judulBerita">Jawab</label>
+                    <textarea name="jawab" id="no_mce" class="mceNoEditor" cols="30" rows="10"></textarea>
 
                 </form>
 
@@ -78,4 +74,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js-ajax')
+<script src="{{ asset('admin/js/footer/pertanyaan-user.js') }}"></script>
 @endsection
