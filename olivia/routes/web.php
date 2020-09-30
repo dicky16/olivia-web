@@ -151,9 +151,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
     
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'User\UserPageController@index');
 
 Route::get('tes', function () {
     return view('tes');
@@ -166,3 +164,7 @@ Auth::routes();
 Auth::routes(['verify' => true]);
   
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::any('/{all}', function(){
+    return '404 ! It Works';
+})->where('all', '.*');
