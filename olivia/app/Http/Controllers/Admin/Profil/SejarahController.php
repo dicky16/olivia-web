@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Profil;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DataTables, Auth, File, Validator;
+use DataTables, Validator;
 
 class SejarahController 
 {
@@ -13,6 +13,12 @@ class SejarahController
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        setTimeZone();
+    }
+
     public function index()
     {
         //
@@ -25,10 +31,10 @@ class SejarahController
         return Datatables::of($data)
         ->addIndexColumn()
         ->addColumn('aksi', function($row){
-            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-Sejarah" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-sejarah" style="font-size: 18pt; text-decoration: none;" class="mr-3">
             <i class="fas fa-pen-square"></i>
             </a>';
-            $btn = $btn. '<a href="javascript:void(0)" data-i d="'.$row->id.'" data-nama="'.$row->judul.'" class="btn-delete-berita" style="font-size: 18pt; text-decoration: none; color:red;">
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->judul.'" class="btn-delete-sejarah" style="font-size: 18pt; text-decoration: none; color:red;">
             <i class="fas fa-trash"></i>
             </a>';
             return $btn;
@@ -58,7 +64,33 @@ class SejarahController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+
+            $sejarah = DB::table('sejarah')->insert([
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'status' => 'nonaktif',
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+            if($sejarah) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -80,7 +112,10 @@ class SejarahController
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('sejarah')->where('id', $id)->get();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -92,7 +127,32 @@ class SejarahController
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array (
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+
+            $sejarah = DB::table('sejarah')->where('id', $id)->update([
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+            if($sejarah) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -103,6 +163,9 @@ class SejarahController
      */
     public function destroy($id)
     {
-        //
+        DB::table('sejarah')->where('id', $id)->delete();
+        return response()->json([
+            'status' => 'deleted',
+        ]);
     }
 }

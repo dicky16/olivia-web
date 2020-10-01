@@ -66,10 +66,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@sejarah');
             Route::get('data', 'Admin\Profil\SejarahController@getSejarahDataTable');
             Route::get('datatable', 'Admin\Profil\SejarahController@loadDataTable');
-            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::post('/', 'Admin\Profil\SejarahController@store');
+            Route::get('edit/{id}', 'Admin\Profil\SejarahController@edit');
+            Route::post('update/{id}', 'Admin\Profil\SejarahController@update');
+            Route::get('delete/{id}', 'Admin\Profil\SejarahController@destroy');
         });
 
         //STRUKTUR ORGANISASI
