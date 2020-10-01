@@ -121,8 +121,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@pertanyaan');
             Route::get('data', 'Admin\Footer\PertanyaanUserController@getAllPertanyaan');
             Route::get('datatable', 'Admin\Footer\PertanyaanUserController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
+            Route::post('kirim', 'Admin\Footer\PertanyaanUserController@jawabPertanyaan');
             Route::get('show/{id}', 'Admin\Footer\PertanyaanUserController@show');
+            Route::get('tes', function() {
+                // dd(session('email'));
+                $data = session('email');
+                dd($data['pertanyaan']);
+                return session('email');
+            });
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });

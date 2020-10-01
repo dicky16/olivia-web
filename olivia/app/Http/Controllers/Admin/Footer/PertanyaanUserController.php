@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Footer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use App\Mail\OliviaMail;
+use Illuminate\Support\Facades\Mail;
 
 class PertanyaanUserController
 {
@@ -104,5 +106,29 @@ class PertanyaanUserController
             ->make(true);
         }
         
+    }
+
+    public function jawabPertanyaan(Request $request)
+    {
+        $penerima = $request->email;
+        $nama = $request->nama;
+        $pertanyaan = $request->pertanyaan;
+        $jawaban = $request->jawaban;
+        $id = $request->id;
+        $data = array (
+            'nama' => $nama,
+            'pertanyaan' => $pertanyaan,
+            'jawaban' => $jawaban
+        );
+        session(['email' => $data]);
+        Mail::to($penerima)->send(new OliviaMail());
+            $update = DB::table('pertanyaan_user')->where('id', $id)->update([
+                'status' => 1
+            ]);
+            if(update) {
+                return response()->json([
+                    'status' => 'ok'
+                ]);
+            }
     }
 }
