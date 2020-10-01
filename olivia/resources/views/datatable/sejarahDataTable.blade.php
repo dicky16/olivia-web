@@ -4,7 +4,6 @@
                                 <th>No.</th>
                                 <th>judul</th> 
                                 <th>deskripsi</th>
-                                <th>foto</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
