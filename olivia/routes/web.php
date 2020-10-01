@@ -164,6 +164,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
 });
 
 Route::get('/', 'User\UserPageController@index');
+Route::get('profil', 'User\UserPageController@profil');
 
 Route::get('tes', function () {
     return view('tes');
