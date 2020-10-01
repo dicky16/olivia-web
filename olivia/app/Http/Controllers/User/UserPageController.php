@@ -10,4 +10,9 @@ class UserPageController
     {
         return view('user.index');
     }
+
+    public function profil()
+    {
+        return view('user.profil');
+    }
 }
