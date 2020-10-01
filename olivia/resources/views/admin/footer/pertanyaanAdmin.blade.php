@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
 
 <!-- Balas petnyaan Modal-->
 <div class="modal fade" id="BalasPertanyaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,7 +47,7 @@
             <div class="modal-body">
 
 
-                <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
+                <form id="form-tambah-berita">
                     @csrf
 
                     <label for="judulBerita">Nama</label>
@@ -58,14 +58,16 @@
                     <input type="text" class="form-control" name="pertanyaan">
 
                     <label for="judulBerita">Jawab</label>
-                    <textarea name="jawab" id="no_mce" class="mceNoEditor" cols="30" rows="10"></textarea>
+                    <!-- <textarea name="jawab" id="jawab" class="mceNoEditor" cols="30" rows="10"></textarea> -->
+                    <input type="text" class="form-control" name="jawab">
 
                 </form>
 
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button>
+                <button class="btn btn-primary" id="btn-jawab-pertanyaan" type="button">Submit</button>
+                <input type="hidden" name="balas-id">
                 <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Memproses...

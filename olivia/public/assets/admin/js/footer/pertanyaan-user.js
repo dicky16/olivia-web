@@ -4,7 +4,7 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    
+
     loadDataPertanyaan(status = "");
     //load data pertanyaan
     function loadDataPertanyaan(status) {
@@ -57,8 +57,49 @@ $(document).ready(function() {
                 $('input[name=nama]').val(data.data[0].nama);
                 $('input[name=email]').val(data.data[0].email);
                 $('input[name=pertanyaan]').val(data.data[0].pertanyaan);
+                $('input[name=balas-id]').val(id);
             }
         });
     });
+
+    //jawab pertanyaan
+    $('body').on('click', '#btn-jawab-pertanyaan', function(e) {
+        e.preventDefault();
+        var formData = new FormData();
+        var id = $('input[name=balas-id]').val();
+        var nama = $('input[name=nama]').val();
+        var email = $('input[name=email]').val();
+        var pertanyaan = $('input[name=pertanyaan]').val();
+        // var jawaban = tinymce.get('jawab').getContent();
+        var jawaban = $('input[name=jawab]').val();
+        
+        formData.append('nama', nama);
+        formData.append('email', email);
+        formData.append('pertanyaan', pertanyaan);
+        formData.append('jawaban', jawaban);
+        formData.append('id', id);
+        
+        $.ajax({
+            type: 'POST',
+            url: '/admin/tanya/kirim/',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                if(data.status == "ok") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Berhasil kirim jawaban ',
+                        timer: 1200,
+                        showConfirmButton: false
+                    });
+                    $("#BalasPertanyaan").modal("hide");
+                    loadDataPertanyaan();
+                }
+            }
+        });
+    });
+    
 
 });
