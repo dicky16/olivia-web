@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Footer;
+namespace App\Http\Controllers\Admin\Footer;
 
 use Illuminate\Http\Request;
-
-class socialmediaController extends Controller
+use Illuminate\Support\Facades\DB;
+use DataTables, Auth, File, Validator;
+class socialmediaController
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +15,29 @@ class socialmediaController extends Controller
     public function index()
     {
         //
+    }
+
+    public function getSocialDataTable()
+    {
+        $data = DB::table('sosial_media')
+        ->get();
+        return Datatables::of($data)
+        ->addIndexColumn()
+        ->addColumn('aksi', function($row){
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-Socialmedia" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            <i class="fas fa-pen-square"></i>
+            </a>';
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-berita" style="font-size: 18pt; text-decoration: none; color:red;">
+            <i class="fas fa-trash"></i>
+            </a>';
+            return $btn;
+          })
+        ->rawColumns(['aksi'])
+        ->make(true);
+    }
+    public function loadDataTable()
+    {
+        return view('datatable.socialmediaDataTable');
     }
 
     /**

@@ -15,23 +15,13 @@
 
         <div class="d-sm-flex align-items-center m-3">
             <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
-                Add Artikel</a>
+                Add Foto</a>
             </div>
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="datatable-berita"></div> -->
-                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Keterangan Foto</th> 
-                                <th>Gambar</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                    <div id="table-foto"></div> 
+                   
                 </div>
             </div>
         </div>
@@ -77,4 +67,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js-ajax')
+<script src="{{ asset('admin/js/galeri/foto.js') }}"></script>
 @endsection

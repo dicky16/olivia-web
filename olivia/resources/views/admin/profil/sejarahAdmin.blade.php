@@ -20,7 +20,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <div id="table-artikel"></div>
+                    <div id="table-sejarah"></div>
                 </div>
             </div>
         </div>
@@ -72,5 +72,5 @@
 </div>
 @endsection
 @section('js-ajax')
-<script src="{{ asset('admin/js/artikel.js') }}"></script>
+<script src="{{ asset('admin/js/profil/sejarah.js') }}"></script>
 @endsection
