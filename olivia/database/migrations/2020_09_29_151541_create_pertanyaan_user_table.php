@@ -18,6 +18,7 @@ class CreatePertanyaanUserTable extends Migration
             $table->string('nama');
             $table->string('email');
             $table->text('pertanyaan');
+            $table->integer('status');
             $table->timestamps();
         });
     }

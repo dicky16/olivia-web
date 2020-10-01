@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Footer;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use DataTables;
+use DataTables, Validator;
 
 class FaqController
 {
@@ -39,10 +39,10 @@ class FaqController
         return Datatables::of($data)
         ->addIndexColumn()
         ->addColumn('aksi', function($row){
-            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-pengumuman" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-faq" style="font-size: 18pt; text-decoration: none;" class="mr-3">
             <i class="fas fa-pen-square"></i>
             </a>';
-            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-delete-pengumuman" style="font-size: 18pt; text-decoration: none; color:red;">
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-delete-faq" style="font-size: 18pt; text-decoration: none; color:red;">
             <i class="fas fa-trash"></i>
             </a>';
             return $btn;
@@ -64,7 +64,34 @@ class FaqController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'tanya' => 'required',
+            'jawab' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $tanya = $request->tanya;
+            $jawab = $request->jawab;
+
+            $faq = DB::table('faq')->insert([
+                'pertanyaan' => $tanya,
+                'jawaban' => $jawab,
+                'status' => 'draft',
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($faq) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -86,7 +113,10 @@ class FaqController
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('faq')->where('id', $id)->get();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -98,7 +128,33 @@ class FaqController
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array (
+            'tanya' => 'required',
+            'jawab' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $tanya = $request->tanya;
+            $jawab = $request->jawab;
+
+            $faq = DB::table('faq')->where('id', $id)->update([
+                'pertanyaan' => $tanya,
+                'jawaban' => $jawab,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($faq) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -109,6 +165,9 @@ class FaqController
      */
     public function destroy($id)
     {
-        //
+        DB::table('faq')->where('id', $id)->delete();
+        return response()->json([
+            'status' => 'deleted',
+        ]);
     }
 }

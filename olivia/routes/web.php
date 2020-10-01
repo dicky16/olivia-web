@@ -124,13 +124,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
          //Pertanyaan User(other Question)
-        Route::prefix('pertanyaan')->group(function () {
+        Route::prefix('tanya')->group(function () {
             Route::get('/', 'Admin\AdminPageController@pertanyaan');
-            Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
-            Route::get('data', 'Admin\pertanyaanController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\pertanyaanController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
+            Route::get('data', 'Admin\Footer\PertanyaanUserController@getAllPertanyaan');
+            Route::get('datatable', 'Admin\Footer\PertanyaanUserController@loadDataTable');
+            Route::post('kirim', 'Admin\Footer\PertanyaanUserController@jawabPertanyaan');
+            Route::get('show/{id}', 'Admin\Footer\PertanyaanUserController@show');
+            Route::get('tes', function() {
+                // dd(session('email'));
+                $data = session('email');
+                dd($data['pertanyaan']);
+                return session('email');
+            });
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
@@ -139,10 +144,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@faq');
             Route::get('data', 'Admin\Footer\FaqController@getFAQDataTable');
             Route::get('datatable', 'Admin\Footer\FaqController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::post('/', 'Admin\Footer\FaqController@store');
+            Route::get('edit/{id}', 'Admin\Footer\FaqController@edit');
+            Route::post('update/{id}', 'Admin\Footer\FaqController@update');
+            Route::get('delete/{id}', 'Admin\Footer\FaqController@destroy');
         });
          //SOCIAL MEDIA
          Route::prefix('sosialmedia')->group(function () {
@@ -158,9 +163,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
     
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'User\UserPageController@index');
 
 Route::get('tes', function () {
     return view('tes');
@@ -173,3 +176,7 @@ Auth::routes();
 Auth::routes(['verify' => true]);
   
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::any('/{all}', function(){
+    return '404 ! It Works';
+})->where('all', '.*');

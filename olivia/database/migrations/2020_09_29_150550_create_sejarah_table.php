@@ -17,7 +17,7 @@ class CreateSejarahTable extends Migration
             $table->id();
             $table->string('judul');
             $table->mediumText('deskripsi');
-            $table->text('foto');
+            $table->enum('status', ['aktif', 'nonaktif']);
             $table->timestamps();
         });
     }
