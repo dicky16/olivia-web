@@ -20,19 +20,7 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="datatable-berita"></div> -->
-                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Nama Social Media </th> 
-                                <th>Icon Social Media</th>
-                                <th>Link Social Media</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                     <div id="table-social"></div> 
                 </div>
             </div>
         </div>
@@ -81,4 +69,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js-ajax')
+<script src="{{ asset('admin/js/footer/socialmedia.js') }}"></script>
 @endsection

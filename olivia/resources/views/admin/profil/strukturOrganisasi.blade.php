@@ -20,20 +20,8 @@
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <!-- <div id="datatable-berita"></div> -->
-                    <table class="table table-bordered" id="datatable-artikel" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Nama Lengkap</th> 
-                                <th>Jabatan</th>
-                                <th>Gambar</th>
-                                <th> Deskripsi</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
+                    <div id="table-struktur"></div>
+                    
                 </div>
             </div>
         </div>
@@ -45,7 +33,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah FAQ</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Struktur Organisasi</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -57,14 +45,19 @@
                     @csrf
 
                     <label for="judulBerita">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="" name="judul">
-                    <label for="deskripsi" class="mt-2">Jabatan</label>
+                    <input type="text" class="form-control" id="" name="nama">
+                    <label for="jabatanStruktur" class="mt-2">Jabatan</label>
+                    <input type="text" class="form-control" id="" name="jabatan">
+                    <label for="instansiStruktur">Instansi</label>
+                    <input type="text" class="form-control" id="" name="instansi">
+                    <label for="sosmedStruktur" class="mt-2">Sosmed</label>
+                    <input type="text" class="form-control" id="" name="sosmed">
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">Gambar</label>
                         <input input id="file-upload" type="file" name="gambar" accept="image/*" onchange="readURL(this);" aria-describedby="inputGroupFileAddon01">
                     </div>
 
-                    <textarea type="text" class="form-control" id="deskripsi-berita" name=""></textarea>
+                
                    
 
                 </form>
@@ -81,4 +74,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js-ajax')
+<script src="{{ asset('admin/js/profil/struktur.js') }}"></script>
 @endsection

@@ -15,8 +15,10 @@ class CreateStrukturOrganisasiTable extends Migration
     {
         Schema::create('struktur_organisasi', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('deskripsi');
+            $table->string('nama');
+            $table->string('jabatan');
+            $table->string('instansi');
+            $table->string('sosmed');
             $table->text('gambar');
             $table->timestamps();
         });
