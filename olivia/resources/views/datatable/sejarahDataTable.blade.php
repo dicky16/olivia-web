@@ -2,8 +2,9 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>judul</th> 
-                                <th>deskripsi</th>
+                                <th>Judul</th> 
+                                <th>Deskripsi</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>

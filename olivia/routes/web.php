@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('edit/{id}', 'Admin\Profil\SejarahController@edit');
             Route::post('update/{id}', 'Admin\Profil\SejarahController@update');
             Route::get('delete/{id}', 'Admin\Profil\SejarahController@destroy');
+            Route::get('aktif/{id}', 'Admin\Profil\SejarahController@aktifkan');
+            Route::get('nonaktif/{id}', 'Admin\Profil\SejarahController@nonAktifkan');
         });
 
         //STRUKTUR ORGANISASI
