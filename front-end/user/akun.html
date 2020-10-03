@@ -62,8 +62,26 @@
                                 </div>
                                 <!-- Login/Register btn -->
                                 <div class="login-register-btn">
-                                    <a href="login.html">Login/Register</a>
-                                    
+                                    <!-- <a href="#">Login</a>
+                                    <a href="#">/ Register</a> -->
+                                    <div class="container">
+                                        <div class="half">
+                                            <label for="profile2" class="profile-dropdown">
+                                                <input type="checkbox" id="profile2">
+                                                <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
+                                                <span style="color: #000000;">Paraseka</span>
+                                                <!-- <label for="profile2"><i class="mdi mdi-menu"></i></label> -->
+                                                <ul>
+                                                    <li><a href="#"><i class="mdi mdi-account"></i>Akun</a></li>
+                                                    <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
+                                                </ul>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Template layout -->
+
+                                    <div class="background"></div>
                                 </div>
                             </div>
                         </nav>
@@ -78,11 +96,11 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumbContent">
-                        <h2>FAQ</h2>
+                        <h2>Akun </h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Tanya Kami</li>
+                                <li class="breadcrumb-item active" aria-current="page">Punya Saya</li>
                             </ol>
                         </nav>
                     </div>
@@ -92,73 +110,96 @@
     </div>
    
     <section class="elements-area section_padding_100">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="accordions mb-100 justify-content-center" id="accordion" role="tablist" aria-multiselectable="true">
-                        <!-- single accordian area start -->
-                        <div class="panel single-accordion">
-                            <h6><a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">pertanyaan
-                                    <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                    </a></h6>
-                            <div id="collapseOne" class="accordion-content collapse">
-                                <p>takok o.</p>
+        <div class="content">
+                            <div class="container-fluid">
+                              <div class="row">
+                                <div class="col-md-8">
+                                  <div class="card">
+                                    <div class="card-header card-header-primary">
+                                      <h4 class="card-title">Edit Akun</h4>
+                                      <p class="card-category">Lengkapi Akunmu</p>
+                                    </div>
+                                    <div class="card-body">
+                                      <form>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating">Email address</label> -->
+                                              <input type="email" class="form-control" placeholder="Email">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
+                                              <input type="text" class="form-control" placeholder="Nama">
+                                            </div>
+                                          </div>
+                                          
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
+                                              <input type="text" class="form-control" placeholder="Password Lama">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
+                                              <input type="text" class="form-control" placeholder="Password Baru">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
+                                              <input type="text" class="form-control" placeholder="re-enter Password">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label>Ubah Foto</label>
+                                              <div class="form-group bmd-form-group">
+                                                <div class="custom-upload">
+                                                    <label class="btn btn-primary btn-round" for="file" data-element="custom-upload-button">Upload Files </label>
+                                                    <input class="custom-upload__input" id="file" type="file" data-behaviour="custom-upload-input" value="" multiple />
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                        <div class="clearfix"></div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="card card-profile">
+                                    <div class="card-avatar">
+                                      <a href="javascript:;">
+                                        <img class="img" src="img/blog-img/6.jpg">
+                                      </a>
+                                    </div>
+                                    <div class="card-body">
+                                      <h4 class="card-title">Parasekas</h4>
+                                      <p class="card-description">
+                                        VOKASI UNIVERSITAS BRAWIJAYA MALANG
+                                      </p>
+                                      <a href="javascript:;" class="btn btn-primary btn-round">Follow</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                        <!-- single accordian area start -->
-                        <div class="panel single-accordion">
-                            <h6>
-                                <a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">pertanyaan
-                                        <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                        <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                        </a>
-                            </h6>
-                            <div id="collapseTwo" class="accordion-content collapse">
-                                <p>takok o</p>
-                            </div>
-                        </div>
-                        <!-- single accordian area start -->
-                        <div class="panel single-accordion">
-                            <h6>
-                                <a role="button" aria-expanded="true" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">pertanyaan 
-                                        <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                        <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                    </a>
-                            </h6>
-                            <div id="collapseThree" class="accordion-content collapse">
-                                <p>takok o.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <form class="form-horizontal" role="form" method="post" action="#">                       
-                      <div class="form-group">
-                        <div class="col-sm-12">
-                          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="col-sm-12">
-                          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="">
-                        </div>
-                      </div>
-
-                      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message"></textarea>
-                      
-                      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                        <div class="button">
-                          <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
-                        </div>
-                      
-                      </button>
-                      
-                    </form>
-                </div>                
-            </div>
-        </div>
+                          </div>
     </section>
     <footer class="footer-area clearfix">
         <section id="contact">
@@ -175,28 +216,7 @@
                     
                     <form class="form-horizontal" role="form" method="post" action="contact.php">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11176.264540637865!2d112.61440279667983!3d-7.956904248467246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11a949e002df2194!2sPendidikan%20Vokasi%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1601097931634!5m2!1sid!2sid" width="400" height="390" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                       
-                      <!-- div class="form-group">
-                        <div class="col-sm-12">
-                          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="col-sm-12">
-                          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="">
-                        </div>
-                      </div>
-
-                      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message"></textarea>
-                      
-                      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                        <div class="button">
-                          <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
-                        </div>
-                      
-                      </button> -->
-                      
+                                             
                     </form>
                     
                       <!---------------- 
@@ -267,6 +287,27 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    <script src="js/js/core/bootstrap-material-design.min.js"></script>
+  <script src="js/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/material-dashbord.js?v=2.1.2" type="javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+    function init() {
+        $('[data-behaviour="custom-upload-input"]').on("change", updateButton);
+    }
+
+    function updateButton(e) {
+        var inputValue = $(e.currentTarget).val().split("\\").pop();
+        $('[data-element="custom-upload-button"]').text(inputValue);
+        e.preventDefault;
+        console.log(inputValue);
+    }
+
+    init();
+});
+
+    </script>
 </body>
 
 </html>
