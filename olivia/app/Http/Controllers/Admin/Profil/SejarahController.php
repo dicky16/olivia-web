@@ -54,6 +54,7 @@ class SejarahController
         ->rawColumns(['aksi', 'state'])
         ->make(true);
     }
+    
     public function loadDataTable()
     {
         return view('datatable.SejarahDataTable');

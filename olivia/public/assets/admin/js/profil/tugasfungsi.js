@@ -5,21 +5,19 @@ $(document).ready(function() {
         }
     });
 
-loadDataSejarah();
-function loadDataSejarah() {
-    $('#table-sejarah').load('/admin/sejarah/datatable', function() {
-        var host = window.location.origin;
-        var id = null;
-        $('#datatable-sejarah').DataTable({
+loadDataTugas();
+function loadDataTugas() {
+    $('#table-tugasfungsi').load('/admin/tugasfungsi/datatable', function() {
+        $('#datatable-tugasfungsi').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: '/admin/sejarah/data',
+                url: '/admin/tugasfungsi/data',
                 type: 'GET'
             },
             columns: [
                 {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
-                {data: 'judul',name: 'judul'},
+                {data: 'nama',name: 'nama'},
                 {data: 'deskripsi',name: 'deskripsi'},
                 {
                     data: 'state',
@@ -38,17 +36,17 @@ $('body').on('click', '#btn-aktif', function(e) {
     var id = $(this).data('id');
     $.ajax({
         type: 'GET',
-        url: '/admin/sejarah/aktif/' + id,
+        url: '/admin/tugasfungsi/aktif/' + id,
         success: function(data) {
             if(data.status == "ok") {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil ganti status sejarah',
+                    text: 'Berhasil ganti status Tugas dan Fungsi',
                     timer: 1200,
                     showConfirmButton: false
                 });
-                loadDataSejarah();
+                loadDataTugas();
             }
         }
     });
@@ -60,36 +58,36 @@ $('body').on('click', '#btn-nonaktif', function(e) {
     var id = $(this).data('id');
     $.ajax({
         type: 'GET',
-        url: '/admin/sejarah/nonaktif/' + id,
+        url: '/admin/tugasfungsi/nonaktif/' + id,
         success: function(data) {
             if(data.status == "ok") {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil ganti status sejarah',
+                    text: 'Berhasil ganti status Tugas dan Fungsi',
                     timer: 1200,
                     showConfirmButton: false
                 });
-                loadDataSejarah();
+                loadDataTugas();
             }
         }
     });
 });
 
-//tambah sejarah
-$('body').on('submit', '#form-tambah-sejarah', function(e) {
+//tambah tugas fungsi
+$('body').on('submit', '#form-tambah-tugasfungsi', function(e) {
     e.preventDefault();
     var formData = new FormData();
 
     var judul = $('input[name=judul]').val();
-    var deskripsi = tinymce.get('deskripsi-sejarah').getContent();
+    var deskripsi = tinymce.get('deskripsi-tugasfungsi').getContent();
 
     formData.append('judul', judul);
     formData.append('deskripsi', deskripsi);
 
     $.ajax({
         type: 'POST',
-        url: '/admin/sejarah',
+        url: '/admin/tugasfungsi',
         data: formData,
         contentType: false,
         processData: false,
@@ -104,13 +102,13 @@ $('body').on('submit', '#form-tambah-sejarah', function(e) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil tambah sejarah',
+                    text: 'Berhasil tambah Tugas dan Fungsi',
                     timer: 1200,
                     showConfirmButton: false
                 });
-                loadDataSejarah();
-                $('#form-tambah-sejarah').trigger('reset');
-                $('#SejarahModal').modal('hide');
+                loadDataTugas();
+                $('#form-tambah-tugasfungsi').trigger('reset');
+                $('#TugasModal').modal('hide');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -124,36 +122,36 @@ $('body').on('submit', '#form-tambah-sejarah', function(e) {
     });
 });
 
-//edit sejarah
-$('body').on('click', '.btn-edit-sejarah', function(e) {
+//edit tugas fungsi
+$('body').on('click', '.btn-edit-tugasfungsi', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
     $.ajax({
         type: 'GET',
-        url: '/admin/sejarah/edit/' + id,
+        url: '/admin/tugasfungsi/edit/' + id,
         success: function(data) {
-            $("#editSejarahModal").modal('show');
-            $('input[name=judul-edit]').val(data.data[0].judul);
-            tinymce.get('deskripsi-sejarah-edit').setContent(data.data[0].deskripsi);
+            $("#editTugasModal").modal('show');
+            $('input[name=judul-edit]').val(data.data[0].nama);
+            tinymce.get('deskripsi-tugasfungsi-edit').setContent(data.data[0].deskripsi);
             $('input[name=edit-id]').val(id);
         }
     });
 });
 
-//update sejarah
-$('body').on('submit', '#form-edit-sejarah', function(e) {
+//update tugas fungsi
+$('body').on('submit', '#form-edit-tugasfungsi', function(e) {
     e.preventDefault();
     var formData = new FormData();
     var id = $('input[name=edit-id]').val();
     var judul = $('input[name=judul-edit]').val();
-    var deskripsi = tinymce.get('deskripsi-sejarah-edit').getContent();
+    var deskripsi = tinymce.get('deskripsi-tugasfungsi-edit').getContent();
 
     formData.append('judul', judul);
     formData.append('deskripsi', deskripsi);
 
     $.ajax({
         type: 'POST',
-        url: '/admin/sejarah/update/' + id,
+        url: '/admin/tugasfungsi/update/' + id,
         data: formData,
         contentType: false,
         processData: false,
@@ -168,13 +166,13 @@ $('body').on('submit', '#form-edit-sejarah', function(e) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil update Sejarah',
+                    text: 'Berhasil update Tugas dan Fungsi',
                     timer: 1200,
                     showConfirmButton: false
                 });
-                loadDataSejarah();
-                $('#form-edit-sejarah').trigger('reset');
-                $('#editSejarahModal').modal('hide');
+                loadDataTugas();
+                $('#form-edit-tugasfungsi').trigger('reset');
+                $('#editTugasModal').modal('hide');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -188,8 +186,8 @@ $('body').on('submit', '#form-edit-sejarah', function(e) {
     });
 });
 
-//hapus sejarah
-$('body').on('click', '.btn-delete-sejarah', function(e) {
+//hapus tugas fungsi
+$('body').on('click', '.btn-delete-tugasfungsi', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
     var judul = $(this).data('nama');
@@ -205,16 +203,16 @@ $('body').on('click', '.btn-delete-sejarah', function(e) {
         if (result.value) {
             $.ajax({
                 type: 'GET',
-                url: 'sejarah/delete/' + id,
+                url: 'delete/' + id,
                 contentType: false,
                 processData: false,
                 success: function(data) {
                     if(data.status == 'deleted') {
                         Swal.fire(
                             'Deleted!',
-                            'Berhasil Menghapus Sejarah',
+                            'Berhasil Menghapus Tugas dan Fungsi',
                             )
-                            loadDataSejarah();
+                            loadDataTugas();
                         }
                     }
                 });

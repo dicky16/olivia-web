@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<!-- Add Berita Modal-->
+<!-- Add Sejarah Modal-->
 <div class="modal fade" id="SejarahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">

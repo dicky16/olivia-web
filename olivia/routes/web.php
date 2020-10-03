@@ -79,31 +79,34 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@struktur');
             Route::get('data', 'Admin\Profil\StrukturController@getStrukturDataTable');
             Route::get('datatable', 'Admin\Profil\StrukturController@loadDataTable');
-            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::post('/', 'Admin\Profil\StrukturController@store');
+            Route::get('edit/{id}', 'Admin\Profil\StrukturController@edit');
+            Route::post('update/{id}', 'Admin\Profil\StrukturController@update');
+            Route::get('delete/{id}', 'Admin\Profil\StrukturController@destroy');
         });
          //VISI DAN MISI
          Route::prefix('visimisi')->group(function () {
             Route::get('/', 'Admin\AdminPageController@visimisi');
-            Route::get('data', 'Admin\visimisiController@getvisimisiDataTable');
-            Route::get('data', 'Admin\visimisiController@getvisimisiDataTable');
-            Route::get('datatable', 'Admin\visimisiController@loadDataTable');
-            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::get('data', 'Admin\Profil\visimisiController@getVisimisiDataTable');
+            Route::get('datatable', 'Admin\Profil\visimisiController@loadDataTable');
+            Route::post('/', 'Admin\Profil\visimisiController@store');
+            Route::get('edit/{id}', 'Admin\Profil\visimisiController@edit');
+            Route::post('update/{id}', 'Admin\Profil\visimisiController@update');
+            Route::get('delete/{id}', 'Admin\Profil\visimisiController@destroy');
+            Route::get('aktif/{id}', 'Admin\Profil\visimisiController@aktifkan');
+            Route::get('nonaktif/{id}', 'Admin\Profil\visimisiController@nonAktifkan');
         });
         //TUGAS DAN Fungsi
         Route::prefix('tugasfungsi')->group(function () {
             Route::get('/', 'Admin\AdminPageController@tugasfungsi');
-            Route::get('data', 'Admin\TugasFungsiController@getTugasFungsiDataTable');
-            Route::get('datatable', 'Admin\TugasFungsiController@loadDataTable');
-            // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::get('data', 'Admin\Profil\TugasFungsiController@getTugasFungsiDataTable');
+            Route::get('datatable', 'Admin\Profil\TugasFungsiController@loadDataTable');
+            Route::post('/', 'Admin\Profil\TugasFungsiController@store');
+            Route::get('edit/{id}', 'Admin\Profil\TugasFungsiController@edit');
+            Route::post('update/{id}', 'Admin\Profil\TugasFungsiController@update');
+            Route::get('delete/{id}', 'Admin\Profil\TugasFungsiController@destroy');
+            Route::get('aktif/{id}', 'Admin\Profil\TugasFungsiController@aktifkan');
+            Route::get('nonaktif/{id}', 'Admin\Profil\TugasFungsiController@nonAktifkan');
         });
         //Foto
         Route::prefix('foto')->group(function () {
