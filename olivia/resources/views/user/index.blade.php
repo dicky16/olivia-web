@@ -74,41 +74,38 @@
         </div>
     </header>
  
-    <section class="welcome_area clearfix" id="home" style="background-image: url({{ asset('user/img/bg-img/d.png') }})">
+    <section class="welcome_area clearfix" id="home" style="background-image: url(img/bg-img/d.png)">
         
     </section >
-    <section class="welcome_area clearfix" id="home" style="background-image: url({{ asset('user/img/bg-img/b22.png') }})">
-        <div class="hero-slides owl-carousel">
-            <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">
-            <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">          
+    
+        <div class="hero-slides owl-carousel" style="background-image: url(img/bg-img/b22.png)">
+            <img class="slide-img" src="img/bg-img/poto.png" alt="" style="width: 70%; margin: auto;">
+            <img class="slide-img" src="img/bg-img/poto.png" alt="" style="width: 70%; margin: auto;">          
             
         </div>
-
+  
    
-    <div class="olv-more-services-area d-sm-flex clearfix justify-content-center">
+    <section class="olv-more-services-area d-sm-flex clearfix justify-content-center" style="background-image: url(img/bg-img/d.png)">
         <div class="single-more-service-area">
             <div class="more-service-content text-center wow fadeInUp" data-wow-delay=".1s">
-                <img src="{{ asset('user/img/core-img/ki.png') }}" alt="">
+                <img src="img/core-img/ki.png" alt="">
                 <h4>Karya Ilmiah</h4>
                 <p>Karya Ilmiah mempersentasikan gagasan dengan tema "Creating Innovation and Competence in The New Normal Era".</p>
             </div>
         </div>
         <div class="single-more-service-area">
             <div class="more-service-content text-center wow fadeInUp" data-wow-delay=".4s">
-                <img src="{{ asset('user/img/core-img/video.png') }}" alt="">
+                <img src="img/core-img/video.png" alt="">
                 <h4>Video Edukasi</h4>
                 <p>Video Edukasi mempertontonkan hiburan dengan tema "Creating Innovation and Competence in The New Normal Era".</p>
             </div>
         </div>
         <div class="single-more-service-area">
             <div class="more-service-content text-center wow fadeInUp" data-wow-delay=".7s">
-                <img src="{{ asset('user/img/core-img/web.png') }}" alt="">
+                <img src="img/core-img/web.png" alt="">
                 <h4>Web Desain</h4>
                 <p>Web Desain menampilkan suguhan dengan tema "Creating Innovation and Competence in The New Normal Era".</p>
-            </div>
         </div>
-        
-    </div>
     </section>
    
     <section class="olv-workflow-area section_padding_100_0 clearfix">
