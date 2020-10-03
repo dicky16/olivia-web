@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,6 +76,11 @@
     </header>
  
     <section class="welcome_area clearfix" id="home" style="background-image: url(img/bg-img/d.png)">
+=======
+@extends('user.layout.master')
+@section('content')
+<section class="welcome_area clearfix" id="home" style="background-image: url({{ asset('user/img/bg-img/d.png') }})">
+>>>>>>> dd1ed61e943808d49cf5f938a9ea6117690b16ae
         
     </section >
     
@@ -243,116 +249,4 @@
             </div>
         </div>
     </section>
-    
-    <footer class="footer-area clearfix">
-        <section id="contact">
-  
-          <h1 class="section-header"></h1>
-          
-          <div class="contact-wrapper">
-            
-              <!---------------- 
-
-              CONTACT KIRI 
-            
-              -----------------> 
-            
-            <form class="form-horizontal" role="form" method="post" action="contact.php">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11176.264540637865!2d112.61440279667983!3d-7.956904248467246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11a949e002df2194!2sPendidikan%20Vokasi%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1601097931634!5m2!1sid!2sid" width="400" height="390" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-               
-              <!-- div class="form-group">
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="">
-                </div>
-              </div>
-
-              <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message"></textarea>
-              
-              <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                <div class="button">
-                  <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
-                </div>
-              
-              </button> -->
-              
-            </form>
-            
-              <!---------------- 
-
-              CONTACT KANAN
-            
-              -----------------> 
-            
-              <div class="direct-contact-container justify-content-center">
-
-                <ul class="contact-list">
-                  <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">Jl Veteran | Malang</span></i></li>
-                  
-                  <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call"> (0341) 553240</a></span></i></li>
-                  
-                  <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">emailvokasi@gmail.com</a></span></i></li>
-                  
-                </ul>
-
-                <hr>
-                <ul class="social-media-list">
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-github" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  </li>
-                </ul>
-                <hr>
-
-                <div class="copyright">www.olivia.com</div>
-
-              </div>
-            
-          </div>
-          
-        </section>  
-        
-        
-        <div class="footer-bottom-area">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-12 h-100">
-                        <div class="footer-bottom-content h-100 d-md-flex justify-content-between align-items-center">
-                            <div class="copyright-text">
-                                <p>
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Vokasi UB </i> 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- jQuery-2.2.4 js -->
-    <script src="{{ asset('user/js/jquery-2.2.4.min.js') }}"></script>
-    <!-- Popper js -->
-    <script src="{{ asset('user/js/popper.min.js') }}"></script>
-    <!-- Bootstrap js -->
-    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
-    <!-- All Plugins js -->
-    <script src="{{ asset('user/js/plugins.js') }}"></script>
-    <!-- Active js -->
-    <script src="{{ asset('user/js/active.js') }}"></script>
-</body>
-
-</html>
+    @endsection

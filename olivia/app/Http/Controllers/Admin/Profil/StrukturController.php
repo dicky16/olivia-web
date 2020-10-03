@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Profil;
+namespace App\Http\Controllers\Admin\Profil;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use DataTables, Auth, File, Validator;
 
-class StrukturOrganisasiController extends Controller
+class StrukturController 
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +18,28 @@ class StrukturOrganisasiController extends Controller
         //
     }
 
+    public function getStrukturDataTable()
+    {
+        $data = DB::table('struktur_organisasi')
+        ->get();
+        return Datatables::of($data)
+        ->addIndexColumn()
+        ->addColumn('aksi', function($row){
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-Sejarah" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            <i class="fas fa-pen-square"></i>
+            </a>';
+            $btn = $btn. '<a href="javascript:void(0)" data-i d="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-berita" style="font-size: 18pt; text-decoration: none; color:red;">
+            <i class="fas fa-trash"></i>
+            </a>';
+            return $btn;
+          })
+        ->rawColumns(['aksi'])
+        ->make(true);
+    }
+    public function loadDataTable()
+    {
+        return view('datatable.StrukturDataTable');
+    }
     /**
      * Show the form for creating a new resource.
      *

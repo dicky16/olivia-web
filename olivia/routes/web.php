@@ -61,12 +61,24 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('delete/{id}', 'Admin\Home\PengumumanController@destroy');
         });
 
+        //Sejarah
+        Route::prefix('sejarah')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@sejarah');
+            Route::get('data', 'Admin\Profil\SejarahController@getSejarahDataTable');
+            Route::get('datatable', 'Admin\Profil\SejarahController@loadDataTable');
+            Route::post('/', 'Admin\Profil\SejarahController@store');
+            Route::get('edit/{id}', 'Admin\Profil\SejarahController@edit');
+            Route::post('update/{id}', 'Admin\Profil\SejarahController@update');
+            Route::get('delete/{id}', 'Admin\Profil\SejarahController@destroy');
+            Route::get('aktif/{id}', 'Admin\Profil\SejarahController@aktifkan');
+            Route::get('nonaktif/{id}', 'Admin\Profil\SejarahController@nonAktifkan');
+        });
+
         //STRUKTUR ORGANISASI
         Route::prefix('struktur')->group(function () {
             Route::get('/', 'Admin\AdminPageController@struktur');
-            Route::get('data', 'Admin\strukturOrganisasiController@getstrukturOrganisasiDataTable');
-            Route::get('data', 'Admin\strukturOrganisasiController@getstrukturOrganisasiDataTable');
-            Route::get('datatable', 'Admin\strukturOrganisasiController@loadDataTable');
+            Route::get('data', 'Admin\Profil\StrukturController@getStrukturDataTable');
+            Route::get('datatable', 'Admin\Profil\StrukturController@loadDataTable');
             // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
@@ -86,9 +98,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         //TUGAS DAN Fungsi
         Route::prefix('tugasfungsi')->group(function () {
             Route::get('/', 'Admin\AdminPageController@tugasfungsi');
-            Route::get('data', 'Admin\tugasfungsiController@gettugasfungsiDataTable');
-            Route::get('data', 'Admin\tugasfungsiController@gettugasfungsiDataTable');
-            Route::get('datatable', 'Admin\tugasfungsiController@loadDataTable');
+            Route::get('data', 'Admin\TugasFungsiController@getTugasFungsiDataTable');
+            Route::get('datatable', 'Admin\TugasFungsiController@loadDataTable');
             // Route::post('/', 'Admin\Home\AdminAHome\rtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
@@ -97,9 +108,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         //Foto
         Route::prefix('foto')->group(function () {
             Route::get('/', 'Admin\AdminPageController@foto');
-            Route::get('data', 'Admin\FotoController@getBeritaDataTable');
-            Route::get('data', 'Admin\FotoController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\FotoController@loadDataTable');
+            Route::get('data', 'Admin\Galeri\FotoController@getFotoDataTable');
+            Route::get('datatable', 'Admin\Galeri\FotoController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
@@ -108,9 +118,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         //VIDEO
         Route::prefix('video')->group(function () {
             Route::get('/', 'Admin\AdminPageController@video');
-            Route::get('data', 'Admin\VideoController@getBeritaDataTable');
-            Route::get('data', 'Admin\VideoController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\VideoController@loadDataTable');
+            Route::get('data', 'Admin\Galeri\VideoController@getVideoDataTable');
+            Route::get('datatable', 'Admin\Galeri\VideoController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
@@ -121,8 +130,14 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@pertanyaan');
             Route::get('data', 'Admin\Footer\PertanyaanUserController@getAllPertanyaan');
             Route::get('datatable', 'Admin\Footer\PertanyaanUserController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
+            Route::post('kirim', 'Admin\Footer\PertanyaanUserController@jawabPertanyaan');
             Route::get('show/{id}', 'Admin\Footer\PertanyaanUserController@show');
+            Route::get('tes', function() {
+                // dd(session('email'));
+                $data = session('email');
+                dd($data['pertanyaan']);
+                return session('email');
+            });
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
         });
@@ -139,9 +154,8 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
          //SOCIAL MEDIA
          Route::prefix('sosialmedia')->group(function () {
             Route::get('/', 'Admin\AdminPageController@socialmedia');
-            Route::get('data', 'Admin\sosialmediaController@getBeritaDataTable');
-            Route::get('data', 'Admin\sosialmediaController@getBeritaDataTable');
-            Route::get('datatable', 'Admin\sosialmediaController@loadDataTable');
+            Route::get('data', 'Admin\Footer\socialmediaController@getSocialDataTable');
+            Route::get('datatable', 'Admin\Footer\socialmediaController@loadDataTable');
             // Route::post('/', 'Admin\AdminArtikelController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
@@ -152,6 +166,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
 });
 
 Route::get('/', 'User\UserPageController@index');
+Route::get('profil', 'User\UserPageController@profil');
 
 Route::get('tes', function () {
     return view('tes');
