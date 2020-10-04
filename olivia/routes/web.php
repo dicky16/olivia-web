@@ -110,10 +110,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         });
         //Foto
         Route::prefix('foto')->group(function () {
-            Route::get('/', 'Admin\AdminPageController@foto');
+            Route::get('/', 'Admin\Galeri\FotoController@index');
             Route::get('data', 'Admin\Galeri\FotoController@getFotoDataTable');
             Route::get('datatable', 'Admin\Galeri\FotoController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
+            Route::post('/', 'Admin\Galeri\FotoController@store');
             // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
             // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
             // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
@@ -172,7 +172,11 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
 Route::get('/', 'User\UserPageController@index')->name('home');
 Route::get('profile', 'User\UserPageController@profil')->name('profile');
 Route::get('berita', 'User\UserPageController@berita')->name('berita');
-Route::get('galeri', 'User\UserPageController@galeri')->name('galeri');
+Route::prefix('galeri')->group(function () {
+    Route::get('/', 'User\UserPageController@galeri')->name('galeri');
+    Route::get('show', 'User\UserGaleriController@getFoto');
+});
+//foto
 Route::prefix('faq')->group(function () {
     Route::get('/', 'User\UserPageController@faq')->name('faq');
     Route::get('show', 'User\UserFAQController@getFAQ');
