@@ -168,8 +168,15 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
     
 });
 
-Route::get('/', 'User\UserPageController@index');
-Route::get('profil', 'User\UserPageController@profil');
+//Route guest
+Route::get('/', 'User\UserPageController@index')->name('home');
+Route::get('profile', 'User\UserPageController@profil')->name('profile');
+Route::get('berita', 'User\UserPageController@berita')->name('berita');
+Route::get('galeri', 'User\UserPageController@galeri')->name('galeri');
+Route::prefix('faq')->group(function () {
+    Route::get('/', 'User\UserPageController@faq')->name('faq');
+    Route::get('show', 'User\UserFAQController@getFAQ');
+});
 
 Route::get('tes', function () {
     return view('tes');
@@ -184,5 +191,5 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::any('/{all}', function(){
-    return '404 ! It Works';
+    return view('error404');
 })->where('all', '.*');
