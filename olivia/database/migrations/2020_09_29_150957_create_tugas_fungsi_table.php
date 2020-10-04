@@ -15,9 +15,9 @@ class CreateTugasFungsiTable extends Migration
     {
         Schema::create('tugas_fungsi', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('tugas');
-            $table->text('fungsi');
+            $table->string('nama');
+            $table->mediumText('deskripsi');
+            $table->enum('status', ['aktif', 'nonaktif']);
             $table->timestamps();
         });
     }

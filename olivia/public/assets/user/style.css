@@ -6,8 +6,10 @@
 @import 'css/magnific-popup.css';
 @import 'css/font-awesome.min.css';
 @import 'css/footer.css';
-
-
+@import 'css/material-dashboard.css?v=2.1.2';
+@import 'css/page.css';
+@import 'user.css';
+@import url("https://fonts.googleapis.com/css?family=Questrial");
 
 * {
     margin: 0;
@@ -45,11 +47,12 @@ a:active {
 
 li {
     list-style: none;
+    color: #2f2e2e;
 }
 
 p {
     font-family: 'Roboto', sans-serif;
-    color:#585858;
+    color: #2f2e2e;
     font-size: 15px;
     font-weight: 500;
     margin-top: 0;
@@ -68,7 +71,7 @@ img {
 }
 
 .section_padding_100 {
-    padding-top: 100px;
+   /* padding-top: 100px;*/
     padding-bottom: 100px;
 }
 
@@ -1049,7 +1052,7 @@ span.accor-open {
 }
 
 .few-words-contents {
-    background-color: #211b31;
+    background-color: #5095a5;
 }
 
 .few-words-text .section-heading {
@@ -1714,6 +1717,36 @@ span.accor-open {
     color: #292d4f;
 }
 
+.custom-upload__input {
+  height: 0;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.custom-upload__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 10px 40px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 2px solid #000000;
+  font-family: "Questrial", sans-serif;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fff;
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.custom-upload__button:hover {
+  background-color: #9c27b0;
+  color: #fff;
+  cursor: pointer;
+}
+.custom-upload__button .fa.fa-file-image-o {
+  font-family: FontAwesome;
+}
 
 /* --------------------------------
 ============= The End =============

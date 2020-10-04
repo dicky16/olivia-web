@@ -2,10 +2,8 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Nama Lengkap</th> 
-                                <th>Jabatan</th>
-                                <th>Instansi</th>
-                                <th>Sosmed</th>
+                                <th>Nama Struktur Organisasi</th> 
+                                <th>Deskripsi</th>
                                 <th>Gambar</th>
                                 <th>Aksi</th>
                             </tr>

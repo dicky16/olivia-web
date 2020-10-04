@@ -168,7 +168,7 @@ $('body').on('submit', '#form-edit-sejarah', function(e) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil tambah sejarah',
+                    text: 'Berhasil update Sejarah',
                     timer: 1200,
                     showConfirmButton: false
                 });

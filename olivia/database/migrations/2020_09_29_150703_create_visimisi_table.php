@@ -17,6 +17,7 @@ class CreateVisimisiTable extends Migration
             $table->id();
             $table->string('judul');
             $table->mediumText('deskripsi');
+            $table->enum('status', ['aktif', 'nonaktif']);
             $table->timestamps();
         });
     }

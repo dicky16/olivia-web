@@ -9,7 +9,8 @@
     
 
     <!-- Title -->
-    <title>Olivia</title>
+    <!-- <title>Olivia</title> -->
+    @yield('title')
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('user/img/core-img/atomic.png') }}">
@@ -44,11 +45,11 @@
 
                             <div class="collapse navbar-collapse justify-content-end" id="olv-navbar">
                                 <ul class="navbar-nav animated" id="nav">
-                                    <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="artikel.html">Berita</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                                    <li class="nav-item @if(Route::is('home')) active @endif"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item @if(Route::is('profile')) active @endif"><a class="nav-link" href="{{ url('profile') }}">Profile</a></li>
+                                    <li class="nav-item @if(Route::is('berita')) active @endif"><a class="nav-link" href="{{ url('berita') }}">Berita</a></li>
+                                    <li class="nav-item @if(Route::is('galeri')) active @endif"><a class="nav-link" href="{{ url('galeri') }}">Gallery</a></li>
+                                    <li class="nav-item @if(Route::is('faq')) active @endif"><a class="nav-link" href="{{ url('faq') }}">FAQ</a></li>
                                 </ul>
                                 <!-- Search Form Area Start -->
                                 <div class="search-form-area animated">
@@ -63,8 +64,8 @@
                                 </div>
                                 <!-- Login/Register btn -->
                                 <div class="login-register-btn">
-                                    <a href="#">Login</a>
-                                    <a href="#">/ Register</a>
+                                    <a href="login.html">Login/Register</a>
+                                   
                                 </div>
                             </div>
                         </nav>
@@ -90,29 +91,7 @@
               -----------------> 
             
             <form class="form-horizontal" role="form" method="post" action="contact.php">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11176.264540637865!2d112.61440279667983!3d-7.956904248467246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11a949e002df2194!2sPendidikan%20Vokasi%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1601097931634!5m2!1sid!2sid" width="400" height="390" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-               
-              <!-- div class="form-group">
-                <div class="col-sm-12">
-                  <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="">
-                </div>
-              </div>
-
-              <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message"></textarea>
-              
-              <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-                <div class="button">
-                  <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
-                </div>
-              
-              </button> -->
-              
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11176.264540637865!2d112.61440279667983!3d-7.956904248467246!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x11a949e002df2194!2sPendidikan%20Vokasi%20Universitas%20Brawijaya!5e0!3m2!1sid!2sid!4v1601097931634!5m2!1sid!2sid" width="400" height="390" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>              
             </form>
             
               <!---------------- 
@@ -185,6 +164,141 @@
     <script src="{{ asset('user/js/plugins.js') }}"></script>
     <!-- Active js -->
     <script src="{{ asset('user/js/active.js') }}"></script>
+    @yield('js-user')
+    <script type="text/javascript">$(function () {
+           $(".input input")
+              .focus(function () {
+                 $(this)
+                    .parent(".input")
+                    .each(function () {
+                       $("label", this).css({
+                          "line-height": "18px",
+                          "font-size": "18px",
+                          "font-weight": "100",
+                          top: "0px"
+                       });
+                       $(".spin", this).css({
+                          width: "100%"
+                       });
+                    });
+              })
+              .blur(function () {
+                 $(".spin").css({
+                    width: "0px"
+                 });
+                 if ($(this).val() == "") {
+                    $(this)
+                       .parent(".input")
+                       .each(function () {
+                          $("label", this).css({
+                             "line-height": "60px",
+                             "font-size": "24px",
+                             "font-weight": "300",
+                             top: "10px"
+                          });
+                       });
+                 }
+              });
+
+           $(".button").click(function (e) {
+              var pX = e.pageX,
+                 pY = e.pageY,
+                 oX = parseInt($(this).offset().left),
+                 oY = parseInt($(this).offset().top);
+
+              $(this).append(
+                 '<span class="click-efect x-' +
+                    oX +
+                    " y-" +
+                    oY +
+                    '" style="margin-left:' +
+                    (pX - oX) +
+                    "px;margin-top:" +
+                    (pY - oY) +
+                    'px;"></span>'
+              );
+              $(".x-" + oX + ".y-" + oY + "").animate(
+                 {
+                    width: "500px",
+                    height: "500px",
+                    top: "-250px",
+                    left: "-250px"
+                 },
+                 600
+              );
+              $("button", this).addClass("active");
+           });
+
+           $(".alt-2").click(function () {
+              if (!$(this).hasClass("material-button")) {
+                 $(".shape").css({
+                    width: "100%",
+                    height: "100%",
+                    transform: "rotate(0deg)"
+                 });
+
+                 setTimeout(function () {
+                    $(".overbox").css({
+                       overflow: "initial"
+                    });
+                 }, 600);
+
+                 $(this).animate(
+                    {
+                       width: "140px",
+                       height: "140px"
+                    },
+                    500,
+                    function () {
+                       $(".box").removeClass("back");
+
+                       $(this).removeClass("active");
+                    }
+                 );
+
+                 $(".overbox .title").fadeOut(300);
+                 $(".overbox .input").fadeOut(300);
+                 $(".overbox .button").fadeOut(300);
+
+                 $(".alt-2").addClass("material-buton");
+              }
+           });
+
+           $(".material-button").click(function () {
+              if ($(this).hasClass("material-button")) {
+                 setTimeout(function () {
+                    $(".overbox").css({
+                       overflow: "hidden"
+                    });
+                    $(".box").addClass("back");
+                 }, 200);
+                 $(this).addClass("active").animate({
+                    width: "700px",
+                    height: "700px"
+                 });
+
+                 setTimeout(function () {
+                    $(".shape").css({
+                       width: "50%",
+                       height: "50%",
+                       transform: "rotate(45deg)"
+                    });
+
+                    $(".overbox .title").fadeIn(300);
+                    $(".overbox .input").fadeIn(300);
+                    $(".overbox .button").fadeIn(300);
+                 }, 700);
+
+                 $(this).removeClass("material-button");
+              }
+
+              if ($(".alt-2").hasClass("material-buton")) {
+                 $(".alt-2").removeClass("material-buton");
+                 $(".alt-2").addClass("material-button");
+              }
+           });
+        });
+        </script>
 </body>
 
 </html>
