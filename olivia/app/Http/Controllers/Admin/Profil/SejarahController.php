@@ -57,7 +57,7 @@ class SejarahController
     
     public function loadDataTable()
     {
-        return view('datatable.SejarahDataTable');
+        return view('datatable.sejarahDataTable');
     }
     /**
      * Show the form for creating a new resource.
