@@ -14,7 +14,7 @@
         </div>
 
         <div class="d-sm-flex align-items-center m-3">
-            <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
+            <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#SocialModal">+
                 Add Social Media</a>
             </div>
 
@@ -27,12 +27,12 @@
     </div>
 </div>
 
-<!-- Add Berita Modal-->
-<div class="modal fade" id="ArtikelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Add Social Modal-->
+<div class="modal fade" id="SocialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Pertanyaan User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Social Media</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -40,32 +40,83 @@
             <div class="modal-body">
 
 
-                <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
+                <form id="form-tambah-social">
                     @csrf
 
-                    <label for="judulBerita">Nama Social Media</label>
-                    <input type="text" class="form-control" id="" name="judul">
-                    <div class="form-group mt-3">
-                        <label for="file" class="mt-2">Gambar</label>
-                        <input id="gambar" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
-                    </div>
-                    <label for="judulBerita">Link Social</label>
-                    <input type="text" class="form-control" id="" name="judul">
-                  
+                    <label for="namaSocial">Nama Social Media</label>
+                    <input type="text" class="form-control" name="nama">
+                    
+                    <label for="linkSocial">Link Social</label>
+                    <input type="text" class="form-control" name="url">
 
+                    <div class="form-group mt-3">
+                        <label for="gambar" class="mt-2">Icon</label>
+                        <input id="icon" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                    </div>
+                  
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="hidden" name="edit-id">
+                        <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Memproses...
+                        </button>
+                    </div>
                    
 
                 </form>
 
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button>
-                <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Memproses...
+            
+        </div>
+    </div>
+</div>
+
+<!-- edit Social Modal-->
+<div class="modal fade" id="editSocialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Social Media</h5>
+                <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
+            <div class="modal-body">
+
+
+                <form id="form-edit-social">
+                    @csrf
+
+                    <label for="namaSocial">Nama Social Media</label>
+                    <input type="text" class="form-control" name="nama-edit">
+                    
+                    <label for="linkSocial">Link Social</label>
+                    <input type="text" class="form-control" name="url-edit">
+
+                    <label for="linkSocial">View Icon</label>
+                    <img src="" alt="" id="view-icon" style="width: 60%; height: 60%; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
+
+                    <div class="form-group mt-3">
+                        <label for="gambar" class="mt-2">Icon</label>
+                        <input id="icon-edit" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                    </div>
+                  
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                        <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Memproses...
+                        </button>
+                    </div>
+                   
+
+                </form>
+
+            </div>
+            
         </div>
     </div>
 </div>

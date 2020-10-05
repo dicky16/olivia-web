@@ -58,7 +58,39 @@ class FotoController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'nama' => 'required',
+            'gambar' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $nama = $request->nama;
+            $url = $request->url;
+            $icon = $request->file('icon');
+            $namaOriFile = $icon->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "assets/image/social";
+            $icon->move($filePath, $fileName, "");
+
+            $social = DB::table('sosial_media')->insert([
+                'nama' => $nama,
+                'url' => $url,
+                'icon' => $filePath.'/'.$fileName,
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($social) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
