@@ -8,7 +8,7 @@ $(document).ready(function() {
 loadDataFoto();
 function loadDataFoto() {
     $('#table-foto').load('/admin/foto/datatable', function() {
-        var host = window.location.origin;
+        var host = window.location.origin + '/assets/image/galeri/foto/';
         $('#datatable-foto').DataTable({
             processing: true,
             serverSide: true,
@@ -23,6 +23,8 @@ function loadDataFoto() {
                     data: 'foto',
                     name: 'foto',
                     "render": function(data, type, row) {
+                        var foto = data;
+                        console.log(foto);
                         return '<img src=" ' + host + '/'+ data + ' " style="height:100px;width:100px;"/>';
                     },
                     searchable: false
@@ -32,5 +34,13 @@ function loadDataFoto() {
         });
     });
 }
+
+$("body").on("click","#btn-add-image",function(){ 
+    var html = $(".clone").html();
+    $(".increment").after(html);
+});
+$("body").on("click","#btn-remove-image",function(){ 
+    $(this).parents(".control-group").remove();
+});
 
 });

@@ -39,12 +39,25 @@ class SejarahController
             </a>';
             return $btn;
           })
-        ->rawColumns(['aksi'])
+          ->addColumn('state', function($row){
+              $btn = null;
+                $status = $row->status;
+                if($status == "nonaktif") {
+                    $btn = '<button class="btn btn-success" type="button" data-id="'.$row->id.'" id="btn-aktif">Aktifkan</button> &nbsp;';
+                    $btn = $btn. '<button class="btn btn-success" type="button" disabled>Nonaktifkan</button>';
+                } else {
+                    $btn = '<button class="btn btn-success" type="button" disabled>Aktifkan</button> &nbsp;';
+                    $btn = $btn. '<button class="btn btn-success" type="button" data-id="'.$row->id.'" id="btn-nonaktif">Nonaktifkan</button>';
+                }
+                return $btn;
+          })
+        ->rawColumns(['aksi', 'state'])
         ->make(true);
     }
+    
     public function loadDataTable()
     {
-        return view('datatable.SejarahDataTable');
+        return view('datatable.sejarahDataTable');
     }
     /**
      * Show the form for creating a new resource.
@@ -167,5 +180,29 @@ class SejarahController
         return response()->json([
             'status' => 'deleted',
         ]);
+    }
+
+    public function aktifkan($id)
+    {
+        $aktif = DB::table('sejarah')->where('id', $id)->update([
+            'status' => 'aktif'
+        ]);
+        if($aktif) {
+            return response()->json([
+                'status' => 'ok',
+            ]);
+        }
+    }
+
+    public function nonAktifkan($id)
+    {
+        $aktif = DB::table('sejarah')->where('id', $id)->update([
+            'status' => 'nonaktif'
+        ]);
+        if($aktif) {
+            return response()->json([
+                'status' => 'ok',
+            ]);
+        }
     }
 }

@@ -9,6 +9,7 @@ loadDataSejarah();
 function loadDataSejarah() {
     $('#table-sejarah').load('/admin/sejarah/datatable', function() {
         var host = window.location.origin;
+        var id = null;
         $('#datatable-sejarah').DataTable({
             processing: true,
             serverSide: true,
@@ -20,11 +21,60 @@ function loadDataSejarah() {
                 {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
                 {data: 'judul',name: 'judul'},
                 {data: 'deskripsi',name: 'deskripsi'},
+                {
+                    data: 'state',
+                    name: 'state',
+                    searchable: false
+                },
                 {data: 'aksi',name: 'aksi',searchable: false,orderable: false}
             ]
         });
     });
 }
+
+//aktifkan
+$('body').on('click', '#btn-aktif', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $.ajax({
+        type: 'GET',
+        url: '/admin/sejarah/aktif/' + id,
+        success: function(data) {
+            if(data.status == "ok") {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: 'Berhasil ganti status sejarah',
+                    timer: 1200,
+                    showConfirmButton: false
+                });
+                loadDataSejarah();
+            }
+        }
+    });
+});
+
+//nonaktifkan
+$('body').on('click', '#btn-nonaktif', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $.ajax({
+        type: 'GET',
+        url: '/admin/sejarah/nonaktif/' + id,
+        success: function(data) {
+            if(data.status == "ok") {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: 'Berhasil ganti status sejarah',
+                    timer: 1200,
+                    showConfirmButton: false
+                });
+                loadDataSejarah();
+            }
+        }
+    });
+});
 
 //tambah sejarah
 $('body').on('submit', '#form-tambah-sejarah', function(e) {
@@ -118,7 +168,7 @@ $('body').on('submit', '#form-edit-sejarah', function(e) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil tambah sejarah',
+                    text: 'Berhasil update Sejarah',
                     timer: 1200,
                     showConfirmButton: false
                 });

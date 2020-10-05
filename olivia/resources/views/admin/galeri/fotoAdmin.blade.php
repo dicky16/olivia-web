@@ -1,5 +1,6 @@
 @extends('admin.layout.master')
 @section('content')
+
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Foto</h1>
@@ -17,17 +18,59 @@
             <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#ArtikelModal">+
                 Add Foto</a>
             </div>
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div> 
+            @endif
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <div id="table-foto"></div> 
-                   
+                    <!-- <div id="table-foto"></div>  -->
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Foto</th>
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($data as $image)
+                            <?php $no = 1; ?>
+                        <tr>
+                            <td>{{$no}}</td>
+                            <td>{{$image->nama}}</td>
+                            <td> 
+                                <?php foreach(json_decode($image->foto)as $picture) { ?>
+                                    <img src="{{ asset('/image/galeri/foto/'.$picture) }}" style="height:120px; width:200px"/>
+                                    <?php } ?>
+                            </td>
+                            <td>
+                            <a href="javascript:void(0)" data-id="{{$image->id}}" data-nama="{{$image->nama}}" class="btn-delete-foto" style="font-size: 18pt; text-decoration: none; color:red;">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            </td>
+                        </tr>
+                        <?php $no++; ?>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+@if(session('error'))
+    <!-- <div class="alert alert-success">
+        {{ session('error') }}
+    </div>  -->
+    <script>
+        alert('{{ session('error') }}')
+    </script>
+@endif
 <!-- Add Berita Modal-->
 <div class="modal fade" id="ArtikelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -41,7 +84,7 @@
             <div class="modal-body">
 
 
-                <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
+                <!-- <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="" id="form-tambah-berita">
                     @csrf
 
                     <label for="judulBerita">Keterangan Foto</label>
@@ -53,17 +96,48 @@
                     </div>
 
 
+                </form> -->
+                <form method="post" action="{{url('admin/foto')}}" enctype="multipart/form-data">
+                {{csrf_field()}}
+                        <label for="foto">Nama Foto</label>
+                        <input type="text" class="form-control" name="nama">
+                        <div class="input-group control-group increment" >
+                        <input type="file" name="filename[]" class="form-control">
+                        <div class="input-group-btn"> 
+                            <button class="btn btn-success" id="btn-add-image" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                        </div>
+                        </div>
+                        <div class="clone hide">
+                        <div class="control-group input-group" style="margin-top:10px">
+                            <input type="file" name="filename[]" class="form-control">
+                            <div class="input-group-btn"> 
+                            <button class="btn btn-danger" id="btn-remove-image" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                            </div>
+                        </div>
+                        </div>
+                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
                 </form>
+                <!-- <script type="text/javascript">
+                    $(document).ready(function() {
+                        $(".btn-success").click(function(){ 
+                            var html = $(".clone").html();
+                            $(".increment").after(html);
+                        });
+                        $("body").on("click",".btn-danger",function(){ 
+                            $(this).parents(".control-group").remove();
+                        });
+                    });
+                </script> -->
 
             </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
                 <button class="btn btn-primary" id="btn-tambah-berita" type="button" data-penulis="{{ auth()->user()->id }}">Submit</button>
                 <button class="btn btn-primary btn-loading" type="button" style="display: none;" disabled>
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Memproses...
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
