@@ -37,114 +37,9 @@
         </div>
 
         <div class="olv-portfolio">
-            <div class="single_gallery_item 18">
-                <img src="{{ asset('user/img/gall-img/2018a/1.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/2.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item gd 18">
-                <img src="{{ asset('user/img/gall-img/2018a/4.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/5.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/9.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 18">
-                <img src="{{ asset('user/img/gall-img/2018a/2.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 18">
-                <img src="{{ asset('user/img/gall-img/2018a/3.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/1.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/4.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/6.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/3.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single_gallery_item 19">
-                <img src="{{ asset('user/img/gall-img/2019a/8.jpg') }}" alt="">
-                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
-                    <div class="port-hover-text text-center">
-                        <h4>DOKUMENTASI</h4>
-                        <a href="#">OLIVIA</a>
-                    </div>
-                </div>
-            </div>
+            <!-- <div id="foto-view"></div> -->
+            <span id="foto-view"></span>
+            
         </div>
 
         <!-- Discover More btn -->
@@ -152,4 +47,32 @@
             <a href="#" class="btn olv-btn">Load More</a>
         </div>
     </section>
+@endsection
+@section('js-user')
+<script>
+    $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    loadFOTO();
+    function loadFOTO()
+    {
+        $.ajax({
+            type: 'GET',
+            url: '/galeri/show/',
+            success: function(data) {
+                if(data.success == true) {
+                //user_jobs div defined on page
+                $('#foto-view').html(data.html);
+                } else {
+                    console.log(data.html)
+                }
+            }
+        });
+    }
+
+    });
+</script>
 @endsection

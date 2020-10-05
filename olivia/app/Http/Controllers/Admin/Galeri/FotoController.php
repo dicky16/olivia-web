@@ -12,9 +12,16 @@ class FotoController
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        setTimeZone();
+    }
+    
     public function index()
     {
-        //
+        $data = DB::table('foto')->orderBy('id', 'desc')->get();
+        return view('admin.galeri.fotoAdmin', compact('data'));
     }
 
     public function getFotoDataTable()
@@ -24,10 +31,10 @@ class FotoController
         return Datatables::of($data)
         ->addIndexColumn()
         ->addColumn('aksi', function($row){
-            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-Foto" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-ofto" style="font-size: 18pt; text-decoration: none;" class="mr-3">
             <i class="fas fa-pen-square"></i>
             </a>';
-            $btn = $btn. '<a href="javascript:void(0)" data-i d="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-berita" style="font-size: 18pt; text-decoration: none; color:red;">
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-foto" style="font-size: 18pt; text-decoration: none; color:red;">
             <i class="fas fa-trash"></i>
             </a>';
             return $btn;
@@ -57,8 +64,35 @@ class FotoController
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        ]);
+        if($validator->passes()) {
+            if($request->hasfile('filename'))
+            {
+                foreach($request->file('filename') as $image)
+                {
+                    $name=$image->getClientOriginalName();
+                    $image->move(public_path().'/assets/image/galeri/foto/', $name);  // your folder path
+                    $data[] = $name;  
+                }
+            }
+            
+            $foto = DB::table('foto')->insert([
+                'nama' => $request->nama,
+                'foto' => json_encode($data),
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+            if($foto) {
+                return back()->with('success', 'Image berhasil di upload');
+            }
+        }
+
+        return back()->with('error', $validator->errors()->first());
+        
     }
 
     /**
