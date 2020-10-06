@@ -66,7 +66,7 @@ $(document).ready(function() {
                         showConfirmButton: false
                     });
                     loadDataBerita();
-                    $('#BeritaModal').trigger('reset');
+                    $('#form-tambah-berita').trigger('reset');
                     $('#BeritaModal').modal('hide');
                 } else if(data.status == "validation_error") {
                     if(data.status == "validation.max.file") {

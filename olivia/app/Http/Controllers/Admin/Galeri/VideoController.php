@@ -20,20 +20,26 @@ class VideoController
 
     public function getVideoDataTable()
     {
-        $data = DB::table('video')
-        ->get();
+        $data = DB::table('video')->orderBy('id', 'desc')->get();
         return Datatables::of($data)
         ->addIndexColumn()
         ->addColumn('aksi', function($row){
-            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-Foto" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-video" style="font-size: 18pt; text-decoration: none;" class="mr-3">
             <i class="fas fa-pen-square"></i>
             </a>';
-            $btn = $btn. '<a href="javascript:void(0)" data-i d="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-berita" style="font-size: 18pt; text-decoration: none; color:red;">
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-video" style="font-size: 18pt; text-decoration: none; color:red;">
             <i class="fas fa-trash"></i>
             </a>';
             return $btn;
           })
-        ->rawColumns(['aksi'])
+          ->addColumn('url', function($row){
+            $url = $row->video;
+            $html = '<a href="'.$url.'" class="btn-edit-Foto" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            '.$url.'
+            </a>';
+            return $html;
+          })
+        ->rawColumns(['aksi','url'])
         ->make(true);
     }
     public function loadDataTable()
@@ -58,7 +64,32 @@ class VideoController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'nama' => 'required',
+            'video' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $nama = $request->nama;
+            $video = $request->video;
+
+            $video = DB::table('video')->insert([
+                'nama' => $nama,
+                'video' => $video,
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+            if($video) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -80,7 +111,10 @@ class VideoController
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('video')->where('id', $id)->get();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -92,7 +126,32 @@ class VideoController
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = array (
+            'nama' => 'required',
+            'video' => 'required',
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $nama = $request->nama;
+            $video = $request->video;
+
+            $video = DB::table('video')->where('id', $id)->update([
+                'nama' => $nama,
+                'video' => $video,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+            if($video) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -103,6 +162,11 @@ class VideoController
      */
     public function destroy($id)
     {
-        //
+        $hapus = DB::table('video')->where('id', $id)->delete();
+        if($hapus) {
+            return response()->json([
+                'status' => 'deleted',
+            ]);
+        }
     }
 }

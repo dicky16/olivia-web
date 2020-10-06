@@ -20,3 +20,6 @@
     </div>
 </div> -->
 @endforeach
+<div class="row">
+    {{ $data->links() }}
+</div>

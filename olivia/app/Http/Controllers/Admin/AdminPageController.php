@@ -34,9 +34,13 @@ class AdminPageController
     {
     	return view('admin.profil.visimisiAdmin');
     }
-     public function struktur()
+    public function struktur()
     {
         return view('admin.profil.strukturOrganisasi');
+    }
+    public function infoStruktur()
+    {
+        return view('admin.profil.infoStruktur');
     }
     public function tugasfungsi()
     {

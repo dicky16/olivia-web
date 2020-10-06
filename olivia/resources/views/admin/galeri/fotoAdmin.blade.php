@@ -100,7 +100,9 @@
                 <form method="post" action="{{url('admin/foto')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
                         <label for="foto">Nama Foto</label>
-                        <input type="text" class="form-control" name="nama">
+                        <input type="text" class="form-control" name="nama" required>
+                        <label for="foto">Tahun</label>
+                        <input type="text" class="form-control" name="tahun" required>
                         <div class="input-group control-group increment" >
                         <input type="file" name="filename[]" class="form-control">
                         <div class="input-group-btn"> 

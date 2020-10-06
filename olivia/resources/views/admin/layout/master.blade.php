@@ -134,6 +134,7 @@
                         <a class="collapse-item" href="{{ url('admin/sejarah') }}">Sejarah</a>
                         <a class="collapse-item" href="{{ url('admin/visimisi') }}">Visi dan Misi</a>
                         <a class="collapse-item" href="{{ url('admin/struktur') }}">Struktur Organisasi</a>
+                        <a class="collapse-item" href="{{ url('admin/info-struktur') }}">Info Struktur Organisasi</a>
                         <a class="collapse-item" href="{{ url('admin/tugasfungsi') }}">Tugas dan Fungsi</a>
                     </div>
                 </div>

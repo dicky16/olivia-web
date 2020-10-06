@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserPageController
 {
@@ -13,12 +14,22 @@ class UserPageController
 
     public function profil()
     {
-        return view('user.profil');
+        $data = DB::table('visimisi')->get();
+        return view('user.profil',compact('data'));
     }
 
     public function berita()
     {
-        return view('user.berita');
+        $data = DB::table('berita')->orderBy('id', 'desc')
+        ->join('users', 'users.id', '=', 'berita.id_penulis')
+        ->select('berita.*', 'users.name')
+        ->get();
+        return view('user.info.berita', compact('data'));
+    }
+
+    public function pengumuman()
+    {
+        return view('user.info.pengumuman');
     }
 
     public function galeri()
