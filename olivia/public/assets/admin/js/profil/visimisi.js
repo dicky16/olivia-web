@@ -18,7 +18,8 @@ $(document).ready(function() {
                 columns: [
                     {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
                     {data: 'judul',name: 'judul'},
-                    {data: 'deskripsi',name: 'deskripsi'},
+                    {data: 'visi',name: 'visi'},
+                    {data: 'misi',name: 'misi'},
                     {
                         data: 'state',
                         name: 'state',
@@ -80,12 +81,13 @@ $(document).ready(function() {
         var formData = new FormData();
     
         var judul = $('input[name=judul]').val();
-        var deskripsi = tinymce.get('deskripsi-visimisi').getContent();
-    
+        var visi = tinymce.get('deskripsi-visi').getContent();
+        var misi = tinymce.get('deskripsi-misi').getContent();
+
         formData.append('judul', judul);
-        formData.append('deskripsi', deskripsi);
-        console.log(judul)
-        console.log(deskripsi)
+        formData.append('visi', visi);
+        formData.append('misi', misi);
+        
         $.ajax({
             type: 'POST',
             url: '/admin/visimisi',
@@ -145,10 +147,12 @@ $(document).ready(function() {
         var formData = new FormData();
         var id = $('input[name=edit-id]').val();
         var judul = $('input[name=judul-edit]').val();
-        var deskripsi = tinymce.get('deskripsi-visimisi-edit').getContent();
+        var visi = tinymce.get('deskripsi-visi-edit').getContent();
+        var misi = tinymce.get('deskripsi-misi-edit').getContent();
     
         formData.append('judul', judul);
-        formData.append('deskripsi', deskripsi);
+        formData.append('visi', visi);
+        formData.append('misi', misi);
     
         $.ajax({
             type: 'POST',

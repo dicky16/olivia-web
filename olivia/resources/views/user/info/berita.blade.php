@@ -8,7 +8,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumbContent">
-                        <h2>Artikel</h2>
+                        <h2>INFO</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -27,91 +27,41 @@
                 <div class="col-12 col-md-8">
                     <div class="olv-blog-posts">
                         <div class="row">
-                            
+                            @foreach($data as $berita)
+                            <?php
+                                $tglConvert = explode($berita->created_at, " ");
+                                $tgl = date('d F Y', strtotime($tglConvert[0]));
+                            ?>
                             <div class="col-12">
                                 <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
                                     <!-- Post Thumb -->
                                     <div class="blog-post-thumb">
-                                        <img src="{{ asset('user/img/blog-img/kongres.jpeg') }}" alt="">
+                                        <img src="{{ url('') }}/{{$berita->foto}}" alt="">
                                     </div>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
-                                        <h6>By <a href="#">Dikti, </a><a href="#">6 November 2019</a></h6>
+                                        <h6>By <a href="#">{{ $berita->name }}, </a><a href="#">{{$tgl}}</a></h6>
                                     </div>
                                     <!-- Post Title -->
-                                    <h2>Kongres VI Forum Perguruan Tinggi Vokasi Indonesia</h2>
+                                    <h2>{{$berita->judul}}</h2>
                                     <!-- Post Excerpt -->
-                                    <p>SEMARANG – Kongres VI Forum Perguruan Tinggi Vokasi seluruh Indonesia (FPTVI) diselenggarakan di Gedung Prof. Sudharto, Universitas Diponegoro, Rabu (6/11). Pelaksanaan kongres kali ini mengundang perwakilan anggota forum dan guru-guru SMK se-Indonesia dengan tujuan terwujudnya konsep integrasi antara sekolah kejuruan, perguruan tinggi vokasi dan pengguna lulusan, dalam ini industri. </p>
+                                    <p>{!! $berita->deskripsi !!}</p>
                                     <!-- Read More btn -->
-                                    <a href="#">Read More</a>
+                                    <a href="{{ url('berita') }}/{{$berita->id}}">Read More</a>
                                 </div>
                             </div>
+                            @endforeach
                             
-                            <div class="col-12">
-                                <div class="single-blog wow fadeInUp" data-wow-delay="1.2s">
-                                    <!-- Post Thumb -->
-                                    <div class="blog-post-thumb">
-                                        <img src="{{ asset('user/img/blog-img/undip.jpg') }}" alt="">
-                                    </div>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">detikNews, </a>11 November 2019<a href="#"></a></h6>
-                                    </div>
-                                    <!-- Post Title -->
-                                    <h2>Raih 53 Penghargaan, IPB Jadi Juara Umum Olimpiade Vokasi 2019</h2>
-                                    <!-- Post Excerpt -->
-                                    <p>Jakarta - Tim mahasiswa Sekolah Vokasi (SV) IPB University kembali Juara Umum Olimpiade Vokasi Indonesia (Olivia) ke-4 yang digelar di Universitas Diponegoro, Semarang. Ada sebanyak 53 mahasiswa IPB University yang meraih juara.</p>
-                                    <!-- Read More btn -->
-                                    <a href="#">Read More</a>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="single-blog wow fadeInUp" data-wow-delay="1.7s">
-                                    <!-- Post Thumb -->
-                                    <div class="blog-post-thumb">
-                                        <img src="{{ asset('user/img/blog-img/raker.jpg') }}" alt="">
-                                    </div>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI, </a><a href="#">23 Maret 2020</a></h6>
-                                    </div>
-                                    <!-- Post Title -->
-                                    <h2>Rapat Kerja Forum Pendidikan Tinggi Vokasi Indonesia Tahun 2020</h2>
-                                    <!-- Post Excerpt -->
-                                    <p>Dalam rangka implementasi prograrn kerja tahun 2020, Forum Pendidikan Tinggi Vokasi Indonesia (FPTVI) akan melaksanakan kegiatan Rapat Kerja FPTVI. Kegiatan tersebut akan dilaksanakan di Universitas Brawijaya, Malang pada tanggal 23 – 25 Maret 2020 dengan mengundang seluruh anggota FPTVI yang berjumlah 119 Perguruan Tinggi. Kegiatan ini juga akan menghadirkan pembicara dari dalam dan luar negeri, diantaranya dari Jerman dan Taiwan, KADIN Pusat, Direktur SMK serta dari FPTVI. Pada kegiatan ini juga akan dilaksanakan penandatanganan MOU/MOA antar Perguruan Tinggi dan dengan KADIN.</p>
-                                    <!-- Read More btn -->
-                                    <a href="#">Read More</a>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12">
-                                <div class="single-blog wow fadeInUp" data-wow-delay="1.7s">
-                                    <!-- Post Thumb -->
-                                    <div class="blog-post-thumb">
-                                        <img src="{{ asset('user/img/blog-img/dipon.jpg') }}" alt="">
-                                    </div>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">tribunnews, </a><a href="#">12 November 2019</a></h6>
-                                    </div>
-                                    <!-- Post Title -->
-                                    <h2>Smart Bin, Tempat Sampah Pintar dan Otomatis Buka Tutup Ciptaan Tim Sekolah Vokasi Undip</h2>
-                                    <!-- Post Excerpt -->
-                                    <p>SSEMARANG - Tim sekolah vokasi Universitas Diponegoro (Undip) mengembangkan inovasi smart bin, atau tempat sampah pintar.Smart bin besutan tim tersebut mampu membuka dan menutup secara otomatis.Juga mampu menyalakan alarm penanda jika tempat sampah tersebut telah terisi penuh.</p>
-                                    <!-- Read More btn -->
-                                    <a href="#">Read More</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- Pagination -->
                     <div class="olv-pagination-area">
                         <nav>
                             <ul class="pagination">
-                                <li class="page-item active"><a class="page-link" href="#">1.</a></li>
+                                <!-- <li class="page-item active"><a class="page-link" href="#">1.</a></li>
                                 <li class="page-item"><a class="page-link" href="#">2.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3.</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3.</a></li> -->
+                                {{ $data->links() }}
                             </ul>
                         </nav>
                     </div>
@@ -121,18 +71,24 @@
                     <div class="olv-blog-sidebar">
                         <div class="latest-blog-posts mb-100">
                             <h5>Latest Posts</h5>
+                            @foreach($latest as $terbaru)
+                            <?php
+                                $tglConvertLatest = explode($terbaru->created_at, " ");
+                                $tglLatest = date('d F Y', strtotime($tglConvertLatest[0]));
+                            ?>
                             <div class="single-latest-blog-post d-flex">
                                 <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/ga.png') }}" alt="">
+                                    <img src="{{ url('') }}/{{$terbaru->foto}}" alt="">
                                 </div>
                                 <div class="latest-blog-post-content">
-                                    <h6><a href="#">Aturan Dikotomi Diploma 4 Perlu Diubah</a></h6>
+                                    <h6><a href="#">{{ $terbaru->judul}}</a></h6>
                                     <div class="post-meta">
-                                        <h6>By <a href="#">Sindonews, </a>/<a href="#"> 20 February 2018</a></h6>
+                                        <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ $tglLatest}}</a></h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-latest-blog-post d-flex">
+                            @endforeach
+                            <!-- <div class="single-latest-blog-post d-flex">
                                 <div class="latest-blog-post-thumb">
                                     <img src="{{ asset('user/img/blog-img/expo.jpeg') }}" alt="">
                                 </div>
@@ -208,11 +164,29 @@
                                         <h6>By <a href="#">teknikelektrod3</a>/<a href="#">  28 Juni 2019 </a></h6>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>    
                     </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+@section('js-user')
+<script>
+// $(document).ready(function() {
+//     $.ajaxSetup({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//     });
+    
+//     //show detail
+//     $( "#read-more" ).click(function() {
+//         var id = $(this).data('id');
+//         location.replace('{{ url('berita') }}/' + id);
+//     });
+    
+// });
+</script>
 @endsection

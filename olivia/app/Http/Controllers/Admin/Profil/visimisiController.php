@@ -78,17 +78,20 @@ class visimisiController
     {
         $rules = array (
             'judul' => 'required',
-            'deskripsi' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
         );
         
         $validator = Validator::make($request->all(), $rules);
           if($validator->passes()) {
             $judul = $request->judul;
-            $deskripsi = $request->deskripsi;
+            $visiPost = $request->visi;
+            $misi = $request->misi;
 
             $visi = DB::table('visimisi')->insert([
                 'judul' => $judul,
-                'deskripsi' => $deskripsi,
+                'visi' => $visiPost,
+                'misi' => $misi,
                 'status' => 'nonaktif',
                 'created_at' =>  \Carbon\Carbon::now()
             ]);
@@ -141,20 +144,23 @@ class visimisiController
     {
         $rules = array (
             'judul' => 'required',
-            'deskripsi' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
         );
         
         $validator = Validator::make($request->all(), $rules);
           if($validator->passes()) {
             $judul = $request->judul;
-            $deskripsi = $request->deskripsi;
+            $visiPost = $request->visi;
+            $misi = $request->misi;
 
-            $sejarah = DB::table('visimisi')->where('id', $id)->update([
+            $visi = DB::table('visimisi')->where('id', $id)->update([
                 'judul' => $judul,
-                'deskripsi' => $deskripsi,
+                'visi' => $visiPost,
+                'misi' => $misi,
                 'updated_at' =>  \Carbon\Carbon::now()
             ]);
-            if($sejarah) {
+            if($visi) {
                 return response()->json([
                     'status' => 'ok'
                   ]);

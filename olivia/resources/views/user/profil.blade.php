@@ -48,25 +48,7 @@
                     <div class="olv-blog-posts">
                         <div class="row">                            
                             <div class="col-12">
-                                <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
-                                    <!-- Post Thumb -->
-                                    <h1>Forum Pendidikan Tinggi Vokasi Indonesia</h1><br>
-                                    <div class="blog-post-thumb">
-                                        <img src="{{ asset('user/img/blog-img/kongres.jpeg') }}" alt="">
-                                    </div>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">Dikti, </a><a href="#">6 November 2019</a></h6>
-                                    </div>
-                                    <!-- Post Title -->
-                                    <h2>Sejarah FPTVI</h2>
-                                    <!-- Post Excerpt -->
-                                    <p>Forum Pendidikan Tinggi Vokasi Indonesia (FPTVI – semula bernama Forum Komunikasi Pendidikan Tinggi Vokasi Indonesia) resmi berdiri pada tanggal 28 Oktober 2014, yaitu saat diselenggarakannya Kongres I di Sekolah Vokasi UGM, Sekip, Yogyakarta.
-                                    Forum ini diinisiasi oleh 5 Universitas penyelenggara pendidikan vokasi, yaitu Universitas Gadjah Mada, Universitas Indonesia, Institut Pertanian Bogor, Universtas Brawijaya, dan Universitas Negeri Yogyakarta.Berdirinya FPTVI ini diawali dari penyelenggaraan Lokakarya tentang “Penegasan Pendidikan Vokasi Sesuai UU No 12 Tahun 2012” tanggal 3 April 2014, di Sekolah Vokasi UGM, yang dihadiri oleh berbagai universitas negeri di Indonesia.
-                                    </p>
-                                    <!-- Read More btn -->
-                                    <a href="#">Read More</a>
-                                </div>
+                                <span id="sejarah-view"></span>
                             </div>                            
                         </div>
                     </div>
@@ -99,7 +81,7 @@
                                     </div>
 
                                     <div class="feature-content">
-                                        <p>Menjadi jejaring yang saling menguatkan dalam pengembangan pendidikan vokasi Indonesia yang menyiapkan sumberdaya manusia yang terampil, berkecakapan hidup, dan berkepribadian Pancasila Untuk Indonesia yang lebih baik.</p>     
+                                        {!! $data[0]->visi !!}
                                     </div>
                                 </div>
                             </div>
@@ -119,13 +101,15 @@
                             <div class="section-heading">
                                 <h2>Misi FPTVI</h2>
                             </div>
-                            <p>Membangun jejaring sinergi di antara penyelenggara Pendidikan Tinggi Vokasi dengan lembaga lainnya dalam rangka membangun daya saing Pendidikan Tinggi Vokasi di Indonesia.</p>
+                            {!! $data[0]->misi !!}
+                            <!-- <p>Membangun jejaring sinergi di antara penyelenggara Pendidikan Tinggi Vokasi dengan lembaga lainnya dalam rangka membangun daya saing Pendidikan Tinggi Vokasi di Indonesia.</p>
                             <br>
                             <p>Mengupayakan sistem Pendidikan Tinggi Vokasi untuk membentuk sumber daya manusia yang berkepribadian, berakhlak dan bermartabat untuk kemandirian bangsa.</p>
                             <br>
                             <p>Mengembangkan sistem Pendidikan Tinggi Vokasi yang sanggup meningkatkan mutu sumberdaya manusia yang berkepribadian, berakhlak dan bermartabat mulia.</p>
                             <br>
-                            <p>Mengembangkan sistem Pendidikan Tinggi Vokasi yang sanggup meningkatkan mutu sumberdaya manusia yang berkepribadian, berakhlak dan bermartabat mulia.</p>
+                            <p>Mengembangkan sistem Pendidikan Tinggi Vokasi yang sanggup meningkatkan mutu sumberdaya manusia yang berkepribadian, berakhlak dan bermartabat mulia.</p> -->
+                            
                         </div>
                     </div>
                 </div>
@@ -146,17 +130,18 @@
             <div class="row">
                 <div class="col-12">
                     <div class="olv-team-slides owl-carousel">
+                        @foreach($info as $infoStruktur)
                         <!-- Single Team Slide -->
                         <div class="single-team-slide text-center">
                             <!-- Thumbnail -->
                             <div class="team-thumbnail">
-                                <img src="{{ asset('user/img/bg-img/ketua.jpg') }}" alt="">
+                                <img src="{{ url('') }}/{{$infoStruktur->gambar}}" alt="">
                             </div>
                             <!-- Meta Info -->
                             <div class="team-meta-info">
-                                <h4>Prof. Dr. Ir. Budiono, M.Si.</h4>
-                                <span>Ketua</span>
-                                <p>Undip</p>
+                                <h4>{{ $infoStruktur->nama }}</h4>
+                                <span>{{ $infoStruktur->jabatan }}</span>
+                                <p>{{ $infoStruktur->pt }}</p>
                                 <!-- Social Info -->
                                 <div class="team-social-info">
                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -164,91 +149,38 @@
                                     <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </div>
                             </div>
-                            
                         </div>
-                        <!-- Single Team Slide -->
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="{{ asset('user/img/bg-img/wakil 1.jpg') }}" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Prof. Dr. Ir. Sigit Darmawan.</h4>
-                                <span>Wakil Ketua 1</span>
-                                <p>ITS</p>
-                                <!-- Social Info -->
-                            <div class="team-social-info">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <!-- Single Team Slide -->
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="{{ asset('user/img/bg-img/wakil 2.jpg') }}" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Prof. Dr. Ir. Sigit Darmawan.</h4>
-                                <span>Wakil Ketua 2</span>
-                                <p>UNY</p>
-                                <!-- Social Info -->
-                                <div class="team-social-info">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <!-- Single Team Slide -->
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="{{ asset('user/img/bg-img/sekjen.jpg') }}" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Dr. Ida Hayu Dwimawanti</h4>
-                                <span>Sekretaris Jendral</span>
-                                <p>UNDIP</p>
-                                <!-- Social Info -->
-                                <div class="team-social-info">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <!-- Single Team Slide -->
-                        <div class="single-team-slide text-center">
-                            <!-- Thumbnail -->
-                            <div class="team-thumbnail">
-                                <img src="{{ asset('user/img/bg-img/bendahara.jpg') }}" alt="">
-                            </div>
-                            <!-- Meta Info -->
-                            <div class="team-meta-info">
-                                <h4>Anafil Windriya, S.E., M.M.</h4>
-                                <span>Bendahara</span>
-                                <p>UNDIP</p>
-                                <!-- Social Info -->
-                                <div class="team-social-info">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+@section('js-user')
+<script type="text/javascript">
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    loadSejarah();
+    function loadSejarah()
+    {
+        $.ajax({
+            type: 'GET',
+            url: '{{url('profile/get-sejarah')}}',
+            success: function(data) {
+                if(data.success == true) {
+                $('#sejarah-view').html(data.html);
+                } else {
+                    console.log(data.html)
+                }
+            }
+        });
+    }
+});
+
+</script>
 @endsection

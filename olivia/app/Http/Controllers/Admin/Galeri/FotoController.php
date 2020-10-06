@@ -67,6 +67,7 @@ class FotoController
     {   
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
+            'tahun' => 'required',
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
@@ -83,6 +84,7 @@ class FotoController
             
             $foto = DB::table('foto')->insert([
                 'nama' => $request->nama,
+                'tahun' => $request->tahun,
                 'foto' => json_encode($data),
                 'created_at' =>  \Carbon\Carbon::now()
             ]);

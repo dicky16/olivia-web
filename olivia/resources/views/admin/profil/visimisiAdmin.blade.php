@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<!-- Add Berita Modal-->
+<!-- Add Visi da Misi Modal-->
 <div class="modal fade" id="VisimisiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -45,8 +45,10 @@
 
                     <label for="judulBerita">Judul</label>
                     <input type="text" class="form-control" name="judul">
-                    <label for="deskripsi" class="mt-2">Visi dan Misi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-visimisi"></textarea>
+                    <label for="deskripsi" class="mt-2">Visi</label>
+                    <textarea type="text" class="form-control" id="deskripsi-visi"></textarea>
+                    <label for="deskripsi" class="mt-2">Misi</label>
+                    <textarea type="text" class="form-control" id="deskripsi-misi"></textarea>
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
                         <input type="submit" class="btn btn-primary" value="Submit">
@@ -78,8 +80,10 @@
 
                     <label for="judulBerita">Judul</label>
                     <input type="text" class="form-control" name="judul-edit">
-                    <label for="deskripsi" class="mt-2">Visi dan Misi</label>
-                    <textarea type="text" class="form-control" id="deskripsi-visimisi-edit"></textarea>
+                    <label for="deskripsi" class="mt-2">Visi</label>
+                    <textarea type="text" class="form-control" id="deskripsi-visi-edit"></textarea>
+                    <label for="deskripsi" class="mt-2">Misi</label>
+                    <textarea type="text" class="form-control" id="deskripsi-misi-edit"></textarea>
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
                         <input type="submit" class="btn btn-primary" value="Submit">

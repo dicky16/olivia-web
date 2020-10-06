@@ -5,41 +5,54 @@ $(document).ready(function() {
         }
     });
 
-    loadDataVideo();
-function loadDataVideo() {
-    $('#table-video').load('/admin/video/datatable', function() {
+loadDataInfoStruktur();
+function loadDataInfoStruktur() {
+    $('#table-info-struktur').load('/admin/info-struktur/datatable', function() {
         var host = window.location.origin;
-        $('#datatable-video').DataTable({
+        $('#datatable-info-struktur').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: '/admin/video/data',
+                url: '/admin/info-struktur/data',
                 type: 'GET'
             },
             columns: [
                 {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
                 {data: 'nama',name: 'nama'},
-                {data: 'url',name: 'url'},
+                {data: 'jabatan',name: 'jabatan'},
+                {data: 'pt',name: 'pt'},
+                {
+                    data: 'gambar',
+                    name: 'gambar',
+                    "render": function(data, type, row) {
+                        return '<img src=" ' + host + '/'+ data + ' " style="height:100px;width:100px;"/>';
+                    },
+                    searchable: false
+                },
                 {data: 'aksi',name: 'aksi',searchable: false,orderable: false}
             ]
         });
     });
 }
 
-//tambah video
-$('body').on('submit', '#form-tambah-video', function(e) {
+//tambah struktur
+$('body').on('submit', '#form-tambah-info-struktur', function(e) {
     e.preventDefault();
     var formData = new FormData();
 
     var nama = $('input[name=nama]').val();
-    var url_video = $('input[name=url]').val();
+    var jabatan = $('input[name=jabatan]').val();
+    var pt = $('input[name=pt]').val();
+    var gambar = $('#gambar')[0].files[0];
 
     formData.append('nama', nama);
-    formData.append('video', url_video);
+    formData.append('jabatan', jabatan);
+    formData.append('pt', pt);
+    formData.append('gambar', gambar);
 
     $.ajax({
         type: 'POST',
-        url: '/admin/video',
+        url: '/admin/info-struktur',
         data: formData,
         contentType: false,
         processData: false,
@@ -54,13 +67,13 @@ $('body').on('submit', '#form-tambah-video', function(e) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil tambah Video',
+                    text: 'Berhasil tambah Info Struktur Organisasi',
                     timer: 1200,
                     showConfirmButton: false
                 });
-                loadDataVideo();
-                $('#form-tambah-video').trigger('reset');
-                $('#VideoModal').modal('hide');
+                loadDataInfoStruktur();
+                $('#form-tambah-info-struktur').trigger('reset');
+                $('#StrukturModal').modal('hide');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -74,36 +87,43 @@ $('body').on('submit', '#form-tambah-video', function(e) {
     });
 });
 
-//edit video
-$('body').on('click', '.btn-edit-video', function(e) {
+//edit struktur
+$('body').on('click', '.btn-edit-info-struktur', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
+    var host = window.location.origin;
     $.ajax({
         type: 'GET',
-        url: '/admin/video/edit/' + id,
+        url: '/admin/info-struktur/edit/' + id,
         success: function(data) {
-            $("#editVideoModal").modal('show');
+            $("#editStrukturModal").modal('show');
             $('input[name=nama-edit]').val(data.data[0].nama);
-            $('input[name=url-edit]').val(data.data[0].video);
+            $('input[name=jabatan-edit]').val(data.data[0].jabatan);
+            $('input[name=pt-edit]').val(data.data[0].pt);
+            $("#gambar-view").attr('src', host + '/' + data.data[0].gambar);
             $('input[name=edit-id]').val(id);
         }
     });
 });
 
-//update video
-$('body').on('submit', '#form-edit-video', function(e) {
+//udpdate struktur
+$('body').on('submit', '#form-edit-info-struktur', function(e) {
     e.preventDefault();
     var formData = new FormData();
     var id = $('input[name=edit-id]').val();
     var nama = $('input[name=nama-edit]').val();
-    var video = $('input[name=url-edit]').val();
+    var jabatan = $('input[name=jabatan-edit]').val();
+    var pt = $('input[name=pt-edit]').val();
+    var gambar = $('#gambar-edit')[0].files[0];
 
     formData.append('nama', nama);
-    formData.append('video', video);
+    formData.append('jabatan', jabatan);
+    formData.append('pt', pt);
+    formData.append('gambar', gambar);
 
     $.ajax({
         type: 'POST',
-        url: '/admin/video/update/' + id,
+        url: '/admin/info-struktur/update/' + id,
         data: formData,
         contentType: false,
         processData: false,
@@ -118,13 +138,13 @@ $('body').on('submit', '#form-edit-video', function(e) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Berhasil update Video',
+                    text: 'Berhasil update Struktur Organisasi',
                     timer: 1200,
                     showConfirmButton: false
                 });
-                loadDataVideo();
-                $('#form-edit-video').trigger('reset');
-                $('#editVideoModal').modal('hide');
+                loadDataInfoStruktur();
+                $('#form-edit-info-struktur').trigger('reset');
+                $('#editStrukturModal').modal('hide');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -138,8 +158,8 @@ $('body').on('submit', '#form-edit-video', function(e) {
     });
 });
 
-//hapus video
-$('body').on('click', '.btn-delete-video', function(e) {
+//hapus struktur
+$('body').on('click', '.btn-delete-info-struktur', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
     var judul = $(this).data('nama');
@@ -155,16 +175,16 @@ $('body').on('click', '.btn-delete-video', function(e) {
         if (result.value) {
             $.ajax({
                 type: 'GET',
-                url: 'video/delete/' + id,
+                url: '/admin/info-struktur/delete/' + id,
                 contentType: false,
                 processData: false,
                 success: function(data) {
                     if(data.status == 'deleted') {
                         Swal.fire(
                             'Deleted!',
-                            'Berhasil Menghapus Sejarah',
+                            'Berhasil Menghapus Jadwal',
                             )
-                            loadDataVideo();
+                            loadDataInfoStruktur();
                         }
                     }
                 });
@@ -173,5 +193,6 @@ $('body').on('click', '.btn-delete-video', function(e) {
         });
 
     });
+
 
 });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisimisiTable extends Migration
+class CreateInfoStrukturTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVisimisiTable extends Migration
      */
     public function up()
     {
-        Schema::create('visimisi', function (Blueprint $table) {
+        Schema::create('info_struktur', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->mediumText('visi');
-            $table->mediumText('misi');
-            $table->enum('status', ['aktif', 'nonaktif']);
+            $table->string('nama');
+            $table->string('jabatan');
+            $table->string('pt');
+            $table->text('gambar');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateVisimisiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visimisi');
+        Schema::dropIfExists('info_struktur');
     }
 }

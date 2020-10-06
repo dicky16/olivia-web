@@ -73,6 +73,7 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('aktif/{id}', 'Admin\Profil\SejarahController@aktifkan');
             Route::get('nonaktif/{id}', 'Admin\Profil\SejarahController@nonAktifkan');
         });
+        
 
         //STRUKTUR ORGANISASI
         Route::prefix('struktur')->group(function () {
@@ -83,6 +84,16 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('edit/{id}', 'Admin\Profil\StrukturController@edit');
             Route::post('update/{id}', 'Admin\Profil\StrukturController@update');
             Route::get('delete/{id}', 'Admin\Profil\StrukturController@destroy');
+        });
+        //info struktur
+        Route::prefix('info-struktur')->group(function () {
+            Route::get('/', 'Admin\AdminPageController@infoStruktur');
+            Route::get('data', 'Admin\Profil\InfoStrukturController@getInfoStrukturDataTable');
+            Route::get('datatable', 'Admin\Profil\InfoStrukturController@loadDataTable');
+            Route::post('/', 'Admin\Profil\InfoStrukturController@store');
+            Route::get('edit/{id}', 'Admin\Profil\InfoStrukturController@edit');
+            Route::post('update/{id}', 'Admin\Profil\InfoStrukturController@update');
+            Route::get('delete/{id}', 'Admin\Profil\InfoStrukturController@destroy');
         });
          //VISI DAN MISI
          Route::prefix('visimisi')->group(function () {
@@ -123,10 +134,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@video');
             Route::get('data', 'Admin\Galeri\VideoController@getVideoDataTable');
             Route::get('datatable', 'Admin\Galeri\VideoController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::post('/', 'Admin\Galeri\VideoController@store');
+            Route::get('edit/{id}', 'Admin\Galeri\VideoController@edit');
+            Route::post('update/{id}', 'Admin\Galeri\VideoController@update');
+            Route::get('delete/{id}', 'Admin\Galeri\VideoController@destroy');
         });
          //Pertanyaan User(other Question)
         Route::prefix('tanya')->group(function () {
@@ -170,11 +181,18 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
 
 //Route guest
 Route::get('/', 'User\UserPageController@index')->name('home');
-Route::get('profile', 'User\UserPageController@profil')->name('profile');
-Route::get('berita', 'User\UserPageController@berita')->name('berita');
+Route::prefix('profile')->group(function () {
+    Route::get('/', 'User\UserProfileController@index')->name('profile');
+    Route::get('get-sejarah', 'User\UserProfileController@getSejarah');
+});
+Route::prefix('berita')->group(function () {
+    Route::get('/', 'User\UserBeritaController@index')->name('berita');
+    Route::get('{id}', 'User\UserBeritaController@show');
+});
+Route::get('pengumuman', 'User\UserPageController@pengumuman')->name('pengumuman');
 Route::prefix('galeri')->group(function () {
-    Route::get('/', 'User\UserPageController@galeri')->name('galeri');
-    Route::get('show', 'User\UserGaleriController@getFoto');
+    Route::get('/', 'User\UserGaleriController@index')->name('galeri');
+    // Route::get('show', 'User\UserGaleriController@getFoto');
 });
 //foto
 Route::prefix('faq')->group(function () {

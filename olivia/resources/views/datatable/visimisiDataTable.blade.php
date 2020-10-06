@@ -3,7 +3,8 @@
         <tr>
             <th>No.</th>
             <th>Judul</th>
-            <th>Deskripsi</th>
+            <th>Visi</th>
+            <th>Misi</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>

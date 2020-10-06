@@ -28,8 +28,10 @@
                     <div class="olv-projects-menu">
                         <div class="portfolio-menu">
                             <p class="active" data-filter="*">All</p>
-                            <p data-filter=".18">2018</p>
-                            <p data-filter=".19">2019</p>
+                            <!-- <p data-filter=".18">2018</p> -->
+                            @foreach($tahun as $thn)
+                            <p data-filter=".{{$thn}}">{{$thn}}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -37,19 +39,33 @@
         </div>
 
         <div class="olv-portfolio">
-            <!-- <div id="foto-view"></div> -->
-            <span id="foto-view"></span>
+            @foreach ($data as $foto)
+            <?php foreach(json_decode($foto->foto)as $picture) { ?>
+                <div class="single_gallery_item {{$foto->tahun}}">
+                <img src="{{ asset('image/galeri/foto')}}/{{$picture}}">
+                <div class="gallery-hover-overlay d-flex align-items-center justify-content-center">
+                    <div class="port-hover-text text-center">
+                        <h4>{{$foto->nama}}</h4>
+                        <a href="#">OLIVIA</a>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            @endforeach
             
+        </div>
+        <div class="text-center mt-100">
+        <a href="#" class="btn olv-btn">Load More</a>
         </div>
 
         <!-- Discover More btn -->
-        <div class="col-12 text-center mt-100">
+        <!-- <div class="col-12 text-center mt-100">
             <a href="#" class="btn olv-btn">Load More</a>
-        </div>
+        </div> -->
     </section>
 @endsection
 @section('js-user')
-<script>
+<!-- <script>
     $(document).ready(function() {
     $.ajaxSetup({
         headers: {
@@ -74,5 +90,5 @@
     }
 
     });
-</script>
+</script> -->
 @endsection
