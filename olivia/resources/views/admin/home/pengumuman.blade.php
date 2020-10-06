@@ -2,7 +2,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">PENGUMUMAN</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pengumuman</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
     </div>
 
@@ -50,8 +50,13 @@
                     <textarea type="text" class="form-control" id="deskripsi-pengumuman" name=""></textarea>
 
                     <div class="form-group mt-3">
+                        <label for="file" class="mt-2">Gambar</label>
+                        <input input id="gambar" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                    </div>
+
+                    <div class="form-group mt-3">
                         <label for="file" class="mt-2">Lampiran</label>
-                        <input input id="lampiran" type="file" name="gambar" accept="file/*" aria-describedby="inputGroupFileAddon01">
+                        <input input id="lampiran" type="file" accept="file/*" aria-describedby="inputGroupFileAddon01">
                     </div>
 
                     <div class="modal-footer">
@@ -93,14 +98,25 @@
                     <textarea type="text" class="form-control" id="deskripsi-pengumuman-edit" name=""></textarea>
 
                     <div class="form-group mt-3">
+                        <label for="file" class="mt-2">View Gambar</label>
+                        <br>
+                        <img src="" id="view-gambar">
+                    </div>
+
+                    <div class="form-group mt-3">
                         <label for="file" class="mt-2">View Lampiran</label>
                         <br>
                         <a href="" id="view-lampiran"></a>
                     </div>
 
                     <div class="form-group mt-3">
+                        <label for="file" class="mt-2">Gambar</label>
+                        <input input id="gambar-edit" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                    </div>
+
+                    <div class="form-group mt-3">
                         <label for="file" class="mt-2">Lampiran</label>
-                        <input id="lampiran-edit" type="file" name="gambar" accept="file/*" aria-describedby="inputGroupFileAddon01">
+                        <input id="lampiran-edit" type="file" accept="file/*" aria-describedby="inputGroupFileAddon01">
                         <input type="hidden" name="edit-id">
                     </div>
 

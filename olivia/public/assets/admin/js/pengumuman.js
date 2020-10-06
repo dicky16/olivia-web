@@ -20,6 +20,14 @@ $(document).ready(function() {
                     {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
                     {data: 'judul',name: 'judul'},
                     {data: 'deskripsi',name: 'deskripsi'},
+                    {
+                        data: 'gambar',
+                        name: 'gambar',
+                        "render": function(data, type, row) {
+                            return '<img src=" ' + host + '/'+ data + ' " style="height:100px;width:100px;"/>';
+                        },
+                        searchable: false
+                    },
                     {data: 'lampiran',name: 'lampiran'},
                     {data: 'aksi',name: 'aksi',searchable: false,orderable: false}
                 ]
@@ -35,10 +43,12 @@ $(document).ready(function() {
         var judul = $('input[name=judul]').val();
         var deskripsi = tinymce.get('deskripsi-pengumuman').getContent();
         var lampiran = $('#lampiran')[0].files[0];
+        var gambar = $('#gambar')[0].files[0];
 
         formData.append('judul', judul);
         formData.append('deskripsi', deskripsi);
         formData.append('lampiran', lampiran);
+        formData.append('gambar', gambar);
 
         $.ajax({
             type: 'POST',
@@ -81,6 +91,7 @@ $(document).ready(function() {
     $('body').on('click', '.btn-edit-pengumuman', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
+        var host = window.location.origin;
         $.ajax({
             type: 'GET',
             url: '/admin/pengumuman/edit/' + id,
@@ -90,6 +101,7 @@ $(document).ready(function() {
                 $('input[name=judul-edit]').val(data.data[0].judul);
                 tinymce.get('deskripsi-pengumuman-edit').setContent(data.data[0].deskripsi);
                 $("#view-lampiran").attr('src', data.data[0].lampiran);
+                $("#view-gambar").attr('src', host + '/' + data.data[0].gambar);
                 $("#view-lampiran").append(data.data[0].lampiran);
                 $('input[name=edit-id]').val(id);
             }
@@ -104,10 +116,12 @@ $(document).ready(function() {
         var judul = $('input[name=judul-edit]').val();
         var deskripsi = tinymce.get('deskripsi-pengumuman-edit').getContent();
         var lampiran = $('#lampiran-edit')[0].files[0];
+        var gambar = $('#gambar-edit')[0].files[0];
 
         formData.append('judul', judul);
         formData.append('deskripsi', deskripsi);
         formData.append('lampiran', lampiran);
+        formData.append('gambar', gambar);
 
         $.ajax({
             type: 'POST',

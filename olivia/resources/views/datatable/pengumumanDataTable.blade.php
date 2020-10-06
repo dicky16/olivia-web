@@ -4,6 +4,7 @@
             <th>No.</th>
             <th>Judul</th>
             <th>Deskripsi</th>
+            <th>Gambar</th>
             <th>Lampiran</th>
             <th>Aksi</th>
         </tr>

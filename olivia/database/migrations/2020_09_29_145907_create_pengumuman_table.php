@@ -18,6 +18,7 @@ class CreatePengumumanTable extends Migration
             $table->string('judul');
             $table->mediumText('deskripsi');
             $table->text('lampiran');
+            $table->text('gambar');
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

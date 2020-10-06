@@ -189,7 +189,8 @@ Route::prefix('berita')->group(function () {
     Route::get('/', 'User\UserBeritaController@index')->name('berita');
     Route::get('{id}', 'User\UserBeritaController@show');
 });
-Route::get('pengumuman', 'User\UserPageController@pengumuman')->name('pengumuman');
+Route::get('pengumuman', 'User\UserPengumumanController@pengumuman')->name('pengumuman');
+Route::get('pengumuman/{id}', 'User\UserPengumumanController@show');
 Route::prefix('galeri')->group(function () {
     Route::get('/', 'User\UserGaleriController@index')->name('galeri');
     // Route::get('show', 'User\UserGaleriController@getFoto');
@@ -198,6 +199,7 @@ Route::prefix('galeri')->group(function () {
 Route::prefix('faq')->group(function () {
     Route::get('/', 'User\UserPageController@faq')->name('faq');
     Route::get('show', 'User\UserFAQController@getFAQ');
+    Route::post('kirim', 'User\UserFAQController@store');
 });
 
 Route::get('tes', function () {
