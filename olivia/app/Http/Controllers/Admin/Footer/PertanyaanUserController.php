@@ -125,7 +125,7 @@ class PertanyaanUserController
             $update = DB::table('pertanyaan_user')->where('id', $id)->update([
                 'status' => 1
             ]);
-            if(update) {
+            if($update) {
                 return response()->json([
                     'status' => 'ok'
                 ]);

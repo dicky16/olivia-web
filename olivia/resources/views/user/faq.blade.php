@@ -28,65 +28,37 @@
                     <div class="accordions mb-100 justify-content-center" id="accordion" role="tablist" aria-multiselectable="true">
                         <!-- single accordian area start -->
                         <div id="faq"></div>
-                        <!-- <div class="panel single-accordion">
-                            <h6><a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">pertanyaan
-                                    <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                    </a></h6>
-                            <div id="collapseOne" class="accordion-content collapse">
-                                <p>takok o.</p>
-                            </div>
-                        </div> -->
-                        <!-- single accordian area start -->
-                        <!-- <div class="panel single-accordion">
-                            <h6>
-                                <a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">pertanyaan
-                                        <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                        <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                        </a>
-                            </h6>
-                            <div id="collapseTwo" class="accordion-content collapse">
-                                <p>takok o</p>
-                            </div>
-                        </div> -->
-                        <!-- single accordian area start -->
-                        <!-- <div class="panel single-accordion">
-                            <h6>
-                                <a role="button" aria-expanded="true" aria-controls="collapseThree" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">pertanyaan 
-                                        <span class="accor-open"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                        <span class="accor-close"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                    </a>
-                            </h6>
-                            <div id="collapseThree" class="accordion-content collapse">
-                                <p>takok o.</p>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <form class="form-horizontal" role="form" method="post" action="#">                       
+                    <!-- <form class="form-horizontal" role="form">                      -->
                       <div class="form-group">
                         <div class="col-sm-12">
-                          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
+                          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" required>
                         </div>
                       </div>
 
                       <div class="form-group">
                         <div class="col-sm-12">
-                          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="">
+                          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" required>
                         </div>
                       </div>
 
-                      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message"></textarea>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                        <textarea class="form-control" rows="10" placeholder="PERTANYAAN" id="message" required></textarea>
+                        </div>
+                      </div>
+
                       
                       <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
                         <div class="button">
-                          <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
+                          <i class="fa fa-paper-plane"></i><span class="send-text" id="btn-send">SEND</span>
                         </div>
                       
                       </button>
                       
-                    </form>
+                    <!-- </form> -->
                 </div>                
             </div>
         </div>
@@ -116,6 +88,56 @@
             }
         });
     }
+
+    //tambah pertanyaan user
+    $( "#btn-send" ).click(function() {
+        var formData = new FormData();
+
+        var name = $('input[name=name]').val();
+        var email = $('input[name=email]').val();
+        var message = $('#message').val();
+
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('message', message);
+
+        $.ajax({
+            type: 'POST',
+            url: '/faq/kirim',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                if(data.status == "validation_error") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: data.message,
+                });
+            } else if(data.status == "ok"){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Terimakasih',
+                    text: 'Pesan Anda akan segera kami balas melalui email',
+                    timer: 1200,
+                    showConfirmButton: false
+                });
+                $('input[name=name]').val();
+                $('input[name=email]').val();
+                $('input[name=message]').val();
+                location.reload()
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi kesalahan!',
+                    timer: 1200,
+                    showConfirmButton: false
+                });
+            }
+            }
+        });
+    });
 
     });
 </script>

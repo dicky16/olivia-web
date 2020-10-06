@@ -30,4 +30,5 @@ class UserBeritaController
         ->get();
         return view('user.info.detailBerita', compact('data'));
     }
+
 }
