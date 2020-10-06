@@ -2,7 +2,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Struktur Organisasi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Info Struktur Organisasi</h1>
         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
     </div>
 
@@ -15,13 +15,12 @@
 
         <div class="d-sm-flex align-items-center m-3">
             <a type="submit" class="btn btn-primary ml-2" href="#" data-toggle="modal" data-target="#StrukturModal">+
-                Add Struktur Organisasi</a>
+                Add Info Struktur Organisasi</a>
             </div>
 
             <div class="card-body">
                 <div class="table-responsive">
-                    <div id="table-struktur"></div>
-                    
+                    <div id="table-info-struktur"></div>
                 </div>
             </div>
         </div>
@@ -33,7 +32,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Struktur Organisasi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Info Struktur Organisasi</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -41,14 +40,18 @@
             <div class="modal-body">
 
 
-                <form id="form-tambah-struktur">
+                <form id="form-tambah-info-struktur">
                     @csrf
 
-                    <label for="judulBerita">Nama Struktur Organisasi</label>
+                    <label for="judulBerita">Nama</label>
                     <input type="text" class="form-control" name="nama">
-                    <label for="jabatanStruktur" class="mt-2">Deskripsi</label>
-                    <textarea id="deskripsi-struktur" cols="30" rows="10"></textarea>
-                    
+
+                    <label for="judulBerita">Jabatan</label>
+                    <input type="text" class="form-control" name="jabatan">
+
+                    <label for="judulBerita">Perguruan Tinggi</label>
+                    <input type="text" class="form-control" name="pt">
+
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">Gambar</label>
                         <input input id="gambar" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
@@ -73,7 +76,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Struktur Organisasi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Info Struktur Organisasi</h5>
                 <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -81,14 +84,18 @@
             <div class="modal-body">
 
 
-                <form id="form-edit-struktur">
+                <form id="form-edit-info-struktur">
                     @csrf
 
-                    <label for="judulBerita">Nama Struktur Organisasi</label>
+                    <label for="judulBerita">Nama</label>
                     <input type="text" class="form-control" name="nama-edit">
-                    <label for="jabatanStruktur" class="mt-2">Deskripsi</label>
-                    <textarea id="deskripsi-struktur-edit" cols="30" rows="10"></textarea>
-                    
+
+                    <label for="judulBerita">Jabatan</label>
+                    <input type="text" class="form-control" name="jabatan-edit">
+
+                    <label for="judulBerita">Perguruan Tinggi</label>
+                    <input type="text" class="form-control" name="pt-edit">
+
                     <div class="form-group mt-3">
                         <label for="file" class="mt-2">View Gambar</label>
                         <img src="" id="gambar-view" style="width: 60%; height: 60%; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
@@ -102,9 +109,10 @@
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <input type="hidden" name="edit-id">
+                        <input type="hidden" name="edit-id" value="Submit">
                     </div>
                    
+
                 </form>
 
             </div>
@@ -114,5 +122,5 @@
 </div>
 @endsection
 @section('js-ajax')
-<script src="{{ asset('admin/js/profil/struktur.js') }}"></script>
+<script src="{{ asset('admin/js/profil/info-struktur.js') }}"></script>
 @endsection

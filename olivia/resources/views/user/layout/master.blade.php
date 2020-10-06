@@ -45,10 +45,23 @@
 
                             <div class="collapse navbar-collapse justify-content-end" id="olv-navbar">
                                 <ul class="navbar-nav animated" id="nav">
-                                    <li class="nav-item @if(Route::is('home')) active @endif"><a class="nav-link" href="index.html">Home</a></li>
+                                    <li class="nav-item @if(Route::is('home')) active @endif"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                                     <li class="nav-item @if(Route::is('profile')) active @endif"><a class="nav-link" href="{{ url('profile') }}">Profile</a></li>
-                                    <li class="nav-item @if(Route::is('berita')) active @endif"><a class="nav-link" href="{{ url('berita') }}">Berita</a></li>
+                                    <!-- <li class="nav-item @if(Route::is('berita')) active @endif"><a class="nav-link" href="{{ url('berita') }}">Berita</a></li> -->
                                     <li class="nav-item @if(Route::is('galeri')) active @endif"><a class="nav-link" href="{{ url('galeri') }}">Gallery</a></li>
+                                    <div class="dropdown">
+                                       <li class="nav-item dropdown-toggle nav-link" id="dropdownMenuButton" data-toggle="dropdown">Info</li>
+                                       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                                          <!-- JAJA -->
+                                       <!-- </button> -->
+                                       <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                                          <!-- Small button
+                                       </button> -->
+                                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="{{ url('berita') }}">Berita</a>
+                                          <a class="dropdown-item" href="{{ url('pengumuman') }}">Pengumuman</a>
+                                       </div>
+                                    </div>
                                     <li class="nav-item @if(Route::is('faq')) active @endif"><a class="nav-link" href="{{ url('faq') }}">FAQ</a></li>
                                 </ul>
                                 <!-- Search Form Area Start -->
