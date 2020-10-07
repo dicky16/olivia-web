@@ -31,6 +31,7 @@
                             <?php
                                 $tglConvert = explode($berita->created_at, " ");
                                 $tgl = date('d F Y', strtotime($tglConvert[0]));
+                                $desArr = explode(".", $berita->deskripsi);
                             ?>
                             <div class="col-12">
                                 <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
@@ -45,7 +46,7 @@
                                     <!-- Post Title -->
                                     <h2>{{$berita->judul}}</h2>
                                     <!-- Post Excerpt -->
-                                    <p>{!! $berita->deskripsi !!}</p>
+                                    <p>{!! $desArr[0] !!} {!!$desArr[1]!!}</p>
                                     <!-- Read More btn -->
                                     <a href="{{ url('berita') }}/{{$berita->id}}">Read More</a>
                                 </div>
