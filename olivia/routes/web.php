@@ -194,6 +194,7 @@ Route::prefix('galeri')->group(function () {
     Route::get('/', 'User\UserGaleriController@index')->name('galeri');
     // Route::get('show', 'User\UserGaleriController@getFoto');
 });
+Route::get('video', 'User\UserGaleriController@video')->name('video');
 //foto
 Route::prefix('faq')->group(function () {
     Route::get('/', 'User\UserPageController@faq')->name('faq');

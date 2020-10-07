@@ -23,4 +23,14 @@ class UserGaleriController
         $returnHTML = view('user.jobs.fotoView')->with('data', $data)->render();
         return response()->json(array('success' => true, 'html'=>$returnHTML));
     }
+
+    public function video()
+    {
+        // $data = DB::table('foto')->orderBy('id', 'desc')->get();
+        // $tahun = null;
+        // for ($i=0; $i < count($data); $i++) { 
+        //     $tahun[$i] = $data[$i]->tahun;
+        // }
+        return view('user.video');
+    }
 }
