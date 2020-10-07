@@ -76,36 +76,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="olv-service-slides owl-carousel">
+                        @foreach($data as $lomba)
+                        <?php
+                            $tglConvertLatest = explode("|", $data[0]->jadwal);
+                            
+                            $jadwal1 = date('d F Y', strtotime($tglConvertLatest[0]));
+                            $jadwal2 = date('d F Y', strtotime($tglConvertLatest[1]));
+                        ?>
                             <!-- Single Service Area -->
                             <div class="single-service-area text-center">
-                                <h2>01.</h2>
+                                <h2 class="color color-primary">{{ $lomba->nama_lomba }}</h2>
                                 <h4>Pendaftaran peserta dan pengiriman full karya.</h4>
-                                <p>11 Agustus – 10 Oktober 2020.</p>
+                                <p>{{ $jadwal1}} – {{ $jadwal2}}</p>
                             </div>
-                            <!-- Single Service Area -->
-                            <div class="single-service-area text-center">
-                                <h2>02.</h2>
-                                <h4>Proses seleksi.</h4>
-                                <p>11 - 15 Oktober 2020.</p>
-                            </div>
-                            <!-- Single Service Area -->
-                            <div class="single-service-area text-center">
-                                <h2>03.</h2>
-                                <h4>Pengumuman finalis.</h4>
-                                <p>16 Oktober 2020</p>
-                            </div>
-                            <!-- Single Service Area -->
-                            <div class="single-service-area text-center">
-                                <h2>04.</h2>
-                                <h4>Presentasi final.</h4>
-                                <p>25 - 30 Oktober 2020</p>
-                            </div>
-                            <!-- Single Service Area -->
-                            <div class="single-service-area text-center">
-                                <h2>05.</h2>
-                                <h4>Peniliaian dan pengumuman Juara.</h4>
-                                <p>10 November 2020</p>
-                            </div>
+                        @endforeach
                         </div>
                     </div>
                 </div>
@@ -117,14 +101,14 @@
     <section class="olv-workflow-area section_padding_100_0 clearfix">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 mb-2">
                     <div class="section-heading text-center mb-0">
-                        <h2>IKI GAWE INFOGRAFIS</h2>
+                        <h2>INFO</h2>
                         <div class="container">
                             <div class="row align-items-center">                
                                 <div class="col-12 col-md-6">
                                     <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                                        <img src="{{ asset('user/img/info-img/1.jpg') }}" alt="">
+                                        <img src="{{ asset('user/img/info-img/2.jpg') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
@@ -147,9 +131,10 @@
     <section class="olv-call-to-action-area bg-img bg-overlay section_padding_100" style="background-image: url({{ asset('user/img/bg-img/2.jpg') }});">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 mt-5">
                     <div class="cta-content text-center wow fadeIn" data-wow-delay="0.5s">
                         <div class="section-heading">
+                        <br><br><br><br>
                             <h2>"Creating Innovation and Competence in The New Normal Era"</h2>
                         </div>
                     </div>

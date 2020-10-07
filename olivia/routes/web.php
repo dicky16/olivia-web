@@ -202,6 +202,8 @@ Route::prefix('faq')->group(function () {
     Route::post('kirim', 'User\UserFAQController@store');
 });
 
+Route::get('search', 'User\UserPageController@search');
+
 Route::get('tes', function () {
     return view('tes');
 });
