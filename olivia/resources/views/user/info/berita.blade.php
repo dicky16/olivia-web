@@ -31,6 +31,7 @@
                             <?php
                                 $tglConvert = explode($berita->created_at, " ");
                                 $tgl = date('d F Y', strtotime($tglConvert[0]));
+                                $desArr = explode(".", $berita->deskripsi);
                             ?>
                             <div class="col-12">
                                 <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
@@ -45,7 +46,7 @@
                                     <!-- Post Title -->
                                     <h2>{{$berita->judul}}</h2>
                                     <!-- Post Excerpt -->
-                                    <p>{!! $berita->deskripsi !!}</p>
+                                    <p>{!! $desArr[0] !!} {!!$desArr[1]!!}</p>
                                     <!-- Read More btn -->
                                     <a href="{{ url('berita') }}/{{$berita->id}}">Read More</a>
                                 </div>
@@ -88,83 +89,6 @@
                                 </div>
                             </div>
                             @endforeach
-                            <!-- <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/expo.jpeg') }}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">Inovasi Sains dan Teknologi melalui Riset dan Pengembangan Produk Kreatif untuk Menyokong Percepatan Industri 4.0</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI</a>/<a href="#"> 5 November 2018</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/hu.jpg') }}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">Program Diploma IPB menjadi Tuan Rumah Kongres Ke-IV “FPTVI Sinergi Untuk Negeri”</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI</a>/<a href="#"> 11 Oktober 2017.</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/work.jpeg') }}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">Workshop: SDM Bersertifikasi Kompetensi sebagai upaya untuk menyiapkan Tenaga Kerja Siap Kerja dan Mandiri</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI</a>/<a href="#"> 17 Juli 2018</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/23.jpg') }}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">Indonesia-Australia Capai Kesepakatan Dalam Pengakuan Kerangka Kualifikasi</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI</a>/<a href="#"> 26 September 2017</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/6.jpg') }}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">ICASIE, Konferensi Internasional Pertama Fakultas Vokasi ITS</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI</a>/<a href="#"> 6 August 2017</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/mentri.jpg') }}}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">Menteri Nasir: Untuk Pendidikan Vokasi, Dosen Boleh Tidak Lulusan S2</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">FPTVI</a>/<a href="#"> 8 December 2016</a></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-latest-blog-post d-flex">
-                                <div class="latest-blog-post-thumb">
-                                    <img src="{{ asset('user/img/blog-img/28.jpg') }}" alt="">
-                                </div>
-                                <div class="latest-blog-post-content">
-                                    <h6><a href="#">Kabar Forum Pendidikan Tinggi Vokasi Indonesia (FPTVI) 2019</a></h6>
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">teknikelektrod3</a>/<a href="#">  28 Juni 2019 </a></h6>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>    
                     </div>
                 </div>

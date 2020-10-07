@@ -67,7 +67,8 @@ class PengumumanController
         $rules = array (
             'judul' => 'required',
             'deskripsi' => 'required',
-            'lampiran' => 'required|max:10000|mimes:jpg,jpeg,svg,png,gif,doc,docx,xlsx,xls,pdf'
+            'lampiran' => 'required|max:10000|mimes:jpg,jpeg,svg,png,gif,doc,docx,xlsx,xls,pdf',
+            'gambar' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
         );
         
         $validator = Validator::make($request->all(), $rules);
@@ -75,15 +76,21 @@ class PengumumanController
             $judul = $request->judul;
             $deskripsi = $request->deskripsi;
             $lampiran = $request->file('lampiran');
+            $gambar = $request->file('gambar');
             $namaOriFile = $lampiran->getClientOriginalName();
+            $namaOriFileGambar = $gambar->getClientOriginalName();
             $fileName = time().'_'.$namaOriFile;
+            $fileNameGambar = time().'_'.$namaOriFileGambar;
             $filePath = "assets/file/pengumuman";
+            $filePathGambar = "assets/image/pengumuman";
             $lampiran->move($filePath, $fileName, "");
+            $gambar->move($fileNameGambar, $fileNameGambar, "");
 
             $pengumuman = DB::table('pengumuman')->insert([
                 'judul' => $judul,
                 'deskripsi' => $deskripsi,
                 'lampiran' => $filePath.'/'.$fileName,
+                'gambar' => $fileNameGambar.'/'.$fileNameGambar,
                 'id_user' => auth()->user()->id,
                 'created_at' =>  \Carbon\Carbon::now()
             ]);
@@ -136,15 +143,56 @@ class PengumumanController
     public function update(Request $request, $id)
     {
         $lampiran = $request->file('lampiran');
-        if($lampiran != null) {
+        $gambar = $request->file('gambar');
+        if($lampiran != null && $gambar != null) {
         $rules = array (
             'judul' => 'required',
             'deskripsi' => 'required',
-            'lampiran' => 'required|max:10000|mimes:jpg,jpeg,svg,png,gif,doc,docx,xlsx,xls,pdf'
+            'lampiran' => 'required|max:10000|mimes:jpg,jpeg,svg,png,gif,doc,docx,xlsx,xls,pdf',
+            'gambar' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
         );
         
         $validator = Validator::make($request->all(), $rules);
           if($validator->passes()) {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+            $lampiran = $request->file('lampiran');
+            $gambar = $request->file('gambar');
+            $namaOriFile = $lampiran->getClientOriginalName();
+            $namaOriFileGambar = $gambar->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $fileNameGambar = time().'_'.$namaOriFileGambar;
+            $filePath = "assets/file/pengumuman";
+            $filePathGambar = "assets/image/pengumuman";
+            $lampiran->move($filePath, $fileName, "");
+            $gambar->move($fileNameGambar, $fileNameGambar, "");
+
+            $lampiranHapus = DB::table('pengumuman')->where('id', $id)->value('lampiran');
+            File::delete($lampiranHapus);
+            $gambarHapus = DB::table('pengumuman')->where('id', $id)->value('gambar');
+            File::delete($gambarHapus);
+
+            $pengumuman = DB::table('pengumuman')->where('id', $id)->update([
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'lampiran' => $filePath.'/'.$fileName,
+                'gambar' => $fileNameGambar.'/'.$fileNameGambar,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($pengumuman) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
+
+        } else if($lampiran != null) {
             $judul = $request->judul;
             $deskripsi = $request->deskripsi;
             $lampiran = $request->file('lampiran');
@@ -168,13 +216,35 @@ class PengumumanController
                     'status' => 'ok'
                   ]);
             }
-          }
+        } else if($gambar != null) {
+            $judul = $request->judul;
+            $deskripsi = $request->deskripsi;
+            $gambar = $request->file('gambar');
+            $namaOriFileGambar = $gambar->getClientOriginalName();
+            $fileNameGambar = time().'_'.$namaOriFileGambar;
+            $filePathGambar = "assets/image/pengumuman";
+            $gambar->move($fileNameGambar, $fileNameGambar, "");
 
-          return response()->json([
-            'status' => 'validation_error',
-            'message' => $validator->errors()->first()
-          ]);
+            $gambarHapus = DB::table('pengumuman')->where('id', $id)->value('gambar');
+            File::delete($gambarHapus);
 
+            $pengumuman = DB::table('pengumuman')->where('id', $id)->update([
+                'judul' => $judul,
+                'deskripsi' => $deskripsi,
+                'gambar' => $fileNameGambar.'/'.$fileNameGambar,
+                'updated_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($pengumuman) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+
+            return response()->json([
+                'status' => 'validation_error',
+                'message' => $validator->errors()->first()
+              ]);
         } else {
             $judul = $request->judul;
             $deskripsi = $request->deskripsi;
