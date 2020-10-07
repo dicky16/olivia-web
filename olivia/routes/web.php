@@ -170,10 +170,10 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::get('/', 'Admin\AdminPageController@socialmedia');
             Route::get('data', 'Admin\Footer\socialmediaController@getSocialDataTable');
             Route::get('datatable', 'Admin\Footer\socialmediaController@loadDataTable');
-            // Route::post('/', 'Admin\AdminArtikelController@store');
-            // Route::get('edit/{id}', 'Admin\AdminArtikelController@edit');
-            // Route::post('update/{id}', 'Admin\AdminArtikelController@update');
-            // Route::get('delete/{id}', 'Admin\AdminArtikelController@destroy');
+            Route::post('/', 'Admin\Footer\socialmediaController@store');
+            Route::get('edit/{id}', 'Admin\Footer\socialmediaController@edit');
+            Route::post('update/{id}', 'Admin\Footer\socialmediaController@update');
+            Route::get('delete/{id}', 'Admin\Footer\socialmediaController@destroy');
         });
     });
     
@@ -195,6 +195,7 @@ Route::prefix('galeri')->group(function () {
     Route::get('/', 'User\UserGaleriController@index')->name('galeri');
     // Route::get('show', 'User\UserGaleriController@getFoto');
 });
+Route::get('video', 'User\UserGaleriController@video')->name('video');
 //foto
 Route::prefix('faq')->group(function () {
     Route::get('/', 'User\UserPageController@faq')->name('faq');

@@ -12,6 +12,11 @@ class socialmediaController
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        setTimeZone();
+    }
+
     public function index()
     {
         //
@@ -24,10 +29,10 @@ class socialmediaController
         return Datatables::of($data)
         ->addIndexColumn()
         ->addColumn('aksi', function($row){
-            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-Socialmedia" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-socialmedia" style="font-size: 18pt; text-decoration: none;" class="mr-3">
             <i class="fas fa-pen-square"></i>
             </a>';
-            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-berita" style="font-size: 18pt; text-decoration: none; color:red;">
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-socialmedia" style="font-size: 18pt; text-decoration: none; color:red;">
             <i class="fas fa-trash"></i>
             </a>';
             return $btn;
@@ -58,7 +63,40 @@ class socialmediaController
      */
     public function store(Request $request)
     {
-        //
+        $rules = array (
+            'nama' => 'required',
+            'url' => 'required',
+            'icon' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            $nama = $request->nama;
+            $url = $request->url;
+            $icon = $request->file('icon');
+            $namaOriFile = $icon->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "assets/image/social";
+            $icon->move($filePath, $fileName, "");
+
+            $social = DB::table('sosial_media')->insert([
+                'nama' => $nama,
+                'url' => $url,
+                'icon' => $filePath.'/'.$fileName,
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($social) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
@@ -80,7 +118,10 @@ class socialmediaController
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('sosial_media')->where('id', $id)->get();
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -92,7 +133,44 @@ class socialmediaController
      */
     public function update(Request $request, $id)
     {
-        //
+        $nama = $request->nama;
+        $url = $request->url;
+        $icon = $request->file('icon');
+        if($icon != null) {
+            
+        }
+        $rules = array (
+            'nama' => 'required',
+            'url' => 'required',
+            'icon' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+        );
+        
+        $validator = Validator::make($request->all(), $rules);
+          if($validator->passes()) {
+            
+            $namaOriFile = $icon->getClientOriginalName();
+            $fileName = time().'_'.$namaOriFile;
+            $filePath = "assets/image/social";
+            $icon->move($filePath, $fileName, "");
+
+            $social = DB::table('sosial_media')->insert([
+                'nama' => $nama,
+                'url' => $url,
+                'icon' => $filePath.'/'.$fileName,
+                'created_at' =>  \Carbon\Carbon::now()
+            ]);
+
+            if($social) {
+                return response()->json([
+                    'status' => 'ok'
+                  ]);
+            }
+          }
+
+          return response()->json([
+            'status' => 'validation_error',
+            'message' => $validator->errors()->first()
+          ]);
     }
 
     /**
