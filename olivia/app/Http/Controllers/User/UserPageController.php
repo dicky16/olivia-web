@@ -9,7 +9,8 @@ class UserPageController
 {
     public function index()
     {
-        return view('user.index');
+        $data = DB::table('lomba')->get();
+        return view('user.index', compact('data'));
     }
 
     public function profil()
@@ -40,5 +41,37 @@ class UserPageController
     public function faq()
     {
         return view('user.faq');
+    }
+
+    public function search(Request $request)
+    {   
+        $key = $request->key;
+        // $data = DB::table('berita')->get();
+        $berita = DB::table('berita')
+        ->where('judul', 'LIKE', '%' .$key. '%')
+        ->get();
+        $pengumuman = DB::table('pengumuman')
+        ->where('judul', 'LIKE', '%' .$key. '%')
+        ->get();
+        $lomba = DB::table('lomba')
+        ->where('nama_lomba', 'LIKE', '%' .$key. '%')
+        ->get();
+        
+        // dd($berita);
+        // where('title', 'LIKE', '%' .'a'. '%')
+        // ->gaginate4();
+        if(count($berita) == 0 && count($pengumuman) == 0 && count($lomba) == 0) {
+            $request->session()->flush();
+            $returnHTML = view('user.jobs.searchNull')->render();
+            return response()->json(array('success' => false, 'html'=>$returnHTML));
+        }
+
+            session(['berita' => $berita]);
+            session(['pengumuman' => $pengumuman]);
+            session(['lomba' => $lomba]);
+            $returnHTML = view('user.jobs.search')->render();
+            return response()->json(array('success' => true, 'html'=>$returnHTML));
+        
+
     }
 }

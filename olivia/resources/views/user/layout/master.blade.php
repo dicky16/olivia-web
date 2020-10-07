@@ -95,8 +95,10 @@
                                 <div class="search-form-area animated">
                                     <form action="#" method="post">
                                         <input type="search" name="search" id="search" placeholder="Type keywords &amp; hit enter">
-                                        <button type="submit" class="d-none"><img src="{{ asset('user/img/core-img/search-icon.png') }}" alt="Search"></button>
+                                        <!-- <button type="submit" class="d-none"><img src="{{ asset('user/img/core-img/search-icon.png') }}" alt="Search"></button> -->
                                     </form>
+                                    <div id="display-search"></div>
+                                    
                                 </div>
                                 <!-- Search btn -->
                                 <div class="search-button">
@@ -206,7 +208,36 @@
     <script src="{{ asset('user/js/active.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @yield('js-user')
-    <script type="text/javascript">$(function () {
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+      $(document).on('keyup', '#search', function() {
+         var key = $('#search').val();
+         if(key != "") {
+            showSearch(key)
+         } else {
+            $('#display-search').empty();
+         }
+      });
+
+      function showSearch(key)
+      {  
+         $.ajax({
+               type: 'GET',
+               url: 'search',
+               data: {key:key},
+               success: function(data) {
+                  if(data.success == true) {
+                  $('#display-search').html(data.html);
+                  } else {
+                     $('#display-search').html(data.html);
+                     console.log(data.html)
+                  }
+               }
+         });
+      }
+
+      $(function () {
            $(".input input")
               .focus(function () {
                  $(this)
@@ -339,6 +370,7 @@
               }
            });
         });
+      });
         </script>
 </body>
 
