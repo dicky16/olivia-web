@@ -13,6 +13,11 @@ class UserPageController
         return view('user.index', compact('data'));
     }
 
+    public function home()
+    {
+        return view('user.auth.home');
+    }
+
     public function profil()
     {
         $data = DB::table('visimisi')->get();

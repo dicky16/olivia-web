@@ -74,14 +74,14 @@
                         </div>
                         <div class="row">
                             <!-- Single Feature Area -->
-                            <div class="col-12 ">
+                            <div class="col-10 ">
                                 <div class="single-feature-area d-flex1">
                                     <div class="feature-icon mr-30">
                                         <img src="{{ asset('user/img/core-img/settings-2.png') }}" alt="">
                                     </div>
 
                                     <div class="feature-content">
-                                        {!! $data[0]->visi !!}
+                                        <p>{!! $data[0]->visi !!}</p>
                                     </div>
                                 </div>
                             </div>

@@ -119,11 +119,50 @@
                                 <div class="search-button">
                                     <a href="#" id="search-btn"><img src="{{ asset('user/img/core-img/search-icon.png') }}" alt="Search"></a>
                                 </div>
+                                <div class="login-register-btn">
+                                <!-- jika user tidak auth -->
+                                <?php if(auth()->user() == null) {?>
                                 <!-- Login/Register btn -->
                                 <div class="login-register-btn">
-                                    <a href="login.html">Login/Register</a>
-                                   
+                                    <a href="{{ url('user/login') }}">Login/Register</a>
                                 </div>
+                                <?php } else if(auth()->user() != null) {?>
+                                 <?php if(auth()->user()->id_role == 2) {?>
+                                <!-- jika user auth -->
+                                <div class="container">
+                                        <div class="half">
+                                            <label for="profile2" class="profile-dropdown">
+                                                <input type="checkbox" id="profile2">
+                                                <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
+                                                <span style="color: #000000;">Paraseka</span>
+                                                <!-- <label for="profile2"><i class="mdi mdi-menu"></i></label> -->
+                                                
+                                                <ul>
+                                                <form action="{{ route('logout') }}" method="POST">
+                                                   @csrf
+                                                    <!-- <li><a href="#"><i class="mdi mdi-email-outline"></i>Akun</a></li> -->
+                                                    <div class="form-row">
+                                                      <div class="col">
+                                                         <input type="submit" class="btn btn-success" value="Akun">
+                                                      </div>
+                                                      <div class="col">
+                                                         <input type="submit" class="btn btn-primary" value="Logout">
+                                                      </div>
+                                                   </div>
+                                                    <!-- <li><a href=""><i class="mdi mdi-logout" type="submit"></i>Logout</a></li> -->
+                                                    
+                                                </form>
+                                                </ul>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <?php } else {?>
+                                       <div class="login-register-btn">
+                                             <a href="{{ url('user/login') }}">Login/Register</a>
+                                       </div>
+                                    <?php } ?>
+                                <?php } ?>
+                                 </div>
                             </div>
                         </nav>
                     </div>

@@ -203,6 +203,13 @@ Route::prefix('faq')->group(function () {
     Route::post('kirim', 'User\UserFAQController@store');
 });
 
+//route level user
+Route::group(['middleware' => ['auth', 'checkRole:2']],function() {
+    Route::prefix('user')->group(function () {
+        Route::get('/', 'User\UserPageController@home');
+    });
+});
+
 Route::get('search', 'User\UserPageController@search');
 
 Route::get('tes', function () {
