@@ -74,14 +74,16 @@
                         </div>
                         <div class="row">
                             <!-- Single Feature Area -->
-                            <div class="col-12 ">
+                            <div class="col-10 ">
                                 <div class="single-feature-area d-flex1">
                                     <div class="feature-icon mr-30">
                                         <img src="{{ asset('user/img/core-img/settings-2.png') }}" alt="">
                                     </div>
 
                                     <div class="feature-content">
-                                        {!! $data[0]->visi !!}
+                                        @if ($data[0] != null)
+                                            {!! $data[0]->visi !!}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +103,9 @@
                             <div class="section-heading">
                                 <h2>Misi FPTVI</h2>
                             </div>
+                            @if ($data[0] != null)
                             {!! $data[0]->misi !!}
+                            @endif
                             <!-- <p>Membangun jejaring sinergi di antara penyelenggara Pendidikan Tinggi Vokasi dengan lembaga lainnya dalam rangka membangun daya saing Pendidikan Tinggi Vokasi di Indonesia.</p>
                             <br>
                             <p>Mengupayakan sistem Pendidikan Tinggi Vokasi untuk membentuk sumber daya manusia yang berkepribadian, berakhlak dan bermartabat untuk kemandirian bangsa.</p>

@@ -21,7 +21,16 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
         Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
         Route::get('artikel', 'Admin\AdminPageController@artikel')->name('artikel');
         Route::get('sejarah', 'Admin\AdminPageController@sejarah')->name('sejarah');
-        
+        //slider
+        Route::prefix('slider')->group(function () {
+            Route::get('/', 'Admin\Home\SliderController@index');
+            Route::get('data', 'Admin\Home\SliderController@getSliderDataTable');
+            Route::post('/', 'Admin\Home\SliderController@store');
+            Route::get('datatable', 'Admin\Home\SliderController@loadDataTable');
+            Route::get('edit/{id}', 'Admin\Home\SliderController@edit');
+            Route::post('update/{id}', 'Admin\Home\SliderController@update');
+            Route::get('delete/{id}', 'Admin\Home\SliderController@destroy');
+        });
         //berita
         Route::prefix('berita')->group(function () {
             Route::get('data', 'Admin\Home\BeritaController@getBeritaDataTable');
@@ -203,6 +212,13 @@ Route::prefix('faq')->group(function () {
     Route::get('/', 'User\UserPageController@faq')->name('faq');
     Route::get('show', 'User\UserFAQController@getFAQ');
     Route::post('kirim', 'User\UserFAQController@store');
+});
+
+//route level user
+Route::group(['middleware' => ['auth', 'checkRole:2']],function() {
+    Route::prefix('user')->group(function () {
+        Route::get('/', 'User\UserPageController@home');
+    });
 });
 
 Route::get('search', 'User\UserPageController@search');

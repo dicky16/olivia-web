@@ -73,12 +73,13 @@
   list-style: none;
   padding: 0;
   marrgin: 0;
-  background: #fff;
+  background: transparent;
   position: absolute;
   top: 100%;
   right: 0;
   width: 100%;
   border-radius: 3px;
+  text-align: center;
 }
 .profile-dropdown ul li a {
   display: block;

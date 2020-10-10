@@ -24,29 +24,24 @@
           <input type="email" id="email" name="email" required autocomplete="off" class="@error('email') is-invalid @enderror" value="{{ old('email') }}" />
           <label for="Username">Email</label>
           @error('email')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-          @enderror
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
           <i class="fa fa-user form-control-feedback"></i>
           <div class="check"></div>
           <div class="bar"></div>
         </div>
         <div class="input-container has-feedback">
-          <input type="password" id="password" name="password" required autocomplete="off" class="@error('password') is-invalid @enderror" value="{{ old('password') }}" />
+          <input type="password" id="password" name="password" required autocomplete="off" />
           <label for="Password">Password</label>
-          @error('password')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $password }}</strong>
-              </span>
-          @enderror
           <i class="fa fa-lock form-control-feedback"></i>
           <div class="check"></div>
           <div class="bar"></div>
         </div>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+            <input type="checkbox" id="remember-me" checked>
             <span class="cr"><i class="cr-icon fa fa-rocket"></i></span>
             Remember me
           </label>
@@ -55,9 +50,7 @@
           <!-- <button class="rkmd-btn btn-lightBlue ripple-effect float-right"><span>Sign in</span></button> -->
           <input type="submit" class="rkmd-btn btn-lightBlue ripple-effect float-right" value="{{ __('Login') }}">
         </div>
-        @if (Route::has('password.request'))
-        <div class="footer"><a href="{{ route('password.request') }}">Forgot your password?</a></div>
-        @endif
+        <div class="footer"><a href="#">Forgot your password?</a></div>
       </form>
     </div>
     <div class="card login-register">

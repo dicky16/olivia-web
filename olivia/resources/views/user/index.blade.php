@@ -60,7 +60,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center mb-0">
-                        <h2>Alur Pendaftaran</h2>
+                        <h2>Kategori Lomba</h2>
                         <p>OLIVIA 2020</p>
                     </div>
                 </div>
@@ -76,6 +76,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="olv-service-slides owl-carousel">
+                        @if ($data != null)
                         @foreach($data as $lomba)
                         <?php
                             $tglConvertLatest = explode("|", $data[0]->jadwal);
@@ -90,6 +91,7 @@
                                 <p>{{ $jadwal1}} – {{ $jadwal2}}</p>
                             </div>
                         @endforeach
+                        @endif
                         </div>
                     </div>
                 </div>
