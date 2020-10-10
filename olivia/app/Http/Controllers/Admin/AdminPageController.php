@@ -11,6 +11,10 @@ class AdminPageController
     	return view('admin.dashboard');
     }
 
+    public function akun() 
+    {
+        return view('admin.akun');
+    }
     public function berita()
     {
     	return view('admin.home.beritaAdmin');
