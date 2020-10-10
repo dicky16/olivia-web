@@ -81,7 +81,9 @@
                                     </div>
 
                                     <div class="feature-content">
-                                        <p>{!! $data[0]->visi !!}</p>
+                                        @if ($data[0] != null)
+                                            {!! $data[0]->visi !!}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +103,9 @@
                             <div class="section-heading">
                                 <h2>Misi FPTVI</h2>
                             </div>
+                            @if ($data[0] != null)
                             {!! $data[0]->misi !!}
+                            @endif
                             <!-- <p>Membangun jejaring sinergi di antara penyelenggara Pendidikan Tinggi Vokasi dengan lembaga lainnya dalam rangka membangun daya saing Pendidikan Tinggi Vokasi di Indonesia.</p>
                             <br>
                             <p>Mengupayakan sistem Pendidikan Tinggi Vokasi untuk membentuk sumber daya manusia yang berkepribadian, berakhlak dan bermartabat untuk kemandirian bangsa.</p>

@@ -1,3 +1,4 @@
+@if ($data != null)
 @foreach ($data as $foto)
 <?php foreach(json_decode($foto->foto)as $picture) { ?>
     <div class="single_gallery_item 18">
@@ -23,3 +24,4 @@
 <div class="row">
     {{ $data->links() }}
 </div>
+@endif

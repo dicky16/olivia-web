@@ -85,7 +85,7 @@
                                           <!-- Small button
                                        </button> -->
                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                          <a class="dropdown-item" href="{{ url('foto') }}">Foto</a>
+                                          <a class="dropdown-item" href="{{ url('galeri') }}">Foto</a>
                                           <a class="dropdown-item" href="{{ url('video') }}">Video</a>
                                        </div>
                                     </div>
@@ -124,7 +124,7 @@
                                 <?php if(auth()->user() == null) {?>
                                 <!-- Login/Register btn -->
                                 <div class="login-register-btn">
-                                    <a href="{{ url('user/login') }}">Login/Register</a>
+                                <a href="{{ url('login') }}">Login/Register</a>
                                 </div>
                                 <?php } else if(auth()->user() != null) {?>
                                  <?php if(auth()->user()->id_role == 2) {?>
@@ -158,7 +158,7 @@
                                     </div>
                                     <?php } else {?>
                                        <div class="login-register-btn">
-                                             <a href="{{ url('user/login') }}">Login/Register</a>
+                                             <a href="{{ url('login') }}">Login/Register</a>
                                        </div>
                                     <?php } ?>
                                 <?php } ?>

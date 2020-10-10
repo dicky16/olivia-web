@@ -29,9 +29,11 @@
                         <div class="portfolio-menu">
                             <p class="active" data-filter="*">All</p>
                             <!-- <p data-filter=".18">2018</p> -->
+                            @if ($tahun)
                             @foreach($tahun as $thn)
                             <p data-filter=".{{$thn}}">{{$thn}}</p>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
