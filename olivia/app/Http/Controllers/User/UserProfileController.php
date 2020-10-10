@@ -9,12 +9,6 @@ class UserProfileController
 {
     public function getSejarah()
     {
-        // $data = DB::table('sejarah')->where('status', 'aktif')->get();
-        // if($data) {
-        //     return response()->json([
-        //         'data' => $data
-        //     ]);
-        // }
         $data = DB::table('sejarah')->where('status', 'aktif')->get();
         $returnHTML = view('user.jobs.profile.sejarahView')->with('data', $data)->render();
         return response()->json(array('success' => true, 'html'=>$returnHTML));
@@ -24,6 +18,13 @@ class UserProfileController
     {
         $data = DB::table('visimisi')->where('status', 'aktif')->get();
         $info = DB::table('info_struktur')->get();
+        
+        if(count($data) == 0 && count($info) == 0) {
+            $data = null;
+        } else if(count($data) == 0) {
+            $data = null;
+        }
+
         return view('user.profil',compact('data', 'info'));
     }
 
