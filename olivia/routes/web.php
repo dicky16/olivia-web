@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 //route admin
 Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
     Route::prefix('admin')->group(function () {
+        Route::get('akun', 'Admin\AdminPageController@akun');
         Route::get('/', 'Admin\AdminPageController@dashboard')->name('dashboard');
         Route::get('berita', 'Admin\AdminPageController@berita')->name('berita');
         Route::get('artikel', 'Admin\AdminPageController@artikel')->name('artikel');
