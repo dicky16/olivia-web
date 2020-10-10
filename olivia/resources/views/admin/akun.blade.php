@@ -4,7 +4,7 @@
 <!-- <link href="{{ asset('user/style.css') }}" rel="stylesheet"> -->
 
 <!-- Responsive CSS -->
-<link href="{{ asset('user/css/material-dashboard.css') }}" rel="stylesheet">
+<link href="{{ asset('admin/css/akun.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 
