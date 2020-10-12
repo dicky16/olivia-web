@@ -10,7 +10,9 @@ class UserPageController
     public function index()
     {
         $data = DB::table('lomba')->get();
-        return view('user.index', compact('data'));
+        $slider = DB::table('slider')->get();
+        $info = DB::table('info_grafis')->get();
+        return view('user.index', compact('data', 'slider', 'info'));
     }
 
     public function home()

@@ -23,8 +23,12 @@
 
     <section>
         <div class="hero-slides owl-carousel">
-            <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">
-            <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">          
+            @if ($slider != null)
+            @foreach($slider as $slide)
+            <img class="slide-img" src="{{ url('') }}/{{$slide->gambar}}" style="width: 70%; margin: auto;">
+            <!-- <img class="slide-img" src="{{ asset('user/img/bg-img/poto.png') }}" alt="" style="width: 70%; margin: auto;">   -->
+            @endforeach
+            @endif        
             
         </div>
     </section>
@@ -107,17 +111,21 @@
                     <div class="section-heading text-center mb-0">
                         <h2>INFO</h2>
                         <div class="container">
-                            <div class="row align-items-center">                
+                            <div class="row align-items-center"> 
+                            @if ($info != null)
+                            @foreach($info as $infos)               
                                 <div class="col-12 col-md-6">
+                                    <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
+                                        <img src="{{ url('') }}/{{$infos->gambar}}" alt="">
+                                    </div>
+                                </div>
+                            @endforeach
+                            @endif
+                                <!-- <div class="col-12 col-md-6">
                                     <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
                                         <img src="{{ asset('user/img/info-img/2.jpg') }}" alt="">
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                                        <img src="{{ asset('user/img/info-img/2.jpg') }}" alt="">
-                                    </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
