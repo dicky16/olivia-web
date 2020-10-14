@@ -125,7 +125,7 @@
                 $('input[name=name]').val();
                 $('input[name=email]').val();
                 $('input[name=message]').val();
-                location.reload()
+                $(".form-control").val("");
             } else {
                 Swal.fire({
                     icon: 'error',

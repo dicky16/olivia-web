@@ -143,7 +143,7 @@
                                                     <!-- <li><a href="#"><i class="mdi mdi-email-outline"></i>Akun</a></li> -->
                                                     <div class="form-row">
                                                       <div class="col">
-                                                         <input type="submit" class="btn btn-success" value="Akun">
+                                                         <a href="user"><input type="button" class="btn btn-success" value="Akun"></a>
                                                       </div>
                                                       <div class="col">
                                                          <input type="submit" class="btn btn-primary" value="Logout">

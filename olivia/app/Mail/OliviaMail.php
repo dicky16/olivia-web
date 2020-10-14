@@ -29,7 +29,7 @@ class OliviaMail extends Mailable
     public function build()
     {
         $data = session('email');
-        return $this->from('setyawandicky1610@gmail.com')
+        return $this->subject('Jawaban dari pertanyaan Anda.')
                    ->view('email.view')
                    ->with(
                     [

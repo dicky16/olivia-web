@@ -16,6 +16,10 @@ class CreateDataKetuaTable extends Migration
         Schema::create('data_tim', function (Blueprint $table) {
             $table->id();
             $table->string('nama_team');
+            $table->string('nim_ketua');
+            $table->text('ktm_ketua');
+            $table->string('nama_dosen');
+            $table->string('nidn_dosen');
             $table->string('institusi');
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');

@@ -225,9 +225,9 @@ Route::prefix('faq')->group(function () {
 });
 
 //route level user
-Route::group(['middleware' => ['auth', 'checkRole:2']],function() {
+Route::group(['middleware' => ['auth', 'checkRole:2', 'verified']],function() {
     Route::prefix('user')->group(function () {
-        Route::get('/', 'User\UserPageController@home');
+        Route::get('/', 'User\AkunController@index');
     });
 });
 
