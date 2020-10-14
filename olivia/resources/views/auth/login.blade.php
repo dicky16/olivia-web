@@ -17,6 +17,11 @@
       <div class="tooltip">Sign up</div>
     </div>
     <div class="card login-register login-reset">
+    @if (session('status'))
+      <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+      </div>
+    @endif
       <h1 class="title">Login</h1>
       <form method="POST" action="{{ route('login') }}">
           @csrf
@@ -37,7 +42,7 @@
           <label for="Password">Password</label>
           @error('password')
               <span class="invalid-feedback" role="alert">
-                  <strong>{{ $password }}</strong>
+                  <strong>{{ $message }}</strong>
               </span>
           @enderror
           <i class="fa fa-lock form-control-feedback"></i>
@@ -55,31 +60,54 @@
           <!-- <button class="rkmd-btn btn-lightBlue ripple-effect float-right"><span>Sign in</span></button> -->
           <input type="submit" class="rkmd-btn btn-lightBlue ripple-effect float-right" value="{{ __('Login') }}">
         </div>
-        @if (Route::has('password.request'))
-        <div class="footer"><a href="{{ route('password.request') }}">Forgot your password?</a></div>
-        @endif
+        <!-- @if (Route::has('password.request')) -->
+        <div class="footer"><a href="javascript:void(0)">Forgot your password?</a></div>
+        <!-- @endif -->
       </form>
     </div>
     <div class="card login-register">
       <h1 class="title">Create an account</h1>
-      <form>
+      <form method="POST" action="{{ route('register') }}">
+      @csrf
         <div class="input-container has-feedback">
-          <input type="text" id="Username" name="Username" required autocomplete="off" pattern="[\w_-]{3,20}" title="Username must contain from 3 to 20 characters such as any letter, number, an underscore, or a hyphen." />
-          <label for="Username">Username</label>
+          <input type="text" id="Username" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" name="name" required autocomplete="off" />
+          <label for="Username">Nama</label>
           <i class="fa fa-user form-control-feedback"></i>
+          @error('name')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+          @enderror
           <div class="check"></div>
           <div class="bar"></div>
         </div>
         <div class="input-container has-feedback">
-          <input type="email" id="E-mail" name="E-mail" required pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" title="Not an e-mail!" autocomplete="off" />
+          <input type="email" id="E-mail" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" name="email" required pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" title="Not an e-mail!" autocomplete="off" />
           <label for="E-mail">E-mail</label>
           <i class="fa fa-envelope form-control-feedback"></i>
+          @error('email')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+          @enderror
           <div class="check"></div>
           <div class="bar"></div>
         </div>
         <div class="input-container has-feedback">
-          <input type="password" id="Password" name="Password" required autocomplete="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" title="Password must contain at least one number and one uppercase and lowercase letter, and from 8 to 20 characters." />
+          <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" required autocomplete="off" pattern="{8,20}" title="Password minimal 8 karakter" />
           <label for="Password">Password</label>
+          <i class="fa fa-lock form-control-feedback"></i>
+          @error('password')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+          @enderror
+          <div class="check"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="input-container has-feedback">
+          <input type="password" id="password-confirm" name="password_confirmation" required autocomplete="off" pattern="{8,20}" title="Password minimal 8 karakter" />
+          <label for="Password">Ulangi Password</label>
           <i class="fa fa-lock form-control-feedback"></i>
           <div class="check"></div>
           <div class="bar"></div>
@@ -99,16 +127,25 @@
     <div class="card login-reset">
       <h1 class="title">Reset password</h1>
       <p class="reset-info">Password reset instruction will be send to your e-mail.</p>
-      <form>
+      <form method="POST" action="{{ route('password.email') }}">
+      @csrf
         <div class="input-container has-feedback">
-          <input type="email" id="E-mail" name="E-mail" required pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" title="Not an e-mail!" autocomplete="off" />
+          <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" required pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" title="Not an e-mail!" autocomplete="off" />
           <label for="E-mail">E-mail</label>
+          @error('email')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+          @enderror
           <i class="fa fa-envelope form-control-feedback"></i>
           <div class="check"></div>
           <div class="bar"></div>
         </div>
         <div class="button-container">
-          <button><span>Reset</span></button>
+          <!-- <button><span>Reset</span></button> -->
+          <button type="submit" class="btn btn-primary">
+              {{ __('Reset') }}
+          </button>
         </div>
         <div class="footer"><a href="#">Back to Login</a></div>
       </form>

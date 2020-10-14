@@ -6,16 +6,16 @@ $(document).ready(function() {
     });
 
     //load slider
-    loadSlider();
+    loadInfo();
     //load berita
-    function loadSlider() {
-        $('#table-slider').load('/admin/slider/datatable', function() {
+    function loadInfo() {
+        $('#table-grafis').load('/admin/infografis/datatable', function() {
             var host = window.location.origin;
-            $('#datatable-slider').DataTable({
+            $('#datatable-grafis').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '/admin/slider/data',
+                    url: '/admin/infografis/data',
                     type: 'GET'
                 },
                 columns: [
@@ -35,8 +35,8 @@ $(document).ready(function() {
         });
     }
 
-    //tambah slider
-    $('body').on('submit', '#form-tambah-slider', function(e) {
+    //tambah info grafis
+    $('body').on('submit', '#form-tambah-grafis', function(e) {
         e.preventDefault();
         var formData = new FormData();
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/admin/slider',
+            url: '/admin/infografis',
             data: formData,
             contentType: false,
             processData: false,
@@ -63,13 +63,13 @@ $(document).ready(function() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Berhasil',
-                        text: 'Berhasil tambah slider',
+                        text: 'Berhasil tambah Info Grafis',
                         timer: 1200,
                         showConfirmButton: false
                     });
-                    loadSlider();
-                    $('#form-edit-slider').trigger('reset');
-                    $('#SliderModal').modal('hide');
+                    loadInfo();
+                    $('#form-tambah-grafis').trigger('reset');
+                    $('#GrafisModal').modal('hide');
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -83,16 +83,16 @@ $(document).ready(function() {
         });
     });
 
-    //edit slider
-    $('body').on('click', '.btn-edit-slider', function(e) {
+    //edit info grafis
+    $('body').on('click', '.btn-edit-grafis', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
         var host = window.location.origin;
         $.ajax({
             type: 'GET',
-            url: '/admin/slider/edit/' + id,
+            url: '/admin/infografis/edit/' + id,
             success: function(data) {
-                $("#editSliderModal").modal("show");
+                $("#editGrafisModal").modal("show");
                 $("#view-gambar").attr('src', host + '/' + data.data[0].gambar);
                 $('input[name=nama-edit]').val(data.data[0].nama);
                 $('input[name=edit-id]').val(id);
@@ -100,8 +100,8 @@ $(document).ready(function() {
         });
     });
 
-    //updapte slider
-    $('body').on('submit', '#form-edit-slider', function(e) {
+    //update info grafis
+    $('body').on('submit', '#form-edit-grafis', function(e) {
         e.preventDefault();
         var formData = new FormData();
 
@@ -113,7 +113,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/admin/slider/update/' + id,
+            url: '/admin/infografis/update/' + id,
             data: formData,
             contentType: false,
             processData: false,
@@ -128,13 +128,13 @@ $(document).ready(function() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Berhasil',
-                        text: 'Berhasil update slider',
+                        text: 'Berhasil tambah Info Grafis',
                         timer: 1200,
                         showConfirmButton: false
                     });
-                    loadSlider();
-                    $('#form-edit-slier').trigger('reset');
-                    $('#editSliderModal').modal('hide');
+                    loadInfo();
+                    $('#form-edit-grafis').trigger('reset');
+                    $('#editGrafisModal').modal('hide');
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -148,8 +148,8 @@ $(document).ready(function() {
         });
     });
 
-    //hapus slider
-    $('body').on('click', '.btn-delete-slider', function(e) {
+    //hapus info grafis
+    $('body').on('click', '.btn-delete-grafis', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
         var judul = $(this).data('nama');
@@ -165,7 +165,7 @@ $(document).ready(function() {
             if (result.value) {
                 $.ajax({
                     type: 'GET',
-                    url: 'slider/delete/' + id,
+                    url: 'infografis/delete/' + id,
                     contentType: false,
                     processData: false,
                     success: function(data) {
@@ -174,7 +174,7 @@ $(document).ready(function() {
                                 'Deleted!',
                                 'Berhasil Menghapus Jadwal',
                                 )
-                                loadSlider();
+                                loadInfo();
                             }
                         }
                     });

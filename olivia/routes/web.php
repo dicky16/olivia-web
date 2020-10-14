@@ -31,6 +31,16 @@ Route::group(['middleware' => ['auth', 'checkRole:1']],function() {
             Route::post('update/{id}', 'Admin\Home\SliderController@update');
             Route::get('delete/{id}', 'Admin\Home\SliderController@destroy');
         });
+        //info grafis
+        Route::prefix('infografis')->group(function () {
+            Route::get('/', 'Admin\Home\GrafisController@index');
+            Route::get('data', 'Admin\Home\GrafisController@getGrafisDataTable');
+            Route::post('/', 'Admin\Home\GrafisController@store');
+            Route::get('datatable', 'Admin\Home\GrafisController@loadDataTable');
+            Route::get('edit/{id}', 'Admin\Home\GrafisController@edit');
+            Route::post('update/{id}', 'Admin\Home\GrafisController@update');
+            Route::get('delete/{id}', 'Admin\Home\GrafisController@destroy');
+        });
         //berita
         Route::prefix('berita')->group(function () {
             Route::get('data', 'Admin\Home\BeritaController@getBeritaDataTable');
@@ -215,9 +225,9 @@ Route::prefix('faq')->group(function () {
 });
 
 //route level user
-Route::group(['middleware' => ['auth', 'checkRole:2']],function() {
+Route::group(['middleware' => ['auth', 'checkRole:2', 'verified']],function() {
     Route::prefix('user')->group(function () {
-        Route::get('/', 'User\UserPageController@home');
+        Route::get('/', 'User\AkunController@index');
     });
 });
 

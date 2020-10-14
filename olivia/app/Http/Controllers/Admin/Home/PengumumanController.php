@@ -84,13 +84,13 @@ class PengumumanController
             $filePath = "assets/file/pengumuman";
             $filePathGambar = "assets/image/pengumuman";
             $lampiran->move($filePath, $fileName, "");
-            $gambar->move($fileNameGambar, $fileNameGambar, "");
+            $gambar->move($filePathGambar, $fileNameGambar, "");
 
             $pengumuman = DB::table('pengumuman')->insert([
                 'judul' => $judul,
                 'deskripsi' => $deskripsi,
                 'lampiran' => $filePath.'/'.$fileName,
-                'gambar' => $fileNameGambar.'/'.$fileNameGambar,
+                'gambar' => $filePathGambar.'/'.$fileNameGambar,
                 'id_user' => auth()->user()->id,
                 'created_at' =>  \Carbon\Carbon::now()
             ]);
@@ -165,7 +165,7 @@ class PengumumanController
             $filePath = "assets/file/pengumuman";
             $filePathGambar = "assets/image/pengumuman";
             $lampiran->move($filePath, $fileName, "");
-            $gambar->move($fileNameGambar, $fileNameGambar, "");
+            $gambar->move($filePathGambar, $fileNameGambar, "");
 
             $lampiranHapus = DB::table('pengumuman')->where('id', $id)->value('lampiran');
             File::delete($lampiranHapus);
@@ -176,7 +176,7 @@ class PengumumanController
                 'judul' => $judul,
                 'deskripsi' => $deskripsi,
                 'lampiran' => $filePath.'/'.$fileName,
-                'gambar' => $fileNameGambar.'/'.$fileNameGambar,
+                'gambar' => $filePathGambar.'/'.$fileNameGambar,
                 'updated_at' =>  \Carbon\Carbon::now()
             ]);
 
@@ -223,7 +223,7 @@ class PengumumanController
             $namaOriFileGambar = $gambar->getClientOriginalName();
             $fileNameGambar = time().'_'.$namaOriFileGambar;
             $filePathGambar = "assets/image/pengumuman";
-            $gambar->move($fileNameGambar, $fileNameGambar, "");
+            $gambar->move($filePathGambar, $fileNameGambar, "");
 
             $gambarHapus = DB::table('pengumuman')->where('id', $id)->value('gambar');
             File::delete($gambarHapus);
@@ -231,7 +231,7 @@ class PengumumanController
             $pengumuman = DB::table('pengumuman')->where('id', $id)->update([
                 'judul' => $judul,
                 'deskripsi' => $deskripsi,
-                'gambar' => $fileNameGambar.'/'.$fileNameGambar,
+                'gambar' => $filePathGambar.'/'.$fileNameGambar,
                 'updated_at' =>  \Carbon\Carbon::now()
             ]);
 
@@ -284,8 +284,9 @@ class PengumumanController
      */
     public function destroy($id)
     {
-        $gambarPathHapus = DB::table('pengumuman')->where('id', $id)->value('lampiran');
-        File::delete($gambarPathHapus);
+        $data = DB::table('pengumuman')->where('id', $id)->get();
+        File::delete($data[0]->lampiran);
+        File::delete($data[0]->gambar);
         DB::table('pengumuman')->where('id', $id)->delete();
         return response()->json([
             'status' => 'deleted',

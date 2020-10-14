@@ -42,88 +42,115 @@
                     <h3>Data Peserta</h3>
                     <ul class="pt-2">
                                     <div class="card-body">
-                                      <form>
+                                      <!-- <form> -->
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
-                                              <input type="text" class="form-control" placeholder="Nama Ketua">
+                                              <input type="text" class="form-control" placeholder="Nama Tim" name="nama-tim">
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="NIM Ketua">
+                                              <input type="text" class="form-control" placeholder="Dosen Pembimbing" name="nama-dosen">
+                                            </div>
+                                          </div>                                          
+                                        </div>
+                                        
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating">Email address</label> -->
+                                              <input type="text" class="form-control" placeholder="Nama Ketua Tim" value="{{auth()->user()->name}}" disabled>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
+                                              <input type="text" class="form-control" placeholder="NIDN Dosen Pembimbing" name="nidn-dosen">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
+                                              <input type="email" class="form-control" placeholder="NIM Ketua Tim" name="nim-ketua">
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
+                                              <input type="text" class="form-control" placeholder="Nama Institusi" name="nama-institusi">
                                             </div>
                                           </div>                                          
                                         </div>
                                         <div class="row">
                                           <div class="col-md-6">
-                                            <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating">Email address</label> -->
-                                              <input type="text" class="form-control" placeholder="Anggota 1">
+                                            <div class="form-group">
+                                              <input type="file" class="form-control" placeholder="KTM Ketua Tim" id="ktm-ketua">
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="NIM Anggota 1">
+                                              <input type="text" class="form-control" placeholder="Email">
                                             </div>
                                           </div>
                                         </div>
-                                        <div class="row">                            
+                                        
+                                        <!-- <div class="row">
+                                          <div class="col-md-6">
+                                          </div>
+                                        </div> -->
+                                        <hr>
+                                        <div class="col text-center">
+                                        <h4>Anggota</h4>
                                         </div>
+                                        <hr>
+
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating">Email address</label> -->
-                                              <input type="text" class="form-control" placeholder="Anggota 2">
+                                              <input type="text" class="form-control" placeholder="Nama Anggota 1">
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
+                                              <input type="text" class="form-control" placeholder="Nama Anggota 2">
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
+                                              <input type="text" class="form-control" placeholder="NIM Anggota 1">
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-group bmd-form-group">
                                               <input type="text" class="form-control" placeholder="NIM Anggota 2">
                                             </div>
                                           </div>
                                         </div>
+
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating">Email address</label> -->
-                                              <input type="text" class="form-control" placeholder="Dosen Pembimbing">
+                                              <input type="text" class="form-control" placeholder="KTM Anggota 1">
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="NIDN Dosen Pembimbing">
+                                              <input type="text" class="form-control" placeholder="KTM Anggota 2">
                                             </div>
                                           </div>
                                         </div>
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                            <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
-                                              <input type="email" class="form-control" placeholder="Email Tim">
-                                            </div>
-                                          </div>                                          
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-md-12">
-                                            <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="Nama Instansi">
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                          </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Simpan Data</button>
+
+                                        <button type="submit" class="btn btn-primary" id="btn-simpan">Simpan Data</button>
                                         <div class="clearfix"></div>
-                                      </form>
+                                      <!-- </form> -->
                                     </div>
                     </ul>
                   </div>
@@ -214,4 +241,20 @@
             </div>
         
     </section>
+@endsection
+@section('js-user')
+<script>
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $("body").on("click", "#btn-simpan", function(e) {
+      e.preventDefault();
+      
+    });
+});
+</script>
 @endsection

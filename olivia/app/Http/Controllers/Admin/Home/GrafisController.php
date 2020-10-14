@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables, File, Validator;
 
-class SliderController
+class GrafisController
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +15,20 @@ class SliderController
      */
     public function index()
     {
-        return view('admin.home.slide');
+        return view('admin.home.infoGrafis');
     }
 
-    public function getSliderDataTable()
+    public function getGrafisDataTable()
     {
-        $data = DB::table('slider')
+        $data = DB::table('info_grafis')
         ->get();
         return Datatables::of($data)
         ->addIndexColumn()
         ->addColumn('aksi', function($row){
-            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-slider" style="font-size: 18pt; text-decoration: none;" class="mr-3">
+            $btn = '<a href="javascript:void(0)" data-id="'.$row->id.'" class="btn-edit-grafis" style="font-size: 18pt; text-decoration: none;" class="mr-3">
             <i class="fas fa-pen-square"></i>
             </a>';
-            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-slider" style="font-size: 18pt; text-decoration: none; color:red;">
+            $btn = $btn. '<a href="javascript:void(0)" data-id="'.$row->id.'" data-nama="'.$row->nama.'" class="btn-delete-grafis" style="font-size: 18pt; text-decoration: none; color:red;">
             <i class="fas fa-trash"></i>
             </a>';
             return $btn;
@@ -39,7 +39,7 @@ class SliderController
 
     public function loadDataTable()
     {
-        return view('datatable.sliderDataTable');
+        return view('datatable.grafisDataTable');
     }
 
     /**
@@ -71,16 +71,16 @@ class SliderController
             $gambar = $request->file('gambar');
             $namaOriFileGambar = $gambar->getClientOriginalName();
             $fileNameGambar = time().'_'.$namaOriFileGambar;
-            $filePathGambar = "assets/image/slider";
+            $filePathGambar = "assets/image/info-grafis";
             $gambar->move($filePathGambar, $fileNameGambar, "");
 
-            $slider = DB::table('slider')->insert([
+            $info = DB::table('info_grafis')->insert([
                 'nama' => $nama,
                 'gambar' => $filePathGambar.'/'.$fileNameGambar,
                 'created_at' =>  \Carbon\Carbon::now()
             ]);
 
-            if($slider) {
+            if($info) {
                 return response()->json([
                     'status' => 'ok'
                   ]);
@@ -112,7 +112,7 @@ class SliderController
      */
     public function edit($id)
     {
-        $data = DB::table('slider')->where('id', $id)->get();
+        $data = DB::table('info_grafis')->where('id', $id)->get();
         return response()->json([
             'data' => $data
         ]);
@@ -138,19 +138,19 @@ class SliderController
             $gambar = $request->file('gambar');
             $namaOriFileGambar = $gambar->getClientOriginalName();
             $fileNameGambar = time().'_'.$namaOriFileGambar;
-            $filePathGambar = "assets/image/slider";
+            $filePathGambar = "assets/image/info-grafis";
             $gambar->move($filePathGambar, $fileNameGambar, "");
-            //hapus slider
-            $data = DB::table('slider')->where('id', $id)->value('gambar');
+            //hapus gambar
+            $data = DB::table('info_grafis')->where('id', $id)->value('gambar');
             File::delete($data);
             
-            $slider = DB::table('slider')->where('id', $id)->update([
+            $info = DB::table('info_grafis')->where('id', $id)->update([
                 'nama' => $nama,
                 'gambar' => $filePathGambar.'/'.$fileNameGambar,
                 'updated_at' =>  \Carbon\Carbon::now()
             ]);
 
-            if($slider) {
+            if($info) {
                 return response()->json([
                     'status' => 'ok'
                   ]);
@@ -171,9 +171,9 @@ class SliderController
      */
     public function destroy($id)
     {
-        $data = DB::table('slider')->where('id', $id)->value('gambar');
+        $data = DB::table('info_grafis')->where('id', $id)->value('gambar');
         File::delete($data);
-        DB::table('slider')->where('id', $id)->delete();
+        DB::table('info_grafis')->where('id', $id)->delete();
         return response()->json([
             'status' => 'deleted',
         ]);
