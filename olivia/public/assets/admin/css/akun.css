@@ -176,3 +176,57 @@
   .social-area.pull-right {
     float: none !important;
   }
+  .clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+  .card .card-body .form-group {
+    margin: 8px 0 0;
+  }
+
+  .bmd-form-group.is-focused .form-control {
+    background-size: 100% 100%, 100% 100%;
+    transition-duration: 0.3s;
+    box-shadow: none !important;
+  }
+
+  .form-control {
+    background: no-repeat center bottom, center calc(100% - 1px);
+    background-size: 0 100%, 100% 100%;
+    border: 0;
+    height: 36px;
+    transition: background 0s ease-out;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+    font-size: 14px;
+  }
+  .form-control::-moz-placeholder {
+    color: #AAAAAA;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  .form-control:-ms-input-placeholder {
+    color: #AAAAAA;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  .form-control::-webkit-input-placeholder {
+    color: #AAAAAA;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .has-white .form-control::-moz-placeholder {
+    color: #fff;
+  }
+  
+  .has-white .form-control:-ms-input-placeholder {
+    color: #fff;
+  }
+  
+  .has-white .form-control::-webkit-input-placeholder {
+    color: #fff;
+  }
