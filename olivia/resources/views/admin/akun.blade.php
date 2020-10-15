@@ -18,12 +18,12 @@
                                       <p class="card-category">Lengkapi Akunmu</p>
                                     </div>
                                     <div class="card-body">
-                                      <form>
+                                      <!-- <form id="form-update"> -->
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating">Email address</label> -->
-                                              <input type="email" class="form-control" placeholder="Email">
+                                              <input type="email" class="form-control" placeholder="Email" value="{{$data[0]->email}}">
                                             </div>
                                           </div>
                                         </div>
@@ -31,7 +31,7 @@
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
-                                              <input type="text" class="form-control" placeholder="Nama">
+                                              <input type="text" class="form-control" placeholder="Nama"value="{{$data[0]->name }}">
                                             </div>
                                           </div>
                                           
@@ -40,7 +40,7 @@
                                           <div class="col-md-12">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="Password Lama">
+                                              <input type="text" class="form-control" placeholder="Password Lama" name="password-lama">
                                             </div>
                                           </div>
                                         </div>
@@ -48,7 +48,7 @@
                                           <div class="col-md-12">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="Password Baru">
+                                              <input type="text" class="form-control" placeholder="Password Baru" name="password-baru">
                                             </div>
                                           </div>
                                         </div>
@@ -56,7 +56,7 @@
                                           <div class="col-md-12">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="re-enter Password">
+                                              <input type="text" class="form-control" placeholder="re-enter Password" name="password-confirm">
                                             </div>
                                           </div>
                                         </div>
@@ -73,9 +73,9 @@
                                             </div>
                                           </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                        <input type="submit" class="btn btn-primary pull-right" value="Update Profile" id="btn-update">
                                         <div class="clearfix"></div>
-                                      </form>
+                                      <!-- </form> -->
                                     </div>
                                   </div>
                                 </div>
@@ -87,7 +87,7 @@
                                       </a>
                                     </div>
                                     <div class="card-body">
-                                      <h4 class="card-title">Parasekas</h4>
+                                      <h4 class="card-title">{{ $data[0]->name}}</h4>
                                       <p class="card-description">
                                         VOKASI UNIVERSITAS BRAWIJAYA MALANG
                                       </p>
@@ -98,4 +98,61 @@
                               </div>
                             </div>
                           </div>
+@endsection
+@section('js-ajax')
+<script>
+  $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    //upadte akun
+    $('body').on('click', '#btn-update', function(e) {
+        e.preventDefault();
+        formData = new FormData();
+
+        var password_lama = $('input[name=password-lama]').val();
+        var password_baru = $('input[name=password-baru]').val();
+        var password_confirm = $('input[name=password-confirm]').val();
+        
+        formData.append('password_lama', password_lama);
+        formData.append('password_baru', password_baru);
+        if(password_lama == '' || password_confirm == '' || password_baru == '') {
+          Swal.fire({
+                        icon: 'error',
+                        title: 'COBA KEMBALI',
+                        text: 'SEMUA WAJIB DI ISI !',
+                          });
+        } else if(password_baru == password_confirm) {
+        $.ajax({
+            type: 'POST',
+            url: '/admin/akun',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+              if(data.status == 'ok') {
+                Swal.fire({
+                        icon: 'success',
+                        title: 'BERHASIL',
+                        text: 'Berhasil Di ubah',
+                          });
+              } else if(data.status == 'salah') {
+                alert('password mu lo salah cok!')
+              }
+            }
+        });
+      } else {
+        Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'password harus sama !!!',
+                    });
+      }
+    });
+
+  });
+</script>
 @endsection

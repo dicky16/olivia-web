@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 class AdminPageController
 {
@@ -69,5 +71,11 @@ class AdminPageController
     public function socialmedia()
     {
         return view('admin.footer.sosialmedia');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }
