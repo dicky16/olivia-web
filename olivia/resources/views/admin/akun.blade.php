@@ -83,15 +83,16 @@
                                   <div class="card card-profile">
                                     <div class="card-avatar">
                                       <a href="javascript:;">
-                                        <img class="img" src="{{ asset('user/img/blog-img/6.jpg') }}">
+                                      @if(auth()->user()->gambar == null)
+                                      <img class="img" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                      @else
+                                      <img class="img" src="{{ url('') }}/{{auth()->user()->gambar}}">
+                                      @endif
+                                        
                                       </a>
                                     </div>
                                     <div class="card-body">
                                       <h4 class="card-title">{{ $data[0]->name}}</h4>
-                                      <p class="card-description">
-                                        VOKASI UNIVERSITAS BRAWIJAYA MALANG
-                                      </p>
-                                      <!-- <a href="javascript:;" class="btn btn-primary btn-round">Follow</a> -->
                                     </div>
                                   </div>
                                 </div>
