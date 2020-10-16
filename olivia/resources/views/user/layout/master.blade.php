@@ -65,7 +65,7 @@
                     <div class="menu_area h-100">
                         <nav class="navbar h-100 navbar-expand-lg align-items-center">
                             <!-- Logo -->
-                            <a class="navbar-brand" href="index.html"><img src="{{ asset('user/img/core-img/o.png') }}" alt="logo"></a>
+                            <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('user/img/core-img/o.png') }}" alt="logo"></a>
 
                             <!-- Menu Area -->
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#olv-navbar" aria-controls="olv-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
