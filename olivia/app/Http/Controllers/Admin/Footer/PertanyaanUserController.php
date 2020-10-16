@@ -130,5 +130,9 @@ class PertanyaanUserController
                     'status' => 'ok'
                 ]);
             }
+
+            return response()->json([
+                'status' => 'no'
+            ]);
     }
 }
