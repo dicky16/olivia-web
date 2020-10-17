@@ -4,10 +4,7 @@
                                     <div class="blog-post-thumb">
                                         <img src="{{ asset('user/img/blog-img/kongres.jpeg') }}" alt="">
                                     </div>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <h6>By <a href="#">Dikti, </a><a href="#">6 November 2019</a></h6>
-                                    </div>
+                                    
                                     <!-- Post Title -->
                                     <h2 id="judul-sejarah"></h2>
                                     <!-- Post Excerpt -->
