@@ -82,7 +82,7 @@
                                     <img src="{{ url('') }}/{{$terbaru->foto}}" alt="">
                                 </div>
                                 <div class="latest-blog-post-content">
-                                    <h6><a href="#">{{ $terbaru->judul}}</a></h6>
+                                    <h6><a href="{{ url('berita') }}/{{$berita->id}}">{{ $terbaru->judul}}</a></h6>
                                     <div class="post-meta">
                                         <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ $tglLatest}}</a></h6>
                                     </div>

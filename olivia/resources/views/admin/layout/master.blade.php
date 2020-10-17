@@ -117,7 +117,6 @@
                         <h6 class="collapse-header">Home</h6>
                         <a class="collapse-item" href="{{ url('admin/lomba') }}">Lomba</a>
                         <a class="collapse-item" href="{{ url('admin/pengumuman') }}">Pengumuman</a>
-                        <a class="collapse-item" href="{{ url('admin/artikel') }}">Artikel</a>
                         <a class="collapse-item" href="{{ url('admin/berita') }}">Berita</a>
                         <a class="collapse-item" href="{{ url('admin/slider') }}">Slider</a>
                         <a class="collapse-item" href="{{ url('admin/infografis') }}">Info Grafis</a>
