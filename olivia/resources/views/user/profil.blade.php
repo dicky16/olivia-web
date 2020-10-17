@@ -121,6 +121,32 @@
         </div>
         <div class="few-words-thumb bg-img wow fadeInRightBig" data-wow-delay="1.1s" style="background-image: url({{ asset('user/img/bg-img/cta-2.jpg') }});"></div>
     </section>
+
+    <section class="section_padding_100" style="padding-top: 80px;">
+    <div class="row">                            
+                            <div class="col-12">
+                                <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
+                                    <!-- Post Thumb -->
+                                    <h1>Forum Pendidikan Tinggi Vokasi Indonesia</h1><br>
+                                    <div class="blog-post-thumb">
+                                        <img src="img/blog-img/kongres.jpeg" alt="" width="200px" height="200px">
+                                    </div>
+                                    <!-- Post Meta -->
+                                    <div class="post-meta">
+                                        <h6>By <a href="#">Dikti, </a><a href="#">6 November 2019</a></h6>
+                                    </div>
+                                    <!-- Post Title -->
+                                    <h2>Sejarah FPTVI</h2>
+                                    <!-- Post Excerpt -->
+                                    <p>Forum Pendidikan Tinggi Vokasi Indonesia (FPTVI – semula bernama Forum Komunikasi Pendidikan Tinggi Vokasi Indonesia) resmi berdiri pada tanggal 28 Oktober 2014, yaitu saat diselenggarakannya Kongres I di Sekolah Vokasi UGM, Sekip, Yogyakarta.
+                                    Forum ini diinisiasi oleh 5 Universitas penyelenggara pendidikan vokasi, yaitu Universitas Gadjah Mada, Universitas Indonesia, Institut Pertanian Bogor, Universtas Brawijaya, dan Universitas Negeri Yogyakarta.Berdirinya FPTVI ini diawali dari penyelenggaraan Lokakarya tentang “Penegasan Pendidikan Vokasi Sesuai UU No 12 Tahun 2012” tanggal 3 April 2014, di Sekolah Vokasi UGM, yang dihadiri oleh berbagai universitas negeri di Indonesia.
+                                    </p>
+                                    <!-- Read More btn -->
+                                    <a href="#">Read More</a>
+                                </div>
+                            </div>                            
+                        </div>
+    </section>
     
     <section class="olv-team-area section_padding_100" style="padding-top: 80px;">
         <div class="container">
