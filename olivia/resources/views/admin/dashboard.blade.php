@@ -13,7 +13,7 @@
                         <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
                       </div>
                     </div>
-                    <div class="number"><strong>25</strong></div>
+                    <div class="number"><strong>{{$user}}</strong></div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -25,7 +25,7 @@
                         <div role="progressbar" style="width: 70%; height: 4px;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
                       </div>
                     </div>
-                    <div class="number"><strong>70</strong></div>
+                    <div class="number"><strong>{{$berita}}</strong></div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -37,7 +37,9 @@
                         <div role="progressbar" style="width: 10%; height: 4px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
                       </div>
                     </div>
-                    <div class="number"><strong>40</strong></div>
+                    <div class="number"><strong>{{$foto}}</strong></div>
+                    &
+                    <div class="number"><strong>{{$video}}</strong></div> 
                   </div>
                 </div>
                 <!-- Item -->
@@ -49,7 +51,7 @@
                         <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
                       </div>
                     </div>
-                    <div class="number"><strong>50</strong></div>
+                    <div class="number"><strong>{{$lomba}}</strong></div>
                   </div>
                 </div>
               </div>

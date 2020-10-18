@@ -10,7 +10,12 @@ class AdminPageController
 {
     public function dashboard()
     {
-    	return view('admin.dashboard');
+        $user = DB::table('users')->count('id');
+        $berita = DB::table('berita')->count('id');
+        $lomba = DB::table('lomba')->count('id');
+        $foto = DB::table('foto')->count('id');
+        $video = DB::table('video')->count('id');
+    	return view('admin.dashboard', compact('user', 'berita', 'lomba', 'foto', 'video'));
     }
 
     public function akun() 
