@@ -44,7 +44,7 @@ class VideoController
     }
     public function loadDataTable()
     {
-        return view('datatable.VideoDataTable');
+        return view('datatable.videoDataTable');
     }
     /**
      * Show the form for creating a new resource.
