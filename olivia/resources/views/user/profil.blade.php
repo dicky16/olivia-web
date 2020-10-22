@@ -11,7 +11,7 @@
                         <h2>Profile</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Baca Tentang Kita</li>
                             </ol>
                         </nav>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                        <img src="img/bg-img/log.png" alt="">
+                        <img src="{{ asset('')}}/user/img/bg-img/log.png" alt="">
                     </div>
                 </div>
             </div>
