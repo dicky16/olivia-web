@@ -31,6 +31,7 @@
                             <?php
                                 $tglConvert = explode($pengumuman->created_at, " ");
                                 $tgl = date('d F Y', strtotime($tglConvert[0]));
+                                $desArr = explode(".", $pengumuman->deskripsi);
                             ?>
                             <div class="col-12">
                                 <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
@@ -45,7 +46,7 @@
                                     <!-- Post Title -->
                                     <h2>{{$pengumuman->judul}}</h2>
                                     <!-- Post Excerpt -->
-                                    <p>{!! $pengumuman->deskripsi !!}</p>
+                                    <p>{!! $desArr[0] !!}. {!! $desArr[1] !!}</p>
                                     <!-- Read More btn -->
                                     <a href="{{ url('pengumuman') }}/{{$pengumuman->id}}">Read More</a>
                                 </div>

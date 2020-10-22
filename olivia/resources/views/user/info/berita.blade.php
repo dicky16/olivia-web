@@ -46,7 +46,7 @@
                                     <!-- Post Title -->
                                     <h2>{{$berita->judul}}</h2>
                                     <!-- Post Excerpt -->
-                                    <p>{!! $desArr[0] !!} {!!$desArr[1]!!}</p>
+                                    <p>{!! $desArr[0] !!}. {!!$desArr[1]!!}</p>
                                     <!-- Read More btn -->
                                     <a href="{{ url('berita') }}/{{$berita->id}}">Read More</a>
                                 </div>
