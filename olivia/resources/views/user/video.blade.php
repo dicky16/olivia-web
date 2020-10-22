@@ -36,42 +36,26 @@
         </div>
     <div class="container">
          <div class="row">
+            @foreach($data as $video)
         	<div class="col-xs-4 col-sm-4">
      	     	<div class="card" style="width:17rem;">
-  		        <iframe src="https://www.youtube.com/embed/aUKKZ9vlft0"width="300"height="200"></iframe>
+  		        <iframe src="{{ $video->video }}"width="300"height="200"></iframe>
 		        </div>
 	        </div>
-    	    <div class="col-xs-4 col-sm-4">
+            @endforeach
+    	    <!-- <div class="col-xs-4 col-sm-4">
      		    <div class="card" style="width: 17rem;">
   		        <iframe src="https://www.youtube.com/embed/-qcSy5dl5Vc"width="300"height="200"></iframe>
  		        </div>
-    	    </div>
-                    
+    	    </div> -->
+              <!--      
         	 <div class="col-xs-4 col-sm-4">
         		<div class="card" style="width: 17rem;">
   	        	<iframe src="https://www.youtube.com/embed/JXu3ofcafXQ"width="300"height="200"></iframe>
 		        </div>
-	         </div>
-          </div><br>
-
-          <!-- <div class="row">
-        	<div class="col-sm-4">
-     	     	<div class="card" style="width:20rem;">
-  		        <iframe src="https://www.youtube.com/embed/aUKKZ9vlft0"width="350"height="200"></iframe>
-		        </div>
-	        </div>
-    	    <div class="col-sm-4">
-     		    <div class="card" style="width: 20rem;">
-  		        <iframe src="https://www.youtube.com/embed/-qcSy5dl5Vc"width="350"height="200"></iframe>
- 		        </div>
-    	    </div>
-    
-        	 <div class="col-sm-4">
-        		<div class="card" style="width: 20rem;">
-  	        	<iframe src="https://www.youtube.com/embed/JXu3ofcafXQ"width="350"height="200"></iframe>
-		        </div>
-	         </div>
-          </div> -->
+	         </div> -->
+          </div>
+          <br>
 
      </div>
 
@@ -80,9 +64,9 @@
                 
             
         </div>
-        <div class="text-center mt-100">
+        <!-- <div class="text-center mt-100">
         <a href="#" class="btn olv-btn">Load More</a>
-        </div>
+        </div> -->
 
         <!-- Discover More btn -->
         <!-- <div class="col-12 text-center mt-100">

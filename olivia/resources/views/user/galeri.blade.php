@@ -56,9 +56,9 @@
             @endforeach
             
         </div>
-        <div class="text-center mt-100">
-        <a href="#" class="btn olv-btn">Load More</a>
-        </div>
+        <!-- <div class="text-center mt-100">
+        <button data-filter="*" class="btn olv-btn">Load More</button>
+        </div> -->
 
         <!-- Discover More btn -->
         <!-- <div class="col-12 text-center mt-100">
