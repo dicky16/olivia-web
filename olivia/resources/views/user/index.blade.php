@@ -109,23 +109,19 @@
             <div class="row">
                 <div class="col-12 mb-2">
                     <div class="section-heading text-center mb-0">
-                        <h2>INFO</h2>
+                        
                         <div class="container">
                             <div class="row align-items-center"> 
                             @if ($info != null)
                             @foreach($info as $infos)               
                                 <div class="col-12 col-md-6">
                                     <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                                        <img src="{{ url('') }}/{{$infos->gambar}}" alt="">
+                                        <img src="{{ url('') }}/{{$infos->gambar}}" alt="" width="" height="">
                                     </div>
                                 </div>
                             @endforeach
                             @endif
-                                <!-- <div class="col-12 col-md-6">
-                                    <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                                        <img src="{{ asset('user/img/info-img/2.jpg') }}" alt="">
-                                    </div>
-                                </div> -->
+                                
                             </div>
                         </div>
                     </div>
@@ -133,9 +129,9 @@
             </div>
         </div>
 
-        <div class="workflow-img">
-            <!-- <img src="img/core-img/work-progress.png" alt=""> -->
-        </div>
+        <!-- <div class="workflow-img">
+            <img src="{{ asset('user/img/core-img/work-progress.png') }}" alt="">
+        </div> -->
     </section>
     
     <section class="olv-call-to-action-area bg-img bg-overlay section_padding_100" style="background-image: url({{ asset('user/img/bg-img/2.jpg') }});">

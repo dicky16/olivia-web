@@ -65,7 +65,6 @@
                     <div class="menu_area h-100">
                         <nav class="navbar h-100 navbar-expand-lg align-items-center">
                             <!-- Logo -->
-                            <!-- <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('user/img/core-img/o.png') }}" alt="logo"></a> -->
                             <a class="navbar-brand" href="{{ url('/') }}"><h2 class="text text-color-white">VASHE</h2></a>
 
                             <!-- Menu Area -->
@@ -76,15 +75,8 @@
                                     <li class="nav-item @if(Route::is('home')) active @endif"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                                     <li class="nav-item @if(Route::is('profile')) active @endif"><a class="nav-link" href="{{ url('profile') }}">Profile</a></li>
                                     <!--- GALERY DROPDOWN-->
-                                    <!-- <li class="nav-item @if(Route::is('berita')) active @endif"><a class="nav-link" href="{{ url('berita') }}">Berita</a></li> -->
                                     <div class="dropdown">
                                        <li class="nav-item dropdown-toggle nav-link" id="dropdownMenuButton" data-toggle="dropdown">Gallery</li>
-                                       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-                                          <!-- JAJA -->
-                                       <!-- </button> -->
-                                       <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-                                          <!-- Small button
-                                       </button> -->
                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ url('galeri') }}">Foto</a>
                                           <a class="dropdown-item" href="{{ url('video') }}">Video</a>
@@ -94,12 +86,6 @@
 
                                     <div class="dropdown">
                                        <li class="nav-item dropdown-toggle nav-link" id="dropdownMenuButton" data-toggle="dropdown">Info</li>
-                                       <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-                                          <!-- JAJA -->
-                                       <!-- </button> -->
-                                       <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-                                          <!-- Small button
-                                       </button> -->
                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ url('berita') }}">Berita</a>
                                           <a class="dropdown-item" href="{{ url('pengumuman') }}">Pengumuman</a>
@@ -111,7 +97,6 @@
                                 <div class="search-form-area animated">
                                     <form action="#" method="post">
                                         <input type="search" name="search" id="search" placeholder="Type keywords &amp; hit enter">
-                                        <!-- <button type="submit" class="d-none"><img src="{{ asset('user/img/core-img/search-icon.png') }}" alt="Search"></button> -->
                                     </form>
                                     <div id="display-search"></div>
                                     
@@ -136,12 +121,10 @@
                                                 <input type="checkbox" id="profile2">
                                                 <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
                                                 <span style="color: #000000;">Paraseka</span>
-                                                <!-- <label for="profile2"><i class="mdi mdi-menu"></i></label> -->
                                                 
                                                 <ul>
                                                 <form action="{{ route('logout') }}" method="POST">
                                                    @csrf
-                                                    <!-- <li><a href="#"><i class="mdi mdi-email-outline"></i>Akun</a></li> -->
                                                     <div class="form-row">
                                                       <div class="col">
                                                          <a href="user"><input type="button" class="btn btn-success" value="Akun"></a>
@@ -150,7 +133,6 @@
                                                          <input type="submit" class="btn btn-primary" value="Logout">
                                                       </div>
                                                    </div>
-                                                    <!-- <li><a href=""><i class="mdi mdi-logout" type="submit"></i>Logout</a></li> -->
                                                     
                                                 </form>
                                                 </ul>
