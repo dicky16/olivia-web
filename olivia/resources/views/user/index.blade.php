@@ -109,14 +109,14 @@
             <div class="row">
                 <div class="col-12 mb-2">
                     <div class="section-heading text-center mb-0">
-                        <h2>INFO</h2>
+                        
                         <div class="container">
                             <div class="row align-items-center"> 
                             @if ($info != null)
                             @foreach($info as $infos)               
                                 <div class="col-12 col-md-6">
                                     <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                                        <img src="{{ url('') }}/{{$infos->gambar}}" alt="">
+                                        <img src="{{ url('') }}/{{$infos->gambar}}" alt="" width="" height="">
                                     </div>
                                 </div>
                             @endforeach
