@@ -121,11 +121,7 @@
                                 </div>
                             @endforeach
                             @endif
-                                <!-- <div class="col-12 col-md-6">
-                                    <div class="olv-about-us-thumb wow fadeInUp" data-wow-delay="0.5s">
-                                        <img src="{{ asset('user/img/info-img/2.jpg') }}" alt="">
-                                    </div>
-                                </div> -->
+                                
                             </div>
                         </div>
                     </div>
@@ -133,9 +129,9 @@
             </div>
         </div>
 
-        <div class="workflow-img">
-            <!-- <img src="img/core-img/work-progress.png" alt=""> -->
-        </div>
+        <!-- <div class="workflow-img">
+            <img src="{{ asset('user/img/core-img/work-progress.png') }}" alt="">
+        </div> -->
     </section>
     
     <section class="olv-call-to-action-area bg-img bg-overlay section_padding_100" style="background-image: url({{ asset('user/img/bg-img/2.jpg') }});">

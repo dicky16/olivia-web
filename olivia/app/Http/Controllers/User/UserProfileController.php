@@ -18,6 +18,7 @@ class UserProfileController
     {
         $data = DB::table('visimisi')->where('status', 'aktif')->get();
         $info = DB::table('info_struktur')->get();
+        $struktur = DB::table('struktur_organisasi')->value('gambar');
         
         if(count($data) == 0 && count($info) == 0) {
             $data = null;
@@ -25,7 +26,7 @@ class UserProfileController
             $data = null;
         }
 
-        return view('user.profil',compact('data', 'info'));
+        return view('user.profil',compact('data', 'info', 'struktur'));
     }
 
 }
