@@ -225,7 +225,7 @@
                 </ul>
                 <hr>
 
-                <div class="copyright">www.olivia.com</div>
+                <div class="copyright" style="color:#b5a8a8;">www.olivia.com</div>
 
               </div>
             
@@ -240,7 +240,7 @@
                     <div class="col-12 h-100">
                         <div class="footer-bottom-content h-100 d-md-flex justify-content-between align-items-center">
                             <div class="copyright-text">
-                                <p>
+                                <p style="color:#b5a8a8;" >
                                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Vokasi UB </i> 
                                 </p>
                             </div>
