@@ -29,8 +29,7 @@
                         <div class="row">
                             @foreach($data as $berita)
                             <?php
-                                $tglConvert = explode($berita->created_at, " ");
-                                $tgl = date('d F Y', strtotime($tglConvert[0]));
+                                date_default_timezone_set("Asia/Jakarta");
                                 $desArr = explode(".", $berita->deskripsi);
                             ?>
                             <div class="col-12">
@@ -41,7 +40,7 @@
                                     </div>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
-                                        <h6>By <a href="#">{{ $berita->name }}, </a><a href="#">{{$tgl}}</a></h6>
+                                        <h6>By <a href="#">{{ $berita->name }}, </a><a href="#">{{date('d F Y', strtotime($berita->created_at))}}</a></h6>
                                     </div>
                                     <!-- Post Title -->
                                     <h2>{{$berita->judul}}</h2>
@@ -59,9 +58,7 @@
                     <div class="olv-pagination-area">
                         <nav>
                             <ul class="pagination">
-                                <!-- <li class="page-item active"><a class="page-link" href="#">1.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3.</a></li> -->
+                            
                                 {{ $data->links() }}
                             </ul>
                         </nav>
@@ -73,10 +70,7 @@
                         <div class="latest-blog-posts mb-100">
                             <h5>Latest Posts</h5>
                             @foreach($latest as $terbaru)
-                            <?php
-                                $tglConvertLatest = explode($terbaru->created_at, " ");
-                                $tglLatest = date('d F Y', strtotime($tglConvertLatest[0]));
-                            ?>
+                            
                             <div class="single-latest-blog-post d-flex">
                                 <div class="latest-blog-post-thumb">
                                     <img src="{{ url('') }}/{{$terbaru->foto}}" alt="">
@@ -84,7 +78,7 @@
                                 <div class="latest-blog-post-content">
                                     <h6><a href="{{ url('berita') }}/{{$berita->id}}">{{ $terbaru->judul}}</a></h6>
                                     <div class="post-meta">
-                                        <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ $tglLatest}}</a></h6>
+                                        <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ date('d F Y', strtotime($terbaru->created_at)) }}</a></h6>
                                     </div>
                                 </div>
                             </div>
