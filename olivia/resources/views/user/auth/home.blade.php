@@ -42,18 +42,19 @@
                     <h3>Data Peserta</h3>
                     <ul class="pt-2">
                                     <div class="card-body">
-                                      <!-- <form> -->
+                                      <form id="form-anggota">
+                                      @csrf
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
-                                              <input type="text" class="form-control" placeholder="Nama Tim" name="nama-tim">
+                                              <input type="text" class="form-control" placeholder="Nama Tim" name="namaTim" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="Dosen Pembimbing" name="nama-dosen">
+                                              <input type="text" class="form-control" placeholder="Dosen Pembimbing" name="namaDosen" required>
                                             </div>
                                           </div>                                          
                                         </div>
@@ -68,41 +69,38 @@
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="NIDN Dosen Pembimbing" name="nidn-dosen">
+                                              <input type="text" class="form-control" placeholder="NIDN Dosen Pembimbing" name="nidnDosen" required>
                                             </div>
                                           </div>
                                         </div>
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <!-- <label class="bmd-label-floating">Fist Name</label>/ -->
-                                              <input type="email" class="form-control" placeholder="NIM Ketua Tim" name="nim-ketua">
+                                              <!-- <label class="bmd-label-floating">KTM Ketua Tim</label>/ -->
+                                              <input type="text" class="form-control" placeholder="NIM Ketua Tim" name="nimKetua" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
                                               <!-- <label class="bmd-label-floating" >Adress</label> -->
-                                              <input type="text" class="form-control" placeholder="Nama Institusi" name="nama-institusi">
+                                              <input type="text" class="form-control" placeholder="Nama Institusi" name="namaInstitusi" required>
                                             </div>
                                           </div>                                          
                                         </div>
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group">
-                                              <input type="file" class="form-control" placeholder="KTM Ketua Tim" id="ktm-ketua">
+                                              <label class="bmd-label-floating" >KTM Ketua Tim</label>
+                                              <input type="file" class="form-control" placeholder="KTM Ketua Tim" id="ktmKetua" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="Email">
+                                              <input type="email" class="form-control" placeholder="Email" name="email" value="{{auth()->user()->email}}" disabled>
                                             </div>
                                           </div>
                                         </div>
                                         
-                                        <!-- <div class="row">
-                                          <div class="col-md-6">
-                                          </div>
-                                        </div> -->
                                         <hr>
                                         <div class="col text-center">
                                         <h4>Anggota</h4>
@@ -112,12 +110,12 @@
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="Nama Anggota 1">
+                                              <input type="text" class="form-control" placeholder="Nama Anggota 1" name="namaAnggota1" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="Nama Anggota 2">
+                                              <input type="text" class="form-control" placeholder="Nama Anggota 2" name="namaAnggota2" required>
                                             </div>
                                           </div>
                                         </div>
@@ -125,32 +123,35 @@
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="NIM Anggota 1">
+                                              <input type="text" class="form-control" placeholder="NIM Anggota 1" name="nimAnggota1" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
                                             <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="NIM Anggota 2">
+                                              <input type="text" class="form-control" placeholder="NIM Anggota 2" name="nimAnggota2" required>
                                             </div>
                                           </div>
                                         </div>
 
                                         <div class="row">
                                           <div class="col-md-6">
-                                            <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="KTM Anggota 1">
+                                          <div class="form-group">
+                                              <label class="bmd-label-floating" >KTM Anggota 1</label>
+                                              <input type="file" class="form-control" placeholder="KTM Anggota 1" id="ktmAnggota1" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
-                                            <div class="form-group bmd-form-group">
-                                              <input type="text" class="form-control" placeholder="KTM Anggota 2">
+                                          <div class="form-group">
+                                              <label class="bmd-label-floating" >KTM Anggota 2</label>
+                                              <input type="file" class="form-control" placeholder="KTM Anggota 2" id="ktmAnggota2" required>
                                             </div>
+                                          </div>
                                           </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary" id="btn-simpan">Simpan Data</button>
+                                        <input type="submit" class="btn btn-primary" value="Submit" name="submit">
                                         <div class="clearfix"></div>
-                                      <!-- </form> -->
+                                      </form>
                                     </div>
                     </ul>
                   </div>
@@ -244,17 +245,101 @@
 @endsection
 @section('js-user')
 <script>
-$(document).ready(function() {
+  $(document).ready(function() {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    $('body').on('submit', '#form-anggota', function(e) {
+        e.preventDefault();
+        var formData = new FormData();
 
-    $("body").on("click", "#btn-simpan", function(e) {
-      e.preventDefault();
-      
+        var nama_tim = $('input[name=namaTim]').val();
+        var nama_dosen = $('input[name=namaDosen]').val();
+        var nidn_dosen = $('input[name=nidnDosen]').val();
+        var nim_ketua = $('input[name=nimKetua]').val();
+        var nama_institusi = $('input[name=namaInstitusi]').val();
+        var ktm_ketua = $('#ktmKetua')[0].files[0];
+        var email = $('input[name=email]').val();
+        var nama_anggota1 = $('input[name=namaAnggota1]').val();
+        var nama_anggota2 = $('input[name=namaAnggota2]').val();
+        var nim_anggota1 = $('input[name=nimAnggota1]').val();
+        var nim_anggota2 = $('input[name=nimAnggota2]').val();
+        var ktm_anggota1 = $('#ktmAnggota1')[0].files[0];
+        var ktm_anggota2 = $('#ktmAnggota2')[0].files[0];
+
+        // var judul = $('input[name=judul]').val();
+        // var gambar = $('#gambar')[0].files[0];
+        formData.append('namaTim', nama_tim);
+        formData.append('namaDosen', nama_dosen);
+        formData.append('nidnDosen', nidn_dosen);
+        formData.append('nimKetua', nim_ketua);
+        formData.append('namaInstitusi', nama_institusi);
+        formData.append('ktmKetua', ktm_ketua);
+        formData.append('email', email);
+        formData.append('namaAnggota1', nama_anggota1);
+        formData.append('namaAnggota2', nama_anggota2);
+        formData.append('nimAnggota1', nim_anggota1);
+        formData.append('nimAnggota2', nim_anggota2);
+        formData.append('ktmAnggota1', ktm_anggota1);
+        formData.append('ktmAnggota2', ktm_anggota2);
+        $.ajax({
+            type: 'POST',
+            url: 'user',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+              if(data.success == true) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: 'Data Anda telah disimpan!',
+                    timer: 1200,
+                    showConfirmButton: false
+                  });
+              } else if(data.success == false) {
+                if(data.error == 'validation_error') {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: ' Error : ' + data.message ,
+                  });
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi Kesalahan mohon coba lagi!',
+                    timer: 1200,
+                    showConfirmButton: false
+                  });
+                }
+              } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi Kesalahan mohon coba lagi!',
+                    timer: 1200,
+                    showConfirmButton: false
+                  });
+                  console.log('error');
+              }
+            }
+        });
     });
-});
+
+  });
 </script>
+
+<script>
+  Swal.fire({
+    icon: 'success',
+    title: 'Berhasil',
+    text: 'Data Anda berhasil disimpan!',
+    timer: 1200,
+    showConfirmButton: false
+  });
+</script>
+
 @endsection

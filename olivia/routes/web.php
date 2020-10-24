@@ -230,6 +230,8 @@ Route::prefix('faq')->group(function () {
 Route::group(['middleware' => ['auth', 'checkRole:2', 'verified']],function() {
     Route::prefix('user')->group(function () {
         Route::get('/', 'User\AkunController@index');
+        Route::post('/', 'User\AkunController@simpanDataPeserta');
+        Route::get('tes', 'User\AkunController@simpanDataPeserta');
     });
 });
 

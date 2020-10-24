@@ -29,8 +29,6 @@
                         <div class="row">
                             @foreach($data as $pengumuman)
                             <?php
-                                $tglConvert = explode($pengumuman->created_at, " ");
-                                $tgl = date('d F Y', strtotime($tglConvert[0]));
                                 $desArr = explode(".", $pengumuman->deskripsi);
                             ?>
                             <div class="col-12">
@@ -41,7 +39,7 @@
                                     </div>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
-                                        <h6>By <a href="#">{{ $pengumuman->name }}, </a><a href="#">{{$tgl}}</a></h6>
+                                        <h6>By <a href="#">{{ $pengumuman->name }}, </a><a href="#">{{ date('d F Y', strtotime($pengumuman->created_at)) }}</a></h6>
                                     </div>
                                     <!-- Post Title -->
                                     <h2>{{$pengumuman->judul}}</h2>
@@ -73,10 +71,6 @@
                         <div class="latest-blog-posts mb-100">
                             <h5>Latest Posts</h5>
                             @foreach($latest as $terbaru)
-                            <?php
-                                $tglConvertLatest = explode($terbaru->created_at, " ");
-                                $tglLatest = date('d F Y', strtotime($tglConvertLatest[0]));
-                            ?>
                             <div class="single-latest-blog-post d-flex">
                                 <div class="latest-blog-post-thumb">
                                     <img src="{{ url('') }}/{{$terbaru->gambar}}" alt="">
@@ -84,7 +78,7 @@
                                 <div class="latest-blog-post-content">
                                     <h6><a href="#">{{ $terbaru->judul}}</a></h6>
                                     <div class="post-meta">
-                                        <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ $tglLatest}}</a></h6>
+                                        <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ date('d F Y', strtotime($terbaru->created_at)) }}</a></h6>
                                     </div>
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ class UserBeritaController
         ->join('users', 'users.id', '=', 'berita.id_penulis')
         ->select('berita.*', 'users.name')
         ->paginate(4);
+        
         $latest = DB::table('berita')->orderBy('id', 'desc')
         ->join('users', 'users.id', '=', 'berita.id_penulis')
         ->select('berita.*', 'users.name')
