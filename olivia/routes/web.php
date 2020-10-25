@@ -231,7 +231,8 @@ Route::group(['middleware' => ['auth', 'checkRole:2', 'verified']],function() {
     Route::prefix('user')->group(function () {
         Route::get('/', 'User\AkunController@index');
         Route::post('/', 'User\AkunController@simpanDataPeserta');
-        Route::get('tes', 'User\AkunController@simpanDataPeserta');
+        Route::get('data', 'User\AkunController@getDataPeserta');
+        Route::get('lomba', 'User\AkunController@getDataLomba');
     });
 });
 
