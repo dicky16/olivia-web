@@ -15,8 +15,8 @@ class AkunController
 
     public function index()
     {
-        // $data = DB::table('users')->where('id', auth()->user()->id)->get();
-        return view('user.auth.home');
+        $data = DB::table('lomba')->get();
+        return view('user.auth.home', compact('data'));
     }
 
     public function simpanDataPeserta(Request $request)
@@ -27,14 +27,14 @@ class AkunController
             'nidnDosen' => 'required',
             'nimKetua' => 'required',
             'namaInstitusi' => 'required',
-            'ktmKetua' => 'required',
+            'ktmKetua' => 'required|max:2000|mimes:jpg,jpeg,png,pdf',
             'email' => 'required',
             'namaAnggota1' => 'required',
             'namaAnggota2' => 'required',
             'nimAnggota1' => 'required',
             'nimAnggota2' => 'required',
-            'ktmAnggota1' => 'required',
-            'ktmAnggota2' => 'required',
+            'ktmAnggota1' => 'require|max:2000|mimes:jpg,jpeg,png,pdf',
+            'ktmAnggota2' => 'required|max:2000|mimes:jpg,jpeg,png,pdf',
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -72,12 +72,14 @@ class AkunController
                 'nama' => $request->namaAnggota1 ?? null,
                 'nim' => $request->nimAnggota1 ?? null,
                 'ktm' => $filePathKTM1.'/'.$fileNameKTM1,
+                'id_user' => auth()->user()->id,
                 'created_at' =>  \Carbon\Carbon::now()
             ];
             $dataAnggota2 = [
                 'nama' => $request->namaAnggota2 ?? null,
                 'nim' => $request->nimAnggota2 ?? null,
                 'ktm' => $filePathKTM2.'/'.$fileNameKTM2,
+                'id_user' => auth()->user()->id,
                 'created_at' =>  \Carbon\Carbon::now()
             ];
             $tim = DB::table('data_tim')->insert($data);
@@ -94,6 +96,35 @@ class AkunController
             'success' => false,
             'error' => 'validation_error',
             'message' => $validator->errors()->first()
+        ]);
+    }
+
+    public function getDataPeserta()
+    {
+        $id = auth()->user()->id;
+        $tim = DB::table('data_tim')->where('id_user', $id)->get();
+        $anggota = DB::table('data_peserta')->where('id_user', $id)->get();
+        if(count($tim) == 1 && count($anggota) > 0) {
+            return response()->json([
+                'success' => true,
+                'data_tim' => $tim,
+                'data_anggota' => $anggota
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'data_tim' => '',
+                'data_anggota' => ''
+            ]);
+        }
+    }
+
+    public function getDataLomba()
+    {
+        $data = DB::table('lomba')->get();
+        return response()->json([
+            'success' => true,
+            'data' => $data
         ]);
     }
 }

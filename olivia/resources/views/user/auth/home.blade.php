@@ -8,8 +8,8 @@
                         <h2>Awal</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Tanya Kami</li>
+                                <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Peserta</li>
                             </ol>
                         </nav>
                     </div>
@@ -90,7 +90,7 @@
                                         <div class="row">
                                           <div class="col-md-6">
                                             <div class="form-group">
-                                              <label class="bmd-label-floating" >KTM Ketua Tim</label>
+                                              <label class="bmd-label-floating" >KTM Ketua Tim (tipe file jpg, jpeg, png, pdf. maksimal 2MB)</label>
                                               <input type="file" class="form-control" placeholder="KTM Ketua Tim" id="ktmKetua" required>
                                             </div>
                                           </div>
@@ -104,7 +104,6 @@
                                         <hr>
                                         <div class="col text-center">
                                         <h4>Anggota</h4>
-                                        </div>
                                         <hr>
 
                                         <div class="row">
@@ -135,14 +134,14 @@
 
                                         <div class="row">
                                           <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label class="bmd-label-floating" >KTM Anggota 1</label>
+                                            <div class="form-group">
+                                              <label class="bmd-label-floating" >KTM Anggota 1 (tipe file jpg, jpeg, png, pdf. maksimal 2MB)</label>
                                               <input type="file" class="form-control" placeholder="KTM Anggota 1" id="ktmAnggota1" required>
                                             </div>
                                           </div>
                                           <div class="col-md-6">
-                                          <div class="form-group">
-                                              <label class="bmd-label-floating" >KTM Anggota 2</label>
+                                            <div class="form-group">
+                                              <label class="bmd-label-floating" >KTM Anggota 2 (tipe file jpg, jpeg, png, pdf. maksimal 2MB)</label>
                                               <input type="file" class="form-control" placeholder="KTM Anggota 2" id="ktmAnggota2" required>
                                             </div>
                                           </div>
@@ -161,11 +160,20 @@
                     <span class="date-range code-font">Other Details</span>
                     <ul class="pt-2">
                       <div class="card-body">
-                        <form>                        
+                        <form>      
+                          <div class="row">
+                            <div class="col-md-12">
+                            <label class="bmd-label-floating">Pilihan Lomba</label><br>
+                              <select class="custom-select" id="lomba">
+                                <option selected>Pilihan Lomba</option>
+                              </select>
+                            </div>
+                          </div>     
+
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">KTM Ketua</label><br>
+                                <label class="bmd-label-floating">Bukti Pembayaran</label><br>
                                   <div class="custom-file-upload">
                                     <input type="file" id="file" name="myfiles[]" multiple />
                                   </div>
@@ -176,37 +184,16 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">KTM Anggota 1</label><br>
+                                <label class="bmd-label-floating">Proposal Lomba</label><br>
                                   <div class="custom-file-upload">
                                     <input type="file" id="file" name="myfiles[]" multiple />
                                   </div>
                               </div>
                             </div>
                           </div>
+                          <br>
 
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">KTM Anggota 2</label><br>
-                                  <div class="custom-file-upload">
-                                    <input type="file" id="file" name="myfiles[]" multiple />
-                                  </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Bukti Pembayran</label><br>
-                                  <div class="custom-file-upload">
-                                    <input type="file" id="file" name="myfiles[]" multiple />
-                                  </div>
-                              </div>
-                            </div>
-                          </div><br>
-
-                          <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                          <button type="submit" class="btn btn-primary pull-left">Simpan</button>
                           <div class="clearfix"></div>
                         </form>                                             
                       </div>
@@ -216,13 +203,14 @@
                   <div class="tab-pane fade text-left text-light" id="down" role="tabpanel" aria-labelledby="download-tab">
                     <h3>Ketentuan Lomba</h3><br>
                     <ul class="pt-2">
-                      <h5>1. Karya Tulis Ilmiah</h5>
+                      @foreach($data as $lomba)
+                      <h5>{{ $lomba->nama_lomba }}</h5>
                         <div style="padding-left: 18px">
                           <p>Download panduan lomba di link berikut</p>
-                          <a href="javascript:;" class="btn btn-primary btn-round">Download</a>
+                          <a href="{{$lomba->lampiran}}" class="btn btn-primary btn-round">Download</a>
                         </div><br>
-                      
-                      <h5>2. Video Edukasi</h5>  
+                      @endforeach
+                      <!-- <h5>2. Video Edukasi</h5>  
                         <div style="padding-left: 18px">
                           <p>Download panduan lomba di link berikut</p>
                           <a href="javascript:;" class="btn btn-primary btn-round">Download</a>
@@ -231,8 +219,7 @@
                         <div style="padding-left: 18px">
                           <p>Download panduan lomba di link berikut</p>
                           <a href="javascript:;" class="btn btn-primary btn-round">Download</a>
-                        </div><br>
-                      
+                        </div><br> -->
                     </ul>
                   </div>
 
@@ -251,6 +238,56 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    setDataPeserta();
+    setDataLomba();
+    //get data peserta
+    function setDataPeserta() 
+    { 
+      $.ajax({
+            type: 'GET',
+            url: '{{ url('user/data') }}',
+            contentType: false, 
+            processData: false,
+            success: function(data) {
+              console.log(data.data_tim);
+              if(data.data_tim != '') {
+                console.log(data.data_tim.nama_team);
+                $('input[name=namaTim]').val(data.data_tim[0].nama_team);
+                $('input[name=namaDosen]').val(data.data_tim[0].nama_dosen);
+                $('input[name=nidnDosen]').val(data.data_tim[0].nidn_dosen);
+                $('input[name=nimKetua]').val(data.data_tim[0].nim_ketua);
+                $('input[name=namaInstitusi]').val(data.data_tim[0].institusi);
+                $('#ktmKetua')[0].files[0];
+                // $('input[name=email]').val(data.data_tim[0].email);
+                $('input[name=namaAnggota1]').val(data.data_anggota[0].nama);
+                $('input[name=namaAnggota2]').val(data.data_anggota[1].nama);
+                $('input[name=nimAnggota1]').val(data.data_anggota[0].nim);
+                $('input[name=nimAnggota2]').val(data.data_anggota[1].nim);
+                $('#ktmAnggota1')[0].files[0];
+                $('#ktmAnggota2')[0].files[0];
+                // $('.btn').prop('disabled', true);
+              }
+            }
+      });
+    }
+
+    function setDataLomba()
+    {
+      $.ajax({
+            type: 'GET',
+            url: '{{ url('user/lomba') }}',
+            contentType: false, 
+            processData: false,
+            success: function(data) {
+              for (let index = 0; index < data.data.length; index++) {
+                // const element = array[index];
+                $("#lomba").append('<option value="'+ data.data[index].id +'">'+ data.data[index].nama_lomba +'</option>');
+              }
+            }
+      });
+    }
+
     $('body').on('submit', '#form-anggota', function(e) {
         e.preventDefault();
         var formData = new FormData();
@@ -299,6 +336,7 @@
                     timer: 1200,
                     showConfirmButton: false
                   });
+                  console.log(data.message);
               } else if(data.success == false) {
                 if(data.error == 'validation_error') {
                   Swal.fire({
@@ -323,22 +361,11 @@
                     timer: 1200,
                     showConfirmButton: false
                   });
-                  console.log('error');
               }
             }
         });
     });
 
-  });
-</script>
-
-<script>
-  Swal.fire({
-    icon: 'success',
-    title: 'Berhasil',
-    text: 'Data Anda berhasil disimpan!',
-    timer: 1200,
-    showConfirmButton: false
   });
 </script>
 

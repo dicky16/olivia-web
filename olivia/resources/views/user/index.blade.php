@@ -83,8 +83,11 @@
                         @if ($data != null)
                         @foreach($data as $lomba)
                         <?php
-                            $tglConvertLatest = explode("|", $data[0]->jadwal);
+                        for ($i=0; $i < count($data); $i++) { 
                             
+                        }
+                            $tglConvertLatest = explode("|", $lomba->jadwal);
+                            // dd($tglConvertLatest);
                             $jadwal1 = date('d F Y', strtotime($tglConvertLatest[0]));
                             $jadwal2 = date('d F Y', strtotime($tglConvertLatest[1]));
                         ?>
