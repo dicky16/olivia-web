@@ -43,7 +43,7 @@ class StrukturController
     }
     public function loadDataTable()
     {
-        return view('datatable.StrukturDataTable');
+        return view('datatable.strukturDataTable');
     }
     /**
      * Show the form for creating a new resource.
