@@ -16,7 +16,12 @@ class AkunController
     public function index()
     {
         $data = DB::table('lomba')->get();
-        return view('user.auth.home', compact('data'));
+        $berkas = DB::table('berkas')
+            ->join('lomba', 'berkas.id_pilihan', '=', 'lomba.id')
+            ->where('berkas.id_user', auth()->user()->id)
+            ->select('berkas.*', 'lomba.nama_lomba')
+            ->get();
+        return view('user.auth.home', compact('data', 'berkas'));
     }
 
     public function simpanDataPeserta(Request $request)
@@ -33,7 +38,7 @@ class AkunController
             'namaAnggota2' => 'required',
             'nimAnggota1' => 'required',
             'nimAnggota2' => 'required',
-            'ktmAnggota1' => 'require|max:2000|mimes:jpg,jpeg,png,pdf',
+            'ktmAnggota1' => 'required|max:2000|mimes:jpg,jpeg,png,pdf',
             'ktmAnggota2' => 'required|max:2000|mimes:jpg,jpeg,png,pdf',
         ];
         
@@ -83,7 +88,8 @@ class AkunController
                 'created_at' =>  \Carbon\Carbon::now()
             ];
             $tim = DB::table('data_tim')->insert($data);
-            $anggota = DB::table('data_peserta')->insert($dataAnggota1, $dataAnggota2);
+            $anggota = DB::table('data_peserta')->insert($dataAnggota1);
+            $anggota = DB::table('data_peserta')->insert($dataAnggota2);
             if($tim && $anggota) {
                 return response()->json([
                     'success' => true,
@@ -125,6 +131,49 @@ class AkunController
         return response()->json([
             'success' => true,
             'data' => $data
+        ]);
+    }
+
+    public function storeBerkas(Request $request)
+    {
+        $rules = [
+            'pilihan' => 'required',
+            'bukti' => 'required|max:2000|mimes:jpg,jpeg,png,pdf',
+            'proposal' => 'required|max:2000|mimes:pdf',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()) {
+            //store bukti
+            $bukti = $request->file('bukti');
+            $namabukti = $bukti->getClientOriginalName();
+            $fileNamebukti = 'bayar_'.$namabukti;
+            $filePathbukti = "assets/berkas".'/'.auth()->user()->id;
+            $bukti->move($filePathbukti, $fileNamebukti, "");
+            //store proposal
+            $proposal = $request->file('proposal');
+            $namaproposal = $proposal->getClientOriginalName();
+            $fileNameproposal = 'proposal_'.$namaproposal;
+            $filePathproposal = "assets/berkas".'/'.auth()->user()->id;
+            $proposal->move($filePathproposal, $fileNameproposal, "");
+            $data = [
+                'bukti' => $filePathproposal.'/'.$fileNameproposal,
+                'proposal' => $filePathbukti.'/'.$fileNamebukti,
+                'id_pilihan' => $request->pilihan,
+                'id_user' => auth()->user()->id
+            ];
+            $simpan = DB::table('berkas')->insert($data);
+            if($simpan) {
+                return response()->json([
+                    'success' => true,
+                    'error' => '',
+                    'message' => ''
+                ]);
+            }
+        }
+        return response()->json([
+            'success' => false,
+            'error' => 'validation_error',
+            'message' => $validator->errors()->first()
         ]);
     }
 }
