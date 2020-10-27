@@ -194,19 +194,12 @@
                 <hr>
                 <ul class="social-media-list">
                   @foreach($sosial as $media)
-                  <li><a href="{{$media->url}}" target="_blank" class="contact-icon">
-                  <i class="fa {{$media->icon}}" aria-hidden="true"></i></a>
-                  </li>
+                  <!-- <li> -->
+                     <a href="{{$media->url}}" target="_blank" class="contact-icon">
+                        <i class="fa {{$media->icon}}" aria-hidden="true"></i>
+                     </a>
+                  <!-- </li> -->
                   @endforeach
-                  <!-- <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  </li> -->
                 </ul>
                 <hr>
 
