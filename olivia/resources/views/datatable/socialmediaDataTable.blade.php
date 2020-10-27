@@ -4,7 +4,7 @@
                                 <th>No.</th>
                                 <th>Nama Social Media </th> 
                                 <th>Link Social Media</th>
-                                <th>Icon Social Media</th>
+                                <th>Icon</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
