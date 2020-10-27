@@ -20,14 +20,7 @@ $(document).ready(function() {
                     {data: 'DT_RowIndex',name: 'DT_RowIndex',searchable: false},
                     {data: 'nama',name: 'nama'},
                     {data: 'url',name: 'url'},
-                    {
-                        data: 'icon',
-                        name: 'icon',
-                        "render": function(data, type, row) {
-                            return '<img src=" ' + host + '/'+ data + ' " style="height:100px;width:100px;"/>';
-                        },
-                        searchable: false
-                    },
+                    {data: 'icon',name: 'icon'},
                     {data: 'aksi',name: 'aksi',searchable: false,orderable: false}
                 ]
             });
@@ -40,7 +33,7 @@ $(document).ready(function() {
 
         var nama = $('input[name=nama]').val();
         var url = $('input[name=url]').val();
-        var icon = $('#icon')[0].files[0];
+        var icon = $('input[name=icon]').val();
 
         formData.append('nama', nama);
         formData.append('url', url);
@@ -95,8 +88,7 @@ $(document).ready(function() {
                 $('#editSocialModal').modal('show');
                 $('input[name=nama-edit]').val(data.data[0].nama);
                 $('input[name=url-edit]').val(data.data[0].url);
-                $('#view-icon').attr('src', host + '/' + data.data[0].icon);
-                $('#href-view').attr('href', host + '/' + data.data[0].icon);
+                $('input[name=icon-edit]').val(data.data[0].icon);
                 $('input[name=edit-id]').val(id);
             }
         });
@@ -109,7 +101,7 @@ $(document).ready(function() {
         var id = $('input[name=edit-id]').val();
         var nama = $('input[name=nama-edit]').val();
         var url = $('input[name=url-edit]').val();
-        var icon = $('#icon-edit')[0].files[0];
+        var icon = $('input[name=icon-edit]').val();
 
         formData.append('nama', nama);
         formData.append('url', url);
@@ -151,6 +143,42 @@ $(document).ready(function() {
             }
         });
     });
+
+    //hapus sosial media
+    $('body').on('click', '.btn-delete-socialmedia', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        // var judul = $(this).data('nama');
+        Swal.fire({
+            title: 'Anda yakin ingin menghapus FAQ?',
+            text: "Anda tidak dapat membatalkan aksi ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'sosialmedia/delete/' + id,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        if(data.status == 'deleted') {
+                            Swal.fire(
+                                'Deleted!',
+                                'Berhasil Menghapus Jadwal',
+                                )
+                                loadDataSocial();
+                            }
+                        }
+                    });
+  
+                }
+            });
+  
+        });
 
 
 });

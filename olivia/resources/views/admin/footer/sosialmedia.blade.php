@@ -49,10 +49,8 @@
                     <label for="linkSocial">Link Social</label>
                     <input type="text" class="form-control" name="url">
 
-                    <div class="form-group mt-3">
-                        <label for="gambar" class="mt-2">Icon</label>
-                        <input id="icon" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
-                    </div>
+                    <label for="linkSocial">Link Icon</label>
+                    <input type="text" class="form-control" name="icon">
                   
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>
@@ -95,13 +93,8 @@
                     <label for="linkSocial">Link Social</label>
                     <input type="text" class="form-control" name="url-edit">
 
-                    <label for="linkSocial">View Icon</label>
-                    <img src="" alt="" id="view-icon" style="width: 60%; height: 60%; border-radius: 10px; display: block; margin-left: auto; margin-right: auto;">
-
-                    <div class="form-group mt-3">
-                        <label for="gambar" class="mt-2">Icon</label>
-                        <input id="icon-edit" type="file" name="gambar" accept="image/*" aria-describedby="inputGroupFileAddon01">
-                    </div>
+                    <label for="linkSocial">Link Icon</label>
+                    <input type="text" class="form-control" name="icon-edit">
                   
                     <div class="modal-footer">
                         <button class="btn btn-secondary btn-close" type="button" data-dismiss="modal">Cancel</button>

@@ -66,23 +66,19 @@ class socialmediaController
         $rules = array (
             'nama' => 'required',
             'url' => 'required',
-            'icon' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+            'icon' => 'required'
         );
         
         $validator = Validator::make($request->all(), $rules);
           if($validator->passes()) {
             $nama = $request->nama;
             $url = $request->url;
-            $icon = $request->file('icon');
-            $namaOriFile = $icon->getClientOriginalName();
-            $fileName = time().'_'.$namaOriFile;
-            $filePath = "assets/image/social";
-            $icon->move($filePath, $fileName, "");
+            $icon = $request->icon;
 
             $social = DB::table('sosial_media')->insert([
                 'nama' => $nama,
                 'url' => $url,
-                'icon' => $filePath.'/'.$fileName,
+                'icon' => $icon,
                 'created_at' =>  \Carbon\Carbon::now()
             ]);
 
@@ -135,29 +131,21 @@ class socialmediaController
     {
         $nama = $request->nama;
         $url = $request->url;
-        $icon = $request->file('icon');
-        if($icon != null) {
-            
-        }
+        $icon = $request->icon;
         $rules = array (
             'nama' => 'required',
             'url' => 'required',
-            'icon' => 'required|max:2000|mimes:jpg,jpeg,svg,png,gif'
+            'icon' => 'required'
         );
         
         $validator = Validator::make($request->all(), $rules);
           if($validator->passes()) {
             
-            $namaOriFile = $icon->getClientOriginalName();
-            $fileName = time().'_'.$namaOriFile;
-            $filePath = "assets/image/social";
-            $icon->move($filePath, $fileName, "");
-
             $social = DB::table('sosial_media')->insert([
                 'nama' => $nama,
                 'url' => $url,
-                'icon' => $filePath.'/'.$fileName,
-                'created_at' =>  \Carbon\Carbon::now()
+                'icon' => $icon,
+                'updated_at' =>  \Carbon\Carbon::now()
             ]);
 
             if($social) {
@@ -181,6 +169,9 @@ class socialmediaController
      */
     public function destroy($id)
     {
-        //
+        DB::table('sosial_media')->where('id', $id)->delete();
+        return response()->json([
+            'status' => 'deleted',
+        ]);
     }
 }
