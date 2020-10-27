@@ -121,14 +121,14 @@
                                             <label for="profile2" class="profile-dropdown">
                                                 <input type="checkbox" id="profile2">
                                                 <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
-                                                <span style="color: #000000;">Paraseka</span>
+                                                <span style="color: #000000;">{{auth()->user()->name}}</span>
                                                 
                                                 <ul>
                                                 <form action="{{ route('logout') }}" method="POST">
                                                    @csrf
                                                     <div class="form-row">
                                                       <div class="col">
-                                                         <a href="user"><input type="button" class="btn btn-success" value="Akun"></a>
+                                                         <a href="{{ url('user') }}"><input type="button" class="btn btn-success" value="Akun"></a>
                                                       </div>
                                                       <div class="col">
                                                          <input type="submit" class="btn btn-primary" value="Logout">
@@ -193,18 +193,11 @@
 
                 <hr>
                 <ul class="social-media-list">
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-github" aria-hidden="true"></i></a>
+                  @foreach($sosial as $media)
+                  <li><a href="{{$media->url}}" target="_blank" class="contact-icon">
+                    <img src="{{url('')}}/{{$media->icon}}"></a>
                   </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-twitter" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
-                  </li>
-                  <li><a href="#" target="_blank" class="contact-icon">
-                    <i class="fa fa-facebook" aria-hidden="true"></i></a>
-                  </li>
+                  @endforeach
                 </ul>
                 <hr>
 

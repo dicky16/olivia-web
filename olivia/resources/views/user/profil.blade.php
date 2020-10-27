@@ -114,7 +114,7 @@
         <div class="few-words-thumb bg-img wow fadeInRightBig" data-wow-delay="1.1s" style="background-image: url({{ asset('user/img/bg-img/cta-2.jpg') }});"></div>
     </section>
 
-    <div class="workflow-img mt-4" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <div class="workflow-img mt-4" style="display: block; margin-left: auto; margin-right: auto; width: 80%;">
         <img src="{{ url('') }}/{{$struktur}}" alt="">
     </div>
 

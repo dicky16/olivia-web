@@ -157,14 +157,13 @@
 
                   <div class="tab-pane fade text-left text-light" id="prof" role="tabpanel" aria-labelledby="profile-tab">
                     <h3>Unggah Berkas</h3>
-                    <span class="date-range code-font">Other Details</span>
                     <ul class="pt-2">
                       <div class="card-body">
                         <form>      
                           <div class="row">
                             <div class="col-md-12">
                             <label class="bmd-label-floating">Pilihan Lomba</label><br>
-                              <select class="custom-select" id="lomba">
+                              <select class="custom-select" id="lomba" required>
                                 <option selected>Pilihan Lomba</option>
                               </select>
                             </div>
@@ -175,7 +174,7 @@
                               <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Bukti Pembayaran</label><br>
                                   <div class="custom-file-upload">
-                                    <input type="file" id="file" name="myfiles[]" multiple />
+                                    <input type="file" id="bukti" required>
                                   </div>
                               </div>
                             </div>
@@ -186,18 +185,32 @@
                               <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Proposal Lomba</label><br>
                                   <div class="custom-file-upload">
-                                    <input type="file" id="file" name="myfiles[]" multiple />
+                                    <input type="file" id="proposal" required>
                                   </div>
                               </div>
                             </div>
                           </div>
                           <br>
 
-                          <button type="submit" class="btn btn-primary pull-left">Simpan</button>
+                          <input type="submit" class="btn btn-primary pull-left" value="Simpan" name="submit" id="simpanBerkas" @if(count($berkas) != 0) disabled @endif>
                           <div class="clearfix"></div>
-                        </form>                                             
+                        </form>     
+                        @if(count($berkas) != 0)
+                        <div class="row">
+                          <div class="col">
+                          <h4>Pilihan Lomba :</h4>
+                          <br>
+                            <h3>{{$berkas[0]->nama_lomba}}</h3>
+                            <br>
+                            <a href="{{$berkas[0]->bukti}}">{{$berkas[0]->bukti}}</a>
+                            <br>
+                            <a href="{{$berkas[0]->proposal}}">{{$berkas[0]->proposal}}</a>
+                          </div>
+                        </div>  
+                        @endif                                    
                       </div>
                     </ul>
+                    
                   </div>
 
                   <div class="tab-pane fade text-left text-light" id="down" role="tabpanel" aria-labelledby="download-tab">
@@ -210,16 +223,6 @@
                           <a href="{{$lomba->lampiran}}" class="btn btn-primary btn-round">Download</a>
                         </div><br>
                       @endforeach
-                      <!-- <h5>2. Video Edukasi</h5>  
-                        <div style="padding-left: 18px">
-                          <p>Download panduan lomba di link berikut</p>
-                          <a href="javascript:;" class="btn btn-primary btn-round">Download</a>
-                        </div><br>
-                      <h5>3. Desain Website</h5>  
-                        <div style="padding-left: 18px">
-                          <p>Download panduan lomba di link berikut</p>
-                          <a href="javascript:;" class="btn btn-primary btn-round">Download</a>
-                        </div><br> -->
                     </ul>
                   </div>
 
@@ -323,7 +326,7 @@
         formData.append('ktmAnggota2', ktm_anggota2);
         $.ajax({
             type: 'POST',
-            url: 'user',
+            url: '{{url('user')}}',
             data: formData,
             contentType: false,
             processData: false,
@@ -336,7 +339,7 @@
                     timer: 1200,
                     showConfirmButton: false
                   });
-                  console.log(data.message);
+                  location.reload();
               } else if(data.success == false) {
                 if(data.error == 'validation_error') {
                   Swal.fire({
@@ -365,6 +368,64 @@
             }
         });
     });
+
+    //unggah berkas
+    $('body').on('click', '#simpanBerkas', function(e) {
+        e.preventDefault();
+        var formData = new FormData();
+
+        var bukti = $('#bukti')[0].files[0];
+        var proposal = $('#proposal')[0].files[0];
+        var pilihan = $('#lomba :selected').val();
+        console.log(pilihan);
+        formData.append('bukti', bukti);
+        formData.append('proposal', proposal);
+        formData.append('pilihan', pilihan);
+        
+        $.ajax({
+            type: 'POST',
+            url: '{{url('user/berkas')}}',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+              if(data.success == true) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: 'Berkas Anda telah disimpan!',
+                    timer: 1200,
+                    showConfirmButton: false
+                  });
+                  location.reload();
+              } else if(data.success == false) {
+                if(data.error == 'validation_error') {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: ' Error : ' + data.message ,
+                  });
+                } else {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi Kesalahan mohon coba lagi!',
+                    timer: 1200,
+                    showConfirmButton: false
+                  });
+                }
+              } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi Kesalahan mohon coba lagi!',
+                    timer: 1200,
+                    showConfirmButton: false
+                  });
+              }
+            }
+        });
+      });
 
   });
 </script>

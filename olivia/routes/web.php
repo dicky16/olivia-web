@@ -233,8 +233,11 @@ Route::group(['middleware' => ['auth', 'checkRole:2', 'verified']],function() {
         Route::post('/', 'User\AkunController@simpanDataPeserta');
         Route::get('data', 'User\AkunController@getDataPeserta');
         Route::get('lomba', 'User\AkunController@getDataLomba');
+        Route::post('berkas', 'User\AkunController@storeBerkas');
     });
 });
+
+Route::post('daftar', 'Auth\RegisterController@create');
 
 Route::get('search', 'User\UserPageController@search');
 
