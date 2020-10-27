@@ -141,7 +141,7 @@ class socialmediaController
         $validator = Validator::make($request->all(), $rules);
           if($validator->passes()) {
             
-            $social = DB::table('sosial_media')->insert([
+            $social = DB::table('sosial_media')->where('id', $id)->update([
                 'nama' => $nama,
                 'url' => $url,
                 'icon' => $icon,
