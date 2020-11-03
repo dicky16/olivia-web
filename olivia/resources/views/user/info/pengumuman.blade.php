@@ -35,7 +35,7 @@
                                 <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
                                     <!-- Post Thumb -->
                                     <div class="blog-post-thumb">
-                                        <img src="{{ url('') }}/{{$pengumuman->gambar}}" alt="">
+                                        <img src="{{ url('') }}/{{$pengumuman->gambar}}" style="width: 80%; height: 80%;">
                                     </div>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
