@@ -27,26 +27,27 @@
                 <div class="col-12 col-md-8">
                     <div class="olv-blog-posts">
                         <div class="row">
-                            @foreach($data as $pengumuman)
+                            @foreach($data as $berita)
                             <?php
-                                $desArr = explode(".", $pengumuman->deskripsi);
+                                date_default_timezone_set("Asia/Jakarta");
+                                $desArr = explode(".", $berita->deskripsi);
                             ?>
                             <div class="col-12">
                                 <div class="single-blog wow fadeInUp" data-wow-delay="0.2s">
                                     <!-- Post Thumb -->
                                     <div class="blog-post-thumb">
-                                        <img src="{{ url('') }}/{{$pengumuman->gambar}}">
+                                        <img src="{{ url('') }}/{{$berita->foto}}" alt="">
                                     </div>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
-                                        <h6>By <a href="#">{{ $pengumuman->name }}, </a><a href="#">{{ date('d F Y', strtotime($pengumuman->created_at)) }}</a></h6>
+                                        <h6>By <a href="#">{{ $berita->name }}, </a><a href="#">{{date('d F Y', strtotime($berita->created_at))}}</a></h6>
                                     </div>
                                     <!-- Post Title -->
-                                    <h2>{{$pengumuman->judul}}</h2>
+                                    <h2>{{$berita->judul}}</h2>
                                     <!-- Post Excerpt -->
-                                    <p>{!! $desArr[0] !!}. {!! $desArr[1] !!}</p>
+                                    <p>{!! $desArr[0] !!}. {!!$desArr[1]!!}</p>
                                     <!-- Read More btn -->
-                                    <a href="{{ url('pengumuman') }}/{{$pengumuman->id}}">Read More</a>
+                                    <a href="{{ url('berita') }}/{{$berita->id}}">Read More</a>
                                 </div>
                             </div>
                             @endforeach
@@ -57,9 +58,7 @@
                     <div class="olv-pagination-area">
                         <nav>
                             <ul class="pagination">
-                                <!-- <li class="page-item active"><a class="page-link" href="#">1.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2.</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3.</a></li> -->
+                            
                                 {{ $data->links() }}
                             </ul>
                         </nav>
@@ -71,12 +70,13 @@
                         <div class="latest-blog-posts mb-100">
                             <h5>Latest Posts</h5>
                             @foreach($latest as $terbaru)
+                            
                             <div class="single-latest-blog-post d-flex">
                                 <div class="latest-blog-post-thumb">
-                                    <img src="{{ url('') }}/{{$terbaru->gambar}}" alt="">
+                                    <img src="{{ url('') }}/{{$terbaru->foto}}" alt="">
                                 </div>
                                 <div class="latest-blog-post-content">
-                                    <h6><a href="#">{{ $terbaru->judul}}</a></h6>
+                                    <h6><a href="{{ url('berita') }}/{{$berita->id}}">{{ $terbaru->judul}}</a></h6>
                                     <div class="post-meta">
                                         <h6>By <a href="">{{ $terbaru->name }}, </a>/<a href="#"> {{ date('d F Y', strtotime($terbaru->created_at)) }}</a></h6>
                                     </div>
@@ -89,4 +89,5 @@
             </div>
         </div>
     </section>
+    
 @endsection
